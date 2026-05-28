@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Create &amp; Connect LA — Where creatives turn portfolios into art</title>
+<meta name="description" content="A curated space where models, photographers, brands, and creatives come together to create elevated work." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0a0a0a;
+    --ink-soft: #1a1a1a;
+    --cream: #f5efe4;
+    --cream-soft: #ebe3d4;
+    --gold: #c9a662;
+    --gold-bright: #d4b06c;
+    --gold-deep: #a08148;
+    --neutral: #8b7a6a;
+    --warm-shadow: rgba(201, 166, 98, 0.15);
+    --hairline: rgba(245, 239, 228, 0.15);
+    --hairline-dark: rgba(10, 10, 10, 0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--ink);
+    color: var(--cream);
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  img { display: block; max-width: 100%; }
+
+  .container { max-width: 1400px; margin: 0 auto; padding: 0 32px; }
+  .container-narrow { max-width: 1100px; margin: 0 auto; padding: 0 32px; }
+
+  .eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .display {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+  }
+  .display .script {
+    font-family: 'Pinyon Script', cursive;
+    font-weight: 400;
+    font-style: italic;
+  }
+
+  h2.section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: clamp(40px, 5vw, 64px);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+
+  .body-serif {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 1.6;
+    color: var(--cream);
+  }
+
+  /* ============== NAV ============== */
+  nav.top {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(10, 10, 10, 0.78);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--hairline);
+  }
+  nav.top .row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 32px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .brand {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .brand-mark {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 22px;
+    letter-spacing: 0.06em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+  .brand-mark .amp { font-style: italic; font-weight: 400; }
+  .brand-script {
+    font-family: 'Pinyon Script', cursive;
+    font-size: 22px;
+    color: var(--gold);
+    margin-left: -4px;
+    transform: translateY(2px);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    align-items: center;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--cream);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    transition: color 0.2s ease;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  .btn-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 22px;
+    background: var(--gold);
+    color: var(--ink);
+    border: 1px solid var(--gold);
+    border-radius: 999px;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    cursor: pointer;
+  }
+  .btn-pill:hover {
+    background: transparent;
+    color: var(--gold);
+  }
+  .btn-pill.ghost {
+    background: transparent;
+    color: var(--cream);
+    border-color: var(--cream);
+  }
+  .btn-pill.ghost:hover {
+    background: var(--cream);
+    color: var(--ink);
+  }
+  .arrow { display: inline-block; transition: transform 0.25s; }
+  .btn-pill:hover .arrow { transform: translateX(4px); }
+
+  /* ============== HERO ============== */
+  .hero {
+    position: relative;
+    height: 100vh;
+    min-height: 720px;
+    overflow: hidden;
+  }
+  .hero-image {
+    position: absolute;
+    inset: 0;
+    background-image: url('images/p18_00.jpeg');
+    background-size: cover;
+    background-position: center top;
+    filter: brightness(0.88) contrast(1.04);
+  }
+  .hero-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(10,10,10,0.35) 0%, rgba(10,10,10,0) 40%, rgba(10,10,10,0.65) 100%);
+  }
+  .hero-inner {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 32px 100px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .hero-tag {
+    color: var(--gold);
+    margin-bottom: 24px;
+    font-size: 11px;
+    letter-spacing: 0.32em;
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(48px, 8vw, 104px);
+    line-height: 1.0;
+    letter-spacing: -0.015em;
+    color: var(--cream);
+    max-width: 920px;
+    margin-bottom: 14px;
+  }
+  .hero h1 .script {
+    font-family: 'Pinyon Script', cursive;
+    color: var(--gold);
+    font-style: italic;
+    font-size: 0.85em;
+    display: inline-block;
+    transform: translateY(8px);
+  }
+  .hero-cta-row {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-top: 36px;
+    flex-wrap: wrap;
+  }
+  .hero-scroll {
+    position: absolute;
+    bottom: 36px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--cream);
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    opacity: 0.6;
+    z-index: 2;
+  }
+
+  /* ============== SECTIONS ============== */
+  section {
+    padding: 120px 0;
+    position: relative;
+  }
+  section.cream {
+    background: var(--cream);
+    color: var(--ink);
+  }
+  section.cream .eyebrow { color: var(--gold-deep); }
+  section.cream .body-serif { color: var(--ink); }
+
+  /* ============== NEXT EVENT STRIP ============== */
+  .next-event {
+    background: var(--cream);
+    color: var(--ink);
+    padding: 90px 0;
+    border-top: 1px solid var(--hairline-dark);
+    border-bottom: 1px solid var(--hairline-dark);
+  }
+  .next-event-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .next-event-image {
+    aspect-ratio: 4/5;
+    background-size: cover;
+    background-position: center;
+    background-image: url('images/p20_00.jpeg');
+  }
+  .next-event-eyebrow {
+    color: var(--gold-deep);
+    margin-bottom: 24px;
+  }
+  .next-event-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: clamp(48px, 5vw, 72px);
+    line-height: 1.05;
+    margin-bottom: 32px;
+    letter-spacing: -0.01em;
+  }
+  .next-event-meta {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    color: var(--ink);
+    opacity: 0.78;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+  .next-event-meta strong { color: var(--gold-deep); font-weight: 600; }
+  .next-event-story {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 21px;
+    line-height: 1.55;
+    font-weight: 400;
+    margin: 32px 0 40px;
+    max-width: 480px;
+    color: rgba(10,10,10,0.78);
+  }
+  .next-event .btn-pill {
+    background: var(--ink);
+    color: var(--cream);
+    border-color: var(--ink);
+  }
+  .next-event .btn-pill:hover {
+    background: transparent;
+    color: var(--ink);
+  }
+
+  /* ============== COMMUNITY GALLERY ============== */
+  .gallery-section { background: var(--ink); }
+  .gallery-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 56px;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  .gallery-header h2 {
+    color: var(--cream);
+  }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 220px;
+    gap: 8px;
+  }
+  .gallery-cell {
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+  }
+  .gallery-cell.tall { grid-row: span 2; }
+  .gallery-cell::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0) 50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .gallery-cell::before {
+    content: attr(data-label);
+    position: absolute;
+    bottom: 18px;
+    left: 20px;
+    color: var(--gold);
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    z-index: 2;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  .gallery-cell:hover::after,
+  .gallery-cell:hover::before {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .gallery-cta {
+    margin-top: 56px;
+    text-align: center;
+  }
+  .text-link {
+    color: var(--cream);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--gold);
+    padding-bottom: 6px;
+    transition: color 0.2s;
+  }
+  .text-link:hover { color: var(--gold); }
+  section.cream .text-link {
+    color: var(--ink);
+    border-color: var(--gold-deep);
+  }
+  section.cream .text-link:hover { color: var(--gold-deep); }
+
+  /* ============== WHAT IT IS ============== */
+  .what-it-is {
+    background: var(--cream);
+    color: var(--ink);
+    text-align: center;
+  }
+  .what-it-is h2 {
+    color: var(--ink);
+    max-width: 900px;
+    margin: 24px auto 0;
+  }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 60px;
+    margin-top: 90px;
+    padding-top: 60px;
+    border-top: 1px solid var(--hairline-dark);
+  }
+  .stat-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 84px;
+    line-height: 1;
+    color: var(--gold-deep);
+    margin-bottom: 12px;
+  }
+  .stat-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--ink);
+    opacity: 0.7;
+  }
+
+  /* ============== THREE COLUMNS ============== */
+  .three-col {
+    background: var(--ink);
+    padding: 140px 0;
+  }
+  .three-col-header {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+  .three-col-header h2 {
+    color: var(--cream);
+    margin-top: 16px;
+  }
+  .columns {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+  }
+  .col-card {
+    position: relative;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+  }
+  .col-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, rgba(10,10,10,0.90) 0%, rgba(10,10,10,0.25) 60%, rgba(10,10,10,0) 100%);
+  }
+  .col-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 48px 40px;
+    z-index: 2;
+    color: var(--cream);
+  }
+  .col-content .label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+  .col-content h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 34px;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+  .col-content p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    line-height: 1.55;
+    margin-bottom: 24px;
+    opacity: 0.88;
+  }
+  .col-content .text-link {
+    display: inline-block;
+  }
+
+  /* ============== FEATURED WORK ============== */
+  .featured-work {
+    position: relative;
+    min-height: 720px;
+    padding: 0;
+    overflow: hidden;
+  }
+  .featured-image {
+    position: absolute;
+    inset: 0;
+    background-image: url('images/p28_00.jpeg');
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.55) contrast(1.06);
+  }
+  .featured-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 220px 32px;
+    text-align: center;
+  }
+  .featured-content blockquote {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(28px, 3.4vw, 42px);
+    line-height: 1.3;
+    color: var(--cream);
+    margin-bottom: 36px;
+    letter-spacing: -0.005em;
+  }
+  .featured-content cite {
+    font-style: normal;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  /* ============== EMAIL CAPTURE ============== */
+  .email-capture {
+    background: var(--ink);
+    text-align: center;
+    padding: 140px 0;
+    position: relative;
+  }
+  .email-capture::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 80px; height: 1px;
+    background: var(--gold);
+  }
+  .email-capture h2 {
+    color: var(--cream);
+    margin: 20px auto 24px;
+    max-width: 760px;
+  }
+  .email-capture .body-serif {
+    color: rgba(245, 239, 228, 0.78);
+    max-width: 540px;
+    margin: 0 auto 48px;
+  }
+  .email-form {
+    display: flex;
+    max-width: 520px;
+    margin: 0 auto;
+    gap: 12px;
+    border-bottom: 1px solid var(--gold);
+    padding-bottom: 16px;
+  }
+  .email-form input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--cream);
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    padding: 12px 4px;
+    outline: none;
+  }
+  .email-form input::placeholder {
+    color: rgba(245, 239, 228, 0.4);
+    letter-spacing: 0.04em;
+  }
+  .email-form button {
+    background: transparent;
+    border: none;
+    color: var(--gold);
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 12px 20px;
+    transition: color 0.2s;
+  }
+  .email-form button:hover { color: var(--cream); }
+  .email-meta {
+    margin-top: 24px;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(245, 239, 228, 0.4);
+  }
+
+  /* ============== FOOTER ============== */
+  footer {
+    background: #050505;
+    padding: 80px 0 48px;
+    border-top: 1px solid var(--hairline);
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 60px;
+  }
+  .footer-brand .brand-mark {
+    font-size: 28px;
+    display: block;
+    margin-bottom: 8px;
+  }
+  .footer-brand .brand-script { font-size: 28px; }
+  .footer-brand p {
+    margin-top: 24px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: rgba(245, 239, 228, 0.6);
+    max-width: 320px;
+  }
+  .footer-col h4 {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 12px; }
+  .footer-col ul a {
+    color: rgba(245, 239, 228, 0.7);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 300;
+    transition: color 0.2s;
+  }
+  .footer-col ul a:hover { color: var(--gold); }
+  .footer-base {
+    border-top: 1px solid var(--hairline);
+    padding-top: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(245, 239, 228, 0.4);
+  }
+
+  /* ============== ANIMATIONS ============== */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ============== RESPONSIVE ============== */
+  @media (max-width: 1024px) {
+    .next-event-grid { grid-template-columns: 1fr; gap: 48px; }
+    .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+    .columns { grid-template-columns: 1fr; }
+    .col-card { aspect-ratio: 16/10; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+  }
+  @media (max-width: 768px) {
+    nav.top .row { padding: 16px 20px; }
+    .nav-links { display: none; }
+    .container, .container-narrow, nav.top .row { padding-left: 20px; padding-right: 20px; }
+    .hero-inner { padding: 0 20px 80px; }
+    .gallery-grid {
+      grid-template-columns: repeat(2, 1fr);
+      grid-auto-rows: 180px;
+    }
+    .stats { grid-template-columns: 1fr; gap: 40px; }
+    .stat-number { font-size: 64px; }
+    section { padding: 80px 0; }
+    .next-event { padding: 60px 0; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .email-form { flex-direction: column; border-bottom: none; }
+    .email-form input { border-bottom: 1px solid var(--gold); }
+    .email-form button { background: var(--gold); color: var(--ink); padding: 14px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- =========== NAV =========== -->
+<nav class="top">
+  <div class="row">
+    <a href="#" class="brand">
+      <span class="brand-mark">Create <span class="amp">&amp;</span> Connect</span>
+      <span class="brand-script">los angeles</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#events">Events</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#journal">Journal</a></li>
+      <li><a href="#brands">Brands</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#next-event" class="btn-pill">RSVP <span class="arrow">→</span></a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- =========== HERO =========== -->
+<header class="hero" id="top">
+  <div class="hero-image"></div>
+  <div class="hero-inner">
+    <div class="hero-tag eyebrow">Los Angeles · Editorial Photomeets · Est. 2025</div>
+    <h1>Where creatives turn<br><span class="script">portfolios</span> into art.</h1>
+    <div class="hero-cta-row">
+      <a href="#next-event" class="btn-pill">View the next event <span class="arrow">→</span></a>
+      <a href="#subscribe" class="text-link">Get the free guide</a>
+    </div>
+  </div>
+  <div class="hero-scroll">Scroll · · ·</div>
+</header>
+
+<!-- =========== NEXT EVENT STRIP =========== -->
+<section class="next-event" id="next-event">
+  <div class="container">
+    <div class="next-event-grid">
+      <div class="next-event-image fade-in"></div>
+      <div class="fade-in">
+        <div class="eyebrow next-event-eyebrow">The Next Event</div>
+        <h2 class="next-event-title">ModiNochi <span style="font-style:italic;color:var(--gold-deep);">II</span></h2>
+        <p class="next-event-meta">Saturday · <strong>June 14</strong> · 1–4 PM</p>
+        <p class="next-event-meta">Beverly Hills mansion · $90 / attendee</p>
+        <p class="next-event-meta">12 of 30 spots remaining</p>
+        <p class="next-event-story">
+          A returning favorite — antique interiors, dramatic styling, and a creative pace that rewards
+          photographers who think in editorials. Limited model spots open via application.
+        </p>
+        <a href="#" class="btn-pill">RSVP — $90 <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========== COMMUNITY GALLERY =========== -->
+<section class="gallery-section" id="gallery">
+  <div class="container">
+    <div class="gallery-header">
+      <div>
+        <div class="eyebrow">The Community</div>
+        <h2 class="section-title fade-in" style="margin-top:18px;">A room curated<br>with intention.</h2>
+      </div>
+      <p class="body-serif fade-in" style="max-width:420px;opacity:0.8;">
+        Every image you see was created in our rooms — by photographers, models, designers,
+        and brands who showed up to make work worth keeping.
+      </p>
+    </div>
+    <div class="gallery-grid fade-in">
+      <div class="gallery-cell tall" data-label="Casa Attar" style="background-image:url('images/p18_00.jpeg');"></div>
+      <div class="gallery-cell" data-label="ModiNochi" style="background-image:url('images/p20_00.jpeg');"></div>
+      <div class="gallery-cell" data-label="Sunset Estates" style="background-image:url('images/p22_00.jpeg');"></div>
+      <div class="gallery-cell tall" data-label="Volka" style="background-image:url('images/p25_00.jpeg');"></div>
+      <div class="gallery-cell" data-label="StuSpace LA" style="background-image:url('images/p28_00.jpeg');"></div>
+      <div class="gallery-cell" data-label="Casa Attar" style="background-image:url('images/p19_00.jpeg');"></div>
+      <div class="gallery-cell" data-label="Blue Room" style="background-image:url('images/p35_00.jpeg');"></div>
+      <div class="gallery-cell" data-label="Sunset Estates" style="background-image:url('images/p31_00.jpeg');"></div>
+      <div class="gallery-cell" data-label="DTLA Visuals" style="background-image:url('images/p23_00.jpeg');"></div>
+      <div class="gallery-cell" data-label="Casa Attar" style="background-image:url('images/p21_00.jpeg');"></div>
+    </div>
+    <div class="gallery-cta">
+      <a href="#" class="text-link">See every event →</a>
+    </div>
+  </div>
+</section>
+
+<!-- =========== WHAT IT IS =========== -->
+<section class="what-it-is" id="about">
+  <div class="container-narrow">
+    <div class="eyebrow">Create &amp; Connect Is</div>
+    <h2 class="fade-in" style="margin-top:20px;">
+      A curated space where models, photographers, brands,<br>
+      and creatives come together to network, collaborate,<br>
+      and create <em style="font-family:'Cormorant Garamond';font-style:italic;color:var(--gold-deep);">elevated work</em>.
+    </h2>
+    <div class="stats fade-in">
+      <div>
+        <div class="stat-number">09</div>
+        <div class="stat-label">Editorial Series</div>
+      </div>
+      <div>
+        <div class="stat-number">270+</div>
+        <div class="stat-label">Creatives in the Room</div>
+      </div>
+      <div>
+        <div class="stat-number">12</div>
+        <div class="stat-label">Brand Collaborations</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========== THREE COLUMNS =========== -->
+<section class="three-col">
+  <div class="container">
+    <div class="three-col-header">
+      <div class="eyebrow">Who It's For</div>
+      <h2 class="section-title fade-in">Three rooms.<br>One creative world.</h2>
+    </div>
+    <div class="columns">
+      <div class="col-card" style="background-image:url('images/p31_00.jpeg');">
+        <div class="col-content">
+          <div class="label">For Models</div>
+          <h3>Build a portfolio worth booking.</h3>
+          <p>Curated editorial environments. Multiple photographers. The kind of work agencies actually open.</p>
+          <a href="#" class="text-link">Apply →</a>
+        </div>
+      </div>
+      <div class="col-card" style="background-image:url('images/p28_00.jpeg');">
+        <div class="col-content">
+          <div class="label">For Photographers</div>
+          <h3>Shoot work that lives past the feed.</h3>
+          <p>Locations, talent, and concept handled. You bring your eye. Walk away with editorial-grade frames.</p>
+          <a href="#" class="text-link">RSVP →</a>
+        </div>
+      </div>
+      <div class="col-card" style="background-image:url('images/p35_00.jpeg');">
+        <div class="col-content">
+          <div class="label">For Brands</div>
+          <h3>Your product in the right hands.</h3>
+          <p>Native content from photographers who shoot for magazines. Models who know how to wear story.</p>
+          <a href="#" class="text-link">Partner →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========== FEATURED WORK =========== -->
+<section class="featured-work">
+  <div class="featured-image"></div>
+  <div class="featured-content">
+    <blockquote>
+      "Create &amp; Connect is the first room in LA that
+      feels like a real editorial set — not another photo meet."
+    </blockquote>
+    <cite>— @photosby_bui · Featured Photographer, Sunset Estates</cite>
+  </div>
+</section>
+
+<!-- =========== EMAIL CAPTURE =========== -->
+<section class="email-capture" id="subscribe">
+  <div class="container-narrow">
+    <div class="eyebrow">Get the Free Guide</div>
+    <h2 class="section-title">
+      How to Prepare for<br>
+      a Create &amp; Connect <em style="font-family:'Cormorant Garamond';color:var(--gold);">Editorial Event</em>.
+    </h2>
+    <p class="body-serif">
+      Plus early access to upcoming events, creative direction notes from past shoots,
+      and a biweekly look inside the community. Unsubscribe anytime.
+    </p>
+    <form class="email-form" onsubmit="event.preventDefault(); alert('Wire up to Beehiiv.');">
+      <input type="email" placeholder="email@you.com" required />
+      <button type="submit">Send <span class="arrow">→</span></button>
+    </form>
+    <div class="email-meta">Biweekly · No spam · 600+ creatives</div>
+  </div>
+</section>
+
+<!-- =========== FOOTER =========== -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="brand-mark">Create <span class="amp">&amp;</span> Connect</span>
+        <span class="brand-script">los angeles</span>
+        <p>Where creatives turn portfolios into art.</p>
+      </div>
+      <div class="footer-col">
+        <h4>The Community</h4>
+        <ul>
+          <li><a href="#">Events</a></li>
+          <li><a href="#">Gallery</a></li>
+          <li><a href="#">Journal</a></li>
+          <li><a href="#">Members</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Partner</h4>
+        <ul>
+          <li><a href="#">Brands</a></li>
+          <li><a href="#">Apply (Models)</a></li>
+          <li><a href="#">Press</a></li>
+          <li><a href="#">Venues</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="https://instagram.com/createconnect.la" target="_blank">Instagram</a></li>
+          <li><a href="mailto:hello@createconnectla.com">hello@createconnectla.com</a></li>
+          <li><a href="#subscribe">Newsletter</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>© 2026 Create &amp; Connect LA · Los Angeles</span>
+      <span>Curated by @natguerrero__</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Subtle fade-in on scroll
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+  // Smooth scroll for anchor nav (native via CSS, but ensure offset)
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', function(e) {
+      const id = this.getAttribute('href');
+      if (id.length > 1) {
+        const el = document.querySelector(id);
+        if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
