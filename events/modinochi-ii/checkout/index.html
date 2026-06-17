@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>RSVP — ModiNochi II · Create &amp; Connect LA</title>
+<meta name="description" content="Reserve your spot at ModiNochi II — Saturday June 14, Beverly Hills." />
+<link rel="icon" type="image/svg+xml" href="../../../favicon.svg">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+<body>
+
+<nav class="top">
+  <div class="row">
+    <a href="../../../" class="brand">
+      <span class="brand-mark">Create <span class="amp">&amp;</span> Connect</span>
+      <span class="brand-script">los angeles</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../">← Back to event</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="../">← Back to event</a></li>
+    <li><a href="../../../">Home</a></li>
+  </ul>
+</div>
+
+<div class="checkout-wrapper">
+  <div class="container-narrow">
+
+    <div class="eyebrow" style="text-align:center;margin-bottom:14px;">RSVP</div>
+    <h1 class="section-title fade-in" style="text-align:center;color:var(--cream);margin-bottom:64px;">
+      Reserve your spot.
+    </h1>
+
+    <div class="checkout-grid">
+      <!-- LEFT: Form -->
+      <form class="checkout-form" id="checkoutForm" onsubmit="event.preventDefault(); handleCheckout(this);">
+        <div class="eyebrow" style="margin-bottom:24px;">Your Details</div>
+
+        <div class="field">
+          <label for="name">Full Name</label>
+          <input id="name" name="name" type="text" placeholder="First and last" required autocomplete="name" />
+        </div>
+
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="email@you.com" required autocomplete="email" />
+        </div>
+
+        <div class="field">
+          <label for="phone">Phone</label>
+          <input id="phone" name="phone" type="tel" placeholder="(213) 555-0142" required autocomplete="tel" />
+        </div>
+
+        <div class="field">
+          <label for="ig">Instagram handle</label>
+          <input id="ig" name="ig" type="text" placeholder="@you" required />
+        </div>
+
+        <div class="field">
+          <label>I'm attending as a</label>
+          <div class="role-radios">
+            <label>
+              <input type="radio" name="role" value="photographer" required />
+              <span>Photographer</span>
+            </label>
+            <label>
+              <input type="radio" name="role" value="model" />
+              <span>Model</span>
+            </label>
+            <label>
+              <input type="radio" name="role" value="brand" />
+              <span>Brand</span>
+            </label>
+            <label>
+              <input type="radio" name="role" value="other" />
+              <span>Other</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="bringing">Anything we should know? (Optional)</label>
+          <textarea id="bringing" name="bringing" placeholder="Equipment, brand product, styling ideas..." rows="3"></textarea>
+        </div>
+
+        <div class="checkbox-row">
+          <input type="checkbox" id="newsletter" name="newsletter" checked />
+          <label for="newsletter">Send me biweekly creative direction notes and event announcements. Unsubscribe anytime.</label>
+        </div>
+
+        <div class="checkbox-row">
+          <input type="checkbox" id="terms" name="terms" required />
+          <label for="terms">I agree to the <a href="../../../contact/" style="color:var(--gold);">terms &amp; refund policy</a>.</label>
+        </div>
+
+        <button type="submit" class="btn-pill block lg">Pay $90 and reserve <span class="arrow">→</span></button>
+
+        <p style="text-align:center;margin-top:20px;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(245,239,228,0.4);">
+          Secured by Stripe · Apple Pay &amp; Google Pay available at next step
+        </p>
+      </form>
+
+      <!-- RIGHT: Order Summary -->
+      <aside class="order-summary">
+        <h3>Your Reservation</h3>
+
+        <div style="margin-bottom:24px;">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:28px;line-height:1.1;margin-bottom:8px;">
+            ModiNochi <em style="font-style:italic;color:var(--gold-deep);">II</em>
+          </div>
+          <div style="font-size:13px;letter-spacing:0.08em;color:rgba(10,10,10,0.7);">
+            Saturday, June 14 · 1–4 PM<br>
+            Beverly Hills mansion
+          </div>
+        </div>
+
+        <div class="order-row">
+          <span>Editorial photomeet · 1 person</span>
+          <span>$90.00</span>
+        </div>
+        <div class="order-row">
+          <span>Processing fee</span>
+          <span>$0.00</span>
+        </div>
+        <div class="order-row total">
+          <span>Total today</span>
+          <span>$90.00</span>
+        </div>
+
+        <div class="payment-methods">
+          <div style="font-size:11px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:rgba(10,10,10,0.6);">
+            Accepted Payment
+          </div>
+          <div class="payment-logos">
+            Apple Pay &nbsp; · &nbsp; Google Pay &nbsp; · &nbsp; Visa &nbsp; · &nbsp; Mastercard &nbsp; · &nbsp; Amex
+          </div>
+        </div>
+
+        <div style="margin-top:32px;padding-top:24px;border-top:1px solid var(--hairline-dark);font-family:'Cormorant Garamond',serif;font-size:16px;line-height:1.5;color:rgba(10,10,10,0.7);">
+          <strong style="color:var(--ink);font-weight:500;">After you RSVP:</strong><br>
+          You'll get a confirmation email immediately, the event group chat invite 7 days before,
+          and the exact venue address 48 hours before.
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-base">
+      <span>© 2026 Create &amp; Connect LA</span>
+      <span><a href="../../../" style="color:rgba(245,239,228,0.6);text-decoration:none;">Back to home →</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function handleCheckout(form) {
+    /* TODO: Wire to Stripe Payment Link or Stripe Checkout Session.
+       Until then, simulate confirmation. */
+    const btn = form.querySelector('button[type="submit"]');
+    btn.textContent = 'Processing...';
+    setTimeout(() => {
+      form.innerHTML = `
+        <div style="text-align:center;padding:60px 20px;">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:64px;color:var(--gold);margin-bottom:24px;">✓</div>
+          <h2 style="font-family:'Cormorant Garamond',serif;font-size:36px;color:var(--cream);margin-bottom:16px;font-weight:400;">You're in.</h2>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:19px;color:rgba(245,239,228,0.78);line-height:1.55;max-width:420px;margin:0 auto;">
+            Confirmation sent. Group chat invite arrives 7 days out.<br>
+            See you Saturday, June 14.
+          </p>
+          <a href="../../../" style="display:inline-block;margin-top:36px;color:var(--gold);font-size:11px;letter-spacing:0.24em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:6px;">Back to home →</a>
+        </div>
+      `;
+    }, 1200);
+  }
+
+  const hamburger = document.querySelector('.hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger?.addEventListener('click', () => {
+    const open = hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+</script>
+
+</body>
+</html>

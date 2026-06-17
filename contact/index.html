@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contact — Create &amp; Connect LA</title>
+<meta name="description" content="Reach Create & Connect LA. Press, venue partnerships, attendee questions, and general inquiries." />
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<meta property="og:title" content="Contact — Create & Connect LA" />
+<meta property="og:description" content="Get in touch with Create & Connect LA." />
+<meta property="og:image" content="https://zayslivin.github.io/cac-la-site/og-image.png" />
+<meta property="og:url" content="https://zayslivin.github.io/cac-la-site/contact/" />
+<meta property="og:type" content="website" />
+<meta name="theme-color" content="#0a0a0a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+<nav class="top">
+  <div class="row">
+    <a href="../" class="brand">
+      <span class="brand-mark">Create <span class="amp">&amp;</span> Connect</span>
+      <span class="brand-script">los angeles</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../events/">Events</a></li>
+      <li><a href="../#gallery">Gallery</a></li>
+      <li><a href="../testimonials/">Testimonials</a></li>
+      <li><a href="../brands/">Brands</a></li>
+      <li><a href="../about/">About</a></li>
+      <li><a href="./" class="active">Contact</a></li>
+      <li><a href="../events/modinochi-ii/" class="btn-pill">RSVP <span class="arrow">→</span></a></li>
+    </ul>
+    <button class="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="../events/">Events</a></li>
+    <li><a href="../#gallery">Gallery</a></li>
+    <li><a href="../testimonials/">Testimonials</a></li>
+    <li><a href="../brands/">Brands</a></li>
+    <li><a href="../about/">About</a></li>
+    <li><a href="./">Contact</a></li>
+  </ul>
+</div>
+
+<header class="page-head">
+  <div class="eyebrow">Contact</div>
+  <h1>Send us a note.</h1>
+  <p class="page-sub">Brands, press, venues, attendees — we read everything.</p>
+</header>
+
+<section style="background:var(--ink);">
+  <div class="container-narrow">
+
+    <!-- Quick routes -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:80px;" id="quickRoutes" class="fade-in">
+      <div style="padding:32px;border:1px solid var(--hairline);text-align:center;">
+        <div class="eyebrow" style="margin-bottom:14px;">Brand Partnerships</div>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:16px;line-height:1.55;color:rgba(245,239,228,0.78);margin-bottom:18px;">
+          Faster path for brand inquiries.
+        </p>
+        <a href="../brands/#inquire" class="text-link">Use brand form →</a>
+      </div>
+      <div style="padding:32px;border:1px solid var(--hairline);text-align:center;">
+        <div class="eyebrow" style="margin-bottom:14px;">Model Applications</div>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:16px;line-height:1.55;color:rgba(245,239,228,0.78);margin-bottom:18px;">
+          Apply for the next event's curated spots.
+        </p>
+        <a href="../events/modinochi-ii/" class="text-link">Apply →</a>
+      </div>
+      <div style="padding:32px;border:1px solid var(--hairline);text-align:center;">
+        <div class="eyebrow" style="margin-bottom:14px;">Direct</div>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:16px;line-height:1.55;color:rgba(245,239,228,0.78);margin-bottom:18px;">
+          Email lands in our inbox directly.
+        </p>
+        <a href="mailto:hello@createconnectla.com" class="text-link">hello@createconnectla.com →</a>
+      </div>
+    </div>
+
+    <!-- General form -->
+    <div style="text-align:center;margin-bottom:48px;">
+      <div class="eyebrow">Or Use the Form</div>
+      <h2 class="section-title fade-in" style="margin:18px 0 16px;">Tell us<br>what brought you here.</h2>
+    </div>
+
+    <form class="form-card fade-in" onsubmit="event.preventDefault(); handleContact(this);">
+      <div class="form-grid">
+        <div class="field">
+          <label for="c_name">Your name</label>
+          <input id="c_name" name="name" type="text" required />
+        </div>
+        <div class="field">
+          <label for="c_email">Email</label>
+          <input id="c_email" name="email" type="email" required />
+        </div>
+        <div class="field full">
+          <label for="c_topic">I'm reaching out about</label>
+          <select id="c_topic" name="topic" required>
+            <option value="">Select one...</option>
+            <option>An upcoming event</option>
+            <option>Press / Editorial</option>
+            <option>A venue I'd like to offer for an event</option>
+            <option>A photographer or model question</option>
+            <option>A past event experience</option>
+            <option>Something else</option>
+          </select>
+        </div>
+        <div class="field full">
+          <label for="c_message">Message</label>
+          <textarea id="c_message" name="message" rows="5" required></textarea>
+        </div>
+      </div>
+      <button type="submit" class="btn-pill block lg" style="margin-top:32px;">Send <span class="arrow">→</span></button>
+    </form>
+
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="brand-mark">Create <span class="amp">&amp;</span> Connect</span>
+        <span class="brand-script">los angeles</span>
+        <p>Where creatives turn portfolios into art.</p>
+      </div>
+      <div class="footer-col">
+        <h4>The Community</h4>
+        <ul>
+          <li><a href="../events/">Events</a></li>
+          <li><a href="../#gallery">Gallery</a></li>
+          <li><a href="../testimonials/">Testimonials</a></li>
+          <li><a href="../about/">About</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Partner</h4>
+        <ul>
+          <li><a href="../brands/">Brands</a></li>
+          <li><a href="../events/modinochi-ii/">Apply (Models)</a></li>
+          <li><a href="./">Press</a></li>
+          <li><a href="./">Venues</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="https://instagram.com/createconnect.la" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="mailto:hello@createconnectla.com">hello@createconnectla.com</a></li>
+          <li><a href="../#subscribe">Newsletter</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>© 2026 Create &amp; Connect LA · Los Angeles</span>
+      <span>Curated by @natguerrero__</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+  const hamburger = document.querySelector('.hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger?.addEventListener('click', () => {
+    const open = hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+
+  function handleContact(form) {
+    /* TODO: Wire to Tally or mailto fallback. */
+    form.innerHTML = `
+      <div style="text-align:center;padding:40px 20px;">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:48px;color:var(--gold);margin-bottom:20px;">✓</div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:32px;color:var(--cream);margin-bottom:16px;font-weight:400;">Sent.</h3>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:18px;color:rgba(245,239,228,0.78);max-width:420px;margin:0 auto;">
+          We'll get back to you within a few days. Watch your inbox.
+        </p>
+      </div>
+    `;
+  }
+</script>
+<style>
+@media (max-width: 768px) {
+  #quickRoutes { grid-template-columns: 1fr !important; gap: 16px !important; }
+}
+</style>
+
+</body>
+</html>
