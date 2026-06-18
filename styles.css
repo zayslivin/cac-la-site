@@ -146,7 +146,7 @@ nav.top .row {
 .hamburger.open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
 
 .mobile-menu {
-  display: none;
+  display: block;
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
   z-index: 99;
@@ -155,10 +155,12 @@ nav.top .row {
   padding: 100px 32px 40px;
   opacity: 0;
   visibility: hidden;
+  pointer-events: none;
   transition: opacity 0.35s ease, visibility 0.35s ease;
 }
 .mobile-menu.open {
   opacity: 1; visibility: visible;
+  pointer-events: auto;
 }
 .mobile-menu ul {
   list-style: none;
@@ -1193,3 +1195,68 @@ footer {
   .lb-nav { font-size: 44px; padding: 0 10px; }
   .lb-close { font-size: 34px; top: 16px; right: 18px; }
 }
+
+/* ============== PER-EVENT GALLERY FOOTER ============== */
+.event-set-foot {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 18px;
+  margin-top: 28px; padding-top: 24px;
+  border-top: 1px solid var(--hairline);
+}
+.event-set-foot .back-top {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--gold); text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+.event-set-foot .back-top:hover { opacity: 0.65; }
+
+/* ============== EVENTS ARCHIVE LIST ============== */
+.archive-list {
+  border-top: 1px solid var(--hairline);
+}
+.archive-row {
+  display: grid;
+  grid-template-columns: 56px 1.1fr 1.4fr auto;
+  align-items: baseline; gap: 24px;
+  padding: 30px 8px;
+  border-bottom: 1px solid var(--hairline);
+  text-decoration: none; color: var(--cream);
+  transition: background 0.25s ease, padding-left 0.25s ease;
+}
+.archive-row:hover { background: var(--ink-soft); padding-left: 20px; }
+.archive-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic; font-size: 26px; font-weight: 300;
+  color: var(--gold-deep); line-height: 1;
+}
+.archive-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(24px, 3vw, 34px); font-weight: 400;
+  color: var(--cream); line-height: 1.1;
+}
+.archive-tag {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px; font-style: italic;
+  color: rgba(245,239,228,0.62);
+}
+.archive-arrow {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--gold); white-space: nowrap; justify-self: end;
+}
+@media (max-width: 768px) {
+  .archive-row { grid-template-columns: 40px 1fr; gap: 6px 16px; padding: 22px 6px; }
+  .archive-tag { grid-column: 2; }
+  .archive-arrow { grid-column: 2; justify-self: start; margin-top: 6px; }
+}
+
+/* ============== FOOTER IG LINK ============== */
+.footer-base a {
+  color: inherit; text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.footer-base a:hover { color: var(--gold); border-color: var(--gold); }

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Partnership Inquiry — Create &amp; Connect LA</title>
+<meta name="description" content="Tell us about your brand. Partner with Create & Connect LA for native UGC, model-led product placement, and editorial brand storytelling." />
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<meta property="og:title" content="Partnership Inquiry — Create & Connect LA" />
+<meta property="og:description" content="Partner with curated editorial photomeets. Tell us about your brand." />
+<meta property="og:image" content="https://zayslivin.github.io/cac-la-site/og-image.png" />
+<meta property="og:url" content="https://zayslivin.github.io/cac-la-site/brands/inquire/" />
+<meta property="og:type" content="website" />
+<meta name="theme-color" content="#0a0a0a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+
+<nav class="top">
+  <div class="row">
+    <a href="../../" class="brand">
+      <span class="brand-mark">Create <span class="amp">&amp;</span> Connect</span>
+      <span class="brand-script">los angeles</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../../events/">Events</a></li>
+      <li><a href="../../gallery/">Gallery</a></li>
+      <li><a href="../../testimonials/">Testimonials</a></li>
+      <li><a href="../" class="active">Brands</a></li>
+      <li><a href="../../about/">About</a></li>
+      <li><a href="../../contact/">Contact</a></li>
+      <li><a href="../../events/modinochi-ii/" class="btn-pill">RSVP <span class="arrow">&rarr;</span></a></li>
+    </ul>
+    <button class="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="../../events/">Events</a></li>
+    <li><a href="../../gallery/">Gallery</a></li>
+    <li><a href="../../testimonials/">Testimonials</a></li>
+    <li><a href="../">Brands</a></li>
+    <li><a href="../../about/">About</a></li>
+    <li><a href="../../contact/">Contact</a></li>
+  </ul>
+</div>
+
+<header class="page-head">
+  <div class="eyebrow">Partnership Inquiry</div>
+  <h1>Tell us about<br>your brand.</h1>
+  <p class="page-sub">
+    Brands we're not aligned with don't make it past this form. So be specific —
+    the more we know, the faster we can respond.
+  </p>
+  <a href="../" class="back-top" style="display:inline-block;margin-top:24px;">&larr; Back to Brands</a>
+</header>
+
+<!-- INQUIRY FORM -->
+<section style="background:var(--ink);">
+  <div class="container-narrow">
+    <form class="form-card fade-in" onsubmit="event.preventDefault(); handleInquiry(this);">
+      <div class="form-grid">
+        <div class="field">
+          <label for="b_name">Your name</label>
+          <input id="b_name" name="name" type="text" required />
+        </div>
+        <div class="field">
+          <label for="b_brand">Brand name</label>
+          <input id="b_brand" name="brand" type="text" required />
+        </div>
+        <div class="field">
+          <label for="b_email">Email</label>
+          <input id="b_email" name="email" type="email" required />
+        </div>
+        <div class="field">
+          <label for="b_ig">Brand IG / Website</label>
+          <input id="b_ig" name="ig" type="text" placeholder="@brand or url" required />
+        </div>
+        <div class="field full">
+          <label for="b_category">Brand category</label>
+          <select id="b_category" name="category" required>
+            <option value="">Select one...</option>
+            <option>Fashion</option>
+            <option>Beauty / Skincare</option>
+            <option>Jewelry</option>
+            <option>Wellness</option>
+            <option>Lifestyle</option>
+            <option>Swimwear</option>
+            <option>Florals</option>
+            <option>Food &amp; Beverage</option>
+            <option>Hospitality / Venue</option>
+            <option>Photography Equipment</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field full">
+          <label for="b_budget">Budget range</label>
+          <select id="b_budget" name="budget" required>
+            <option value="">Select one...</option>
+            <option>$500 – $2,500</option>
+            <option>$2,500 – $5,000</option>
+            <option>$5,000 – $10,000</option>
+            <option>$10,000 – $25,000</option>
+            <option>$25,000+</option>
+            <option>Exploring</option>
+          </select>
+        </div>
+        <div class="field full">
+          <label for="b_about">Tell us about your brand and what you're hoping to create</label>
+          <textarea id="b_about" name="about" rows="4" required></textarea>
+        </div>
+      </div>
+      <button type="submit" class="btn-pill block lg" style="margin-top:32px;">Submit inquiry <span class="arrow">&rarr;</span></button>
+      <p style="text-align:center;margin-top:20px;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(245,239,228,0.4);">
+        We respond within 3 business days
+      </p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="brand-mark">Create <span class="amp">&amp;</span> Connect</span>
+        <span class="brand-script">los angeles</span>
+        <p>Where creatives turn portfolios into art.</p>
+      </div>
+      <div class="footer-col">
+        <h4>The Community</h4>
+        <ul>
+          <li><a href="../../events/">Events</a></li>
+          <li><a href="../../gallery/">Gallery</a></li>
+          <li><a href="../../testimonials/">Testimonials</a></li>
+          <li><a href="../../about/">About</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Partner</h4>
+        <ul>
+          <li><a href="../">Brands</a></li>
+          <li><a href="../../events/modinochi-ii/">Apply (Models)</a></li>
+          <li><a href="../../contact/">Press</a></li>
+          <li><a href="../../contact/">Venues</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="https://instagram.com/createconnect.la" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="mailto:hello@createconnectla.com">hello@createconnectla.com</a></li>
+          <li><a href="../../#subscribe">Newsletter</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>&copy; 2026 Create &amp; Connect LA &middot; Los Angeles</span>
+      <span>Curated by <a href="https://instagram.com/natguerrero__" target="_blank" rel="noopener">@natguerrero__</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+  const hamburger = document.querySelector('.hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger?.addEventListener('click', () => {
+    const open = hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+
+  function handleInquiry(form) {
+    /* TODO: Wire to Tally or Airtable via fetch. */
+    const btn = form.querySelector('button[type="submit"]');
+    btn.textContent = 'Sent ✓';
+    btn.disabled = true;
+    setTimeout(() => {
+      form.innerHTML = `
+        <div style="text-align:center;padding:40px 20px;">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:48px;color:var(--gold);margin-bottom:20px;">✓</div>
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:32px;color:var(--cream);margin-bottom:16px;font-weight:400;">Got it.</h3>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:18px;color:rgba(245,239,228,0.78);max-width:420px;margin:0 auto;">
+            We'll review and respond within 3 business days. Excited to read about you.
+          </p>
+        </div>
+      `;
+    }, 800);
+  }
+</script>
+
+</body>
+</html>
