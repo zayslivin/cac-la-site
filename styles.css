@@ -1242,6 +1242,12 @@ footer {
   font-size: 18px; font-style: italic;
   color: rgba(245,239,228,0.62);
 }
+.archive-count {
+  display: block; margin-top: 8px;
+  font-family: 'Inter', sans-serif; font-style: normal;
+  font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--gold); opacity: 0.85;
+}
 .archive-arrow {
   font-family: 'Inter', sans-serif;
   font-size: 11px; font-weight: 600;
