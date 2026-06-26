@@ -45,6 +45,8 @@
     display:block; font-family:'Pinyon Script',cursive; font-size:clamp(24px,3.4vw,30px);
     color:var(--gold); margin-top:2px; letter-spacing:0.04em;
   }
+  a.wordmark{text-decoration:none; display:inline-block; transition:opacity 0.3s ease;}
+  a.wordmark:hover{opacity:0.78;}
   .cover-mid{margin-top:auto; margin-bottom:auto;}
   .cover .eyebrow{
     font-size:11px; letter-spacing:0.34em; text-transform:uppercase;
@@ -157,6 +159,7 @@
     @page{size:Letter; margin:0;}
   }
 </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d6cb5e51b2c440719c55f7ca0f3ac260"}'></script><!-- End Cloudflare Web Analytics -->
 </head>
 <body>
 
@@ -167,10 +170,10 @@
 
 <!-- COVER -->
 <section class="page cover">
-  <div class="wordmark">
+  <a href="../" class="wordmark" aria-label="Back to Create &amp; Connect LA home">
     <span class="brand-mark">Create <span class="amp">&amp;</span> Connect</span>
     <span class="brand-script">los angeles</span>
-  </div>
+  </a>
 
   <div class="cover-mid">
     <div class="eyebrow">The Field Guide</div>
