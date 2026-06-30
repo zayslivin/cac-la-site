@@ -97,11 +97,16 @@
 
 <!-- =========== EVENT HERO (VIDEO) =========== -->
 <header style="position:relative;min-height:92vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;background:#0a0a0a;">
-  <video autoplay muted loop playsinline poster="../../images/events/the-creative-collective/hero.jpg"
+  <video id="heroVideo" autoplay muted loop playsinline poster="../../images/events/the-creative-collective/hero.jpg"
          style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;">
     <source src="../../images/events/the-creative-collective/hero.mp4" type="video/mp4">
   </video>
   <div style="position:absolute;inset:0;background:linear-gradient(rgba(10,10,10,0.45),rgba(10,10,10,0.62));z-index:1;"></div>
+  <button id="heroSoundToggle" type="button" aria-label="Unmute video"
+          style="position:absolute;bottom:24px;right:24px;z-index:3;display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border:1px solid rgba(245,239,228,0.45);border-radius:999px;background:rgba(10,10,10,0.45);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:var(--cream);font-family:'Inter',sans-serif;font-size:12px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;transition:border-color 0.2s, background 0.2s;">
+    <span id="heroSoundIcon" aria-hidden="true">🔇</span>
+    <span id="heroSoundLabel">Unmute</span>
+  </button>
   <div style="position:relative;z-index:2;padding:48px 24px;max-width:780px;">
     <div style="font-family:'Inter',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.34em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;">Create &amp; Connect LA Presents</div>
     <h1 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(46px,9vw,90px);line-height:1.02;color:var(--cream);margin:0 0 18px;">The Creative <em style="font-style:italic;color:var(--gold);">Collective</em></h1>
@@ -207,8 +212,8 @@
     </p>
     <div class="fade-in" style="display:grid;grid-template-columns:repeat(12,1fr);gap:14px;">
       <img src="../../images/events/the-creative-collective/venue-05.jpg" alt="Thatcher Manor — cypress garden avenue with manicured hedges" style="display:block;width:100%;height:340px;object-fit:cover;border-radius:12px;grid-column:span 12;" />
-      <img src="../../images/events/the-creative-collective/venue-01.jpg" alt="Thatcher Manor — garden grounds with hedges and pathway" style="display:block;width:100%;height:300px;object-fit:cover;border-radius:12px;grid-column:span 7;" />
-      <img src="../../images/events/the-creative-collective/venue-03.jpg" alt="Thatcher Manor — Colonial mansion facade" style="display:block;width:100%;height:300px;object-fit:cover;border-radius:12px;grid-column:span 5;" />
+      <img src="../../images/events/the-creative-collective/venue-01.jpg" alt="Thatcher Manor — garden grounds with hedges and pathway" style="display:block;width:100%;height:480px;object-fit:cover;border-radius:12px;grid-column:span 8;" />
+      <img src="../../images/events/the-creative-collective/venue-03.jpg" alt="Thatcher Manor — cherub fountain in the rose garden" style="display:block;width:100%;height:480px;object-fit:cover;object-position:center;border-radius:12px;grid-column:span 4;" />
       <img src="../../images/events/the-creative-collective/venue-02.jpg" alt="Thatcher Manor — estate grounds canopy" style="display:block;width:100%;height:280px;object-fit:cover;border-radius:12px;grid-column:span 12;" />
     </div>
     <style>
@@ -449,6 +454,21 @@
     mobileMenu.classList.remove('open');
     document.body.style.overflow = '';
   }));
+
+  // Hero video sound toggle (browsers block autoplay-with-sound, so we start muted and let the user opt in)
+  const heroVid = document.getElementById('heroVideo');
+  const heroBtn = document.getElementById('heroSoundToggle');
+  const heroIcon = document.getElementById('heroSoundIcon');
+  const heroLabel = document.getElementById('heroSoundLabel');
+  heroBtn?.addEventListener('click', () => {
+    if (!heroVid) return;
+    heroVid.muted = !heroVid.muted;
+    const muted = heroVid.muted;
+    heroIcon.textContent = muted ? '🔇' : '🔊';
+    heroLabel.textContent = muted ? 'Unmute' : 'Mute';
+    heroBtn.setAttribute('aria-label', muted ? 'Unmute video' : 'Mute video');
+    if (!muted) heroVid.play().catch(() => {});
+  });
 </script>
 
 </body>
