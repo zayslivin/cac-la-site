@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>What a Knuckle Crack Looks Like Inside — Animated Explainer</title>
+<meta name="description" content="An animated cross-section of the knuckle joint showing what actually happens when a finger cracks: the joint stretches, pressure drops, and a gas cavity suddenly forms — that is the pop." />
+<meta name="color-scheme" content="dark" />
+
+<!-- Open Graph / Twitter -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="What a Knuckle Crack Looks Like Inside" />
+<meta property="og:description" content="Animated cross-section of a finger joint: stretch, pressure drop, and the gas-bubble cavitation that makes the pop." />
+<meta name="twitter:card" content="summary_large_image" />
+
+<style>
+  :root{
+    --ground:#0b0f14;
+    --panel:#0e141c;
+    --panel-edge:#1b2733;
+    --bone:#e9dfc9;
+    --bone-shadow:#b9ab8c;
+    --cartilage:#f3ecdb;
+    --fluid:#3fb9c4;
+    --fluid-deep:#1d6e79;
+    --capsule:#c97b6f;
+    --signal:#ffab40;
+    --signal-hot:#ff7a45;
+    --gas:#bfeef2;
+    --slate:#7f93a6;
+    --slate-dim:#4b5a69;
+    --text:#e7edf3;
+    --text-dim:#9fb0c0;
+    --hair:rgba(127,147,166,.18);
+    --grid:rgba(63,185,196,.06);
+
+    --mono:ui-monospace,"SF Mono","SFMono-Regular",Menlo,Consolas,"Liberation Mono",monospace;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;}
+  body{
+    background:
+      radial-gradient(120% 80% at 50% -10%, #121b25 0%, var(--ground) 55%) fixed;
+    color:var(--text);
+    font-family:var(--sans);
+    font-weight:400;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    min-height:100vh;
+  }
+
+  .wrap{
+    max-width:940px;
+    margin:0 auto;
+    padding:clamp(28px,5vw,64px) clamp(18px,4vw,32px) 72px;
+  }
+
+  /* ---- Masthead ---- */
+  .masthead{margin-bottom:clamp(22px,4vw,36px);}
+  .kicker{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:.28em;
+    text-transform:uppercase;
+    color:var(--fluid);
+    margin:0 0 14px;
+    display:flex;align-items:center;gap:10px;
+  }
+  .kicker::before{
+    content:"";width:26px;height:1px;background:var(--fluid);opacity:.7;display:inline-block;
+  }
+  h1{
+    font-family:var(--sans);
+    font-weight:800;
+    letter-spacing:-.02em;
+    line-height:1.04;
+    font-size:clamp(30px,6vw,54px);
+    margin:0 0 16px;
+    text-wrap:balance;
+  }
+  h1 em{color:var(--signal);font-style:normal;}
+  .standfirst{
+    max-width:62ch;
+    font-size:clamp(15px,2.1vw,18px);
+    color:var(--text-dim);
+    margin:0;
+  }
+
+  /* ---- Scanner viewport ---- */
+  .scanner{
+    position:relative;
+    margin-top:clamp(24px,4vw,38px);
+    border:1px solid var(--panel-edge);
+    border-radius:14px;
+    background:
+      linear-gradient(180deg,#0f1721,#0b1119);
+    box-shadow:0 30px 80px -40px #000, inset 0 1px 0 rgba(255,255,255,.03);
+    overflow:hidden;
+  }
+  .scanner__stage{position:relative;display:block;width:100%;height:auto;}
+  svg.anat{display:block;width:100%;height:auto;background:transparent;}
+
+  /* faint scan grid overlay */
+  .scanner__grid{
+    position:absolute;inset:0;pointer-events:none;
+    background-image:
+      linear-gradient(var(--grid) 1px,transparent 1px),
+      linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+    background-size:34px 34px;
+    mix-blend-mode:screen;
+    opacity:.6;
+  }
+  .scanner__vign{
+    position:absolute;inset:0;pointer-events:none;
+    box-shadow:inset 0 0 120px 20px rgba(0,0,0,.55);
+    border-radius:14px;
+  }
+
+  /* ---- HUD readouts ---- */
+  .hud{position:absolute;font-family:var(--mono);pointer-events:none;text-shadow:0 1px 3px rgba(0,0,0,.7);}
+  .hud--tl{top:14px;left:16px;}
+  .hud--tr{top:14px;right:16px;text-align:right;}
+  .hud--bl{left:16px;bottom:16px;}
+  .hud--br{right:16px;bottom:16px;text-align:right;}
+  .hud .lab{
+    font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--slate);
+    display:block;margin-bottom:5px;
+  }
+  .hud .val{font-size:13px;letter-spacing:.06em;color:var(--text);}
+  #phaseName{color:var(--fluid);}
+  #stateVal{color:var(--gas);transition:color .3s;}
+  #stateVal.pop{color:var(--signal);}
+
+  /* pressure meter */
+  .meter{width:132px;}
+  .meter__track{
+    height:7px;border-radius:4px;background:rgba(127,147,166,.16);
+    overflow:hidden;border:1px solid var(--hair);
+  }
+  .meter__fill{
+    height:100%;width:100%;border-radius:4px;
+    background:linear-gradient(90deg,var(--fluid-deep),var(--fluid));
+    transform-origin:left center;
+    transition:background .3s;
+  }
+  .meter__fill.low{background:linear-gradient(90deg,#7a3a1e,var(--signal));}
+  .meter__scale{display:flex;justify-content:space-between;margin-top:5px;font-size:9px;color:var(--slate-dim);letter-spacing:.1em;}
+
+  /* ---- Caption ---- */
+  .caption{
+    margin-top:22px;
+    min-height:78px;
+    display:flex;gap:16px;align-items:flex-start;
+  }
+  .caption__num{
+    font-family:var(--mono);font-size:12px;letter-spacing:.1em;
+    color:var(--signal);padding-top:4px;white-space:nowrap;
+    font-variant-numeric:tabular-nums;
+  }
+  .caption__body h2{
+    font-size:clamp(18px,2.6vw,22px);font-weight:700;letter-spacing:-.01em;
+    margin:0 0 4px;color:var(--text);
+  }
+  .caption__body p{margin:0;color:var(--text-dim);font-size:clamp(14px,2vw,16px);max-width:60ch;}
+
+  /* ---- Transport / timeline ---- */
+  .transport{margin-top:24px;}
+  .track{
+    position:relative;height:38px;border-radius:9px;
+    background:var(--panel);border:1px solid var(--panel-edge);
+    display:flex;overflow:hidden;cursor:pointer;
+  }
+  .seg{position:relative;flex:1;border-right:1px solid var(--panel-edge);}
+  .seg:last-child{border-right:0;}
+  .seg__label{
+    position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--slate);pointer-events:none;transition:color .25s;
+    padding:0 4px;text-align:center;
+  }
+  .seg.active .seg__label{color:var(--text);}
+  .seg.active{background:rgba(63,185,196,.07);}
+  .seg.pop.active{background:rgba(255,171,64,.1);}
+  .seg.pop.active .seg__label{color:var(--signal);}
+  .playhead{
+    position:absolute;top:0;bottom:0;width:2px;background:var(--signal);
+    box-shadow:0 0 10px var(--signal);pointer-events:none;left:0;
+  }
+
+  .controls{margin-top:14px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+  .btn{
+    font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--text);background:var(--panel);border:1px solid var(--panel-edge);
+    padding:10px 16px;border-radius:999px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;
+    transition:border-color .2s,color .2s,background .2s;
+  }
+  .btn:hover{border-color:var(--fluid);color:var(--fluid);}
+  .btn:focus-visible{outline:2px solid var(--fluid);outline-offset:2px;}
+  .btn__ico{width:0;height:0;}
+  .btn .tri{display:inline-block;}
+  .speed{margin-left:auto;font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--slate);display:flex;gap:6px;align-items:center;}
+  .speed button{
+    background:none;border:1px solid var(--panel-edge);color:var(--slate);
+    font-family:var(--mono);font-size:11px;border-radius:6px;padding:4px 8px;cursor:pointer;
+  }
+  .speed button.on{color:var(--ground);background:var(--fluid);border-color:var(--fluid);}
+
+  /* ---- Explainer prose ---- */
+  .prose{margin-top:60px;border-top:1px solid var(--hair);padding-top:44px;}
+  .prose h3{
+    font-family:var(--mono);font-size:12px;letter-spacing:.24em;text-transform:uppercase;
+    color:var(--fluid);margin:0 0 22px;
+  }
+  .steps{display:grid;gap:2px;counter-reset:step;}
+  .step{
+    display:grid;grid-template-columns:52px 1fr;gap:18px;padding:20px 0;border-bottom:1px solid var(--hair);
+  }
+  .step__n{
+    font-family:var(--mono);font-size:13px;color:var(--signal);font-variant-numeric:tabular-nums;padding-top:3px;
+  }
+  .step h4{margin:0 0 6px;font-size:17px;font-weight:700;color:var(--text);}
+  .step p{margin:0;color:var(--text-dim);font-size:15px;max-width:64ch;}
+  .step p .term{color:var(--fluid);font-weight:600;}
+
+  .myth{
+    margin-top:40px;display:grid;gap:16px;grid-template-columns:1fr 1fr;
+  }
+  .card{
+    border:1px solid var(--panel-edge);border-radius:12px;padding:22px;background:var(--panel);
+  }
+  .card .tag{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;display:block;margin-bottom:10px;}
+  .card.myth-false .tag{color:var(--signal-hot);}
+  .card.myth-true .tag{color:var(--fluid);}
+  .card p{margin:0;font-size:15px;color:var(--text-dim);}
+  .card strong{color:var(--text);font-weight:600;}
+
+  .footnote{
+    margin-top:44px;font-family:var(--mono);font-size:11px;letter-spacing:.04em;
+    color:var(--slate-dim);line-height:1.8;max-width:70ch;
+  }
+  .footnote a{color:var(--slate);}
+
+  @media (max-width:600px){
+    .hud--bl .meter{width:104px;}
+    .hud .val{font-size:11px;}
+    .myth{grid-template-columns:1fr;}
+    .step{grid-template-columns:38px 1fr;gap:12px;}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    .meter__fill{transition:none;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <p class="kicker">Anatomy in motion · Synovial joint</p>
+    <h1>What a knuckle crack <em>actually</em> looks like inside</h1>
+    <p class="standfirst">
+      That satisfying <em>pop</em> isn&rsquo;t bones grinding or a bubble bursting. It&rsquo;s a
+      gas cavity forming inside the joint in an instant. Here&rsquo;s a cross-section of a
+      knuckle, playing out in slow motion.
+    </p>
+  </header>
+
+  <!-- ===================== SCANNER ===================== -->
+  <div class="scanner" aria-label="Animated cross-section of a knuckle joint cracking">
+    <div class="scanner__stage">
+      <svg class="anat" viewBox="0 0 800 500" role="img"
+           aria-describedby="a11y-desc" preserveAspectRatio="xMidYMid meet">
+        <desc id="a11y-desc">Sagittal cross-section of a finger knuckle joint. Two bones capped
+          with cartilage meet inside a fluid-filled capsule. As the joint is pulled apart, pressure
+          drops until dissolved gas suddenly forms a cavity — the pop — which then slowly redissolves.</desc>
+
+        <defs>
+          <linearGradient id="boneGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#f4ecd9"/>
+            <stop offset="1" stop-color="#c9b895"/>
+          </linearGradient>
+          <radialGradient id="fluidGrad" cx="50%" cy="42%" r="70%">
+            <stop offset="0" stop-color="#57cdd7"/>
+            <stop offset="70%" stop-color="#2f9aa6"/>
+            <stop offset="100%" stop-color="#1d6e79"/>
+          </radialGradient>
+          <radialGradient id="cavGrad" cx="42%" cy="38%" r="70%">
+            <stop offset="0" stop-color="#0a1016"/>
+            <stop offset="72%" stop-color="#0c151d"/>
+            <stop offset="100%" stop-color="#123038"/>
+          </radialGradient>
+          <radialGradient id="flashGrad" cx="50%" cy="50%" r="50%">
+            <stop offset="0" stop-color="#fff7e6" stop-opacity="1"/>
+            <stop offset="35%" stop-color="#ffce7a" stop-opacity=".9"/>
+            <stop offset="100%" stop-color="#ffab40" stop-opacity="0"/>
+          </radialGradient>
+          <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+            <feGaussianBlur stdDeviation="4"/>
+          </filter>
+        </defs>
+
+        <!-- tendon / soft-tissue band behind -->
+        <rect x="0" y="196" width="800" height="108" fill="#141d13" opacity="0"/>
+
+        <!-- CAPSULE (synovial sac) -->
+        <g id="capsule">
+          <ellipse id="capsuleFill" cx="400" cy="250" rx="150" ry="104"
+                   fill="url(#fluidGrad)" opacity=".9"/>
+          <ellipse id="capsuleRing" cx="400" cy="250" rx="150" ry="104"
+                   fill="none" stroke="#c97b6f" stroke-width="5" opacity=".85"/>
+        </g>
+
+        <!-- gas dots (dissolved) injected by JS into this group -->
+        <g id="gasDots"></g>
+
+        <!-- vapor CAVITY (hidden until the pop) -->
+        <circle id="cavity" cx="400" cy="250" r="0" fill="url(#cavGrad)" stroke="#3fb9c4"
+                stroke-width="2" stroke-opacity=".5"/>
+
+        <!-- BONES -->
+        <!-- Metacarpal: enters from the left, static -->
+        <g id="boneLeft">
+          <rect x="-40" y="214" width="360" height="72" rx="34" fill="url(#boneGrad)"/>
+          <ellipse cx="322" cy="250" rx="70" ry="86" fill="url(#boneGrad)"/>
+          <!-- cartilage cap -->
+          <path d="M372 182 A70 86 0 0 1 372 318" fill="none" stroke="#f7f1e2"
+                stroke-width="11" stroke-linecap="round" opacity=".92"/>
+        </g>
+
+        <!-- Proximal phalanx: enters from the right, translates on the pull -->
+        <g id="boneRight">
+          <rect x="470" y="214" width="380" height="72" rx="34" fill="url(#boneGrad)"/>
+          <ellipse cx="500" cy="250" rx="58" ry="80" fill="url(#boneGrad)"/>
+          <!-- concave cartilage cup -->
+          <path d="M452 178 A66 82 0 0 0 452 322" fill="none" stroke="#f7f1e2"
+                stroke-width="11" stroke-linecap="round" opacity=".92"/>
+        </g>
+
+        <!-- POP effects -->
+        <g id="popFx">
+          <circle id="flash" cx="400" cy="250" r="0" fill="url(#flashGrad)" opacity="0"/>
+          <circle id="ring1" class="ring" cx="400" cy="250" r="0" fill="none" stroke="#ffab40" stroke-width="3" opacity="0"/>
+          <circle id="ring2" class="ring" cx="400" cy="250" r="0" fill="none" stroke="#ffce7a" stroke-width="2" opacity="0"/>
+          <circle id="ring3" class="ring" cx="400" cy="250" r="0" fill="none" stroke="#ffab40" stroke-width="2" opacity="0"/>
+          <text id="popText" x="400" y="120" text-anchor="middle"
+                font-family="var(--sans)" font-weight="800" font-size="52"
+                fill="#ffab40" opacity="0" style="letter-spacing:.04em">POP</text>
+        </g>
+
+        <!-- CALLOUT LABELS (phase 1) -->
+        <g id="labels" font-family="ui-monospace,Menlo,monospace" font-size="14" opacity="0">
+          <g class="cx">
+            <line x1="200" y1="250" x2="120" y2="360" stroke="#7f93a6" stroke-width="1"/>
+            <circle cx="200" cy="250" r="3" fill="#e9dfc9"/>
+            <text x="60" y="378" fill="#c9d4de">Bone</text>
+          </g>
+          <g class="cx">
+            <line x1="372" y1="215" x2="330" y2="120" stroke="#7f93a6" stroke-width="1"/>
+            <circle cx="372" cy="215" r="3" fill="#f7f1e2"/>
+            <text x="248" y="112" fill="#c9d4de">Cartilage</text>
+          </g>
+          <g class="cx">
+            <line x1="470" y1="330" x2="560" y2="392" stroke="#7f93a6" stroke-width="1"/>
+            <circle cx="470" cy="330" r="3" fill="#c97b6f"/>
+            <text x="566" y="396" fill="#c9d4de">Joint capsule</text>
+          </g>
+          <g class="cx">
+            <line x1="440" y1="205" x2="560" y2="122" stroke="#7f93a6" stroke-width="1"/>
+            <circle cx="440" cy="205" r="3" fill="#57cdd7"/>
+            <text x="566" y="126" fill="#c9d4de">Synovial fluid</text>
+          </g>
+          <g class="cx">
+            <line x1="414" y1="300" x2="330" y2="396" stroke="#7f93a6" stroke-width="1"/>
+            <circle cx="414" cy="300" r="3" fill="#bfeef2"/>
+            <text x="226" y="400" fill="#c9d4de">Dissolved gas</text>
+          </g>
+        </g>
+
+        <!-- CAVITY label (phase 3/4) -->
+        <g id="cavLabel" font-family="ui-monospace,Menlo,monospace" font-size="14" opacity="0">
+          <line x1="400" y1="250" x2="520" y2="150" stroke="#ffab40" stroke-width="1"/>
+          <circle cx="400" cy="250" r="3" fill="#ffab40"/>
+          <text x="526" y="154" fill="#ffce7a">Gas cavity</text>
+        </g>
+      </svg>
+
+      <div class="scanner__grid"></div>
+      <div class="scanner__vign"></div>
+
+      <!-- HUD -->
+      <div class="hud hud--tl">
+        <span class="lab">Scan</span>
+        <span class="val">MCP JOINT · SAGITTAL</span>
+      </div>
+      <div class="hud hud--tr">
+        <span class="lab">Phase</span>
+        <span class="val"><span id="phaseName">RESTING</span> · <span id="tc">00.0s</span></span>
+      </div>
+      <div class="hud hud--bl">
+        <span class="lab">Joint pressure</span>
+        <div class="meter">
+          <div class="meter__track"><div class="meter__fill" id="pressFill"></div></div>
+          <div class="meter__scale"><span>LOW</span><span>NORMAL</span></div>
+        </div>
+      </div>
+      <div class="hud hud--br">
+        <span class="lab">Gas state</span>
+        <span class="val" id="stateVal">DISSOLVED</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CAPTION -->
+  <div class="caption" aria-live="polite">
+    <div class="caption__num" id="capNum">01 / 04</div>
+    <div class="caption__body">
+      <h2 id="capTitle">The joint at rest</h2>
+      <p id="capText">Two bones, capped in smooth cartilage, float in a sealed capsule of slippery synovial fluid. Gas — mostly carbon dioxide — sits quietly dissolved in that fluid.</p>
+    </div>
+  </div>
+
+  <!-- TRANSPORT -->
+  <div class="transport">
+    <div class="track" id="track" role="slider" aria-label="Timeline scrubber"
+         aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0">
+      <div class="seg" data-i="0"><span class="seg__label">Rest</span></div>
+      <div class="seg" data-i="1"><span class="seg__label">Pull</span></div>
+      <div class="seg pop" data-i="2"><span class="seg__label">The pop</span></div>
+      <div class="seg" data-i="3"><span class="seg__label">After</span></div>
+      <div class="playhead" id="playhead"></div>
+    </div>
+    <div class="controls">
+      <button class="btn" id="playBtn" aria-label="Play or pause"><span class="tri" id="playIco">❚❚</span> <span id="playTxt">Pause</span></button>
+      <button class="btn" id="replayBtn">↻ Replay</button>
+      <div class="speed" aria-label="Playback speed">
+        Speed
+        <button data-s="0.5">0.5×</button>
+        <button data-s="1" class="on">1×</button>
+        <button data-s="2">2×</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== PROSE ===================== -->
+  <section class="prose">
+    <h3>Step by step</h3>
+    <div class="steps">
+      <div class="step">
+        <div class="step__n">01</div>
+        <div>
+          <h4>A sealed, fluid-filled joint</h4>
+          <p>Your knuckle is a <span class="term">synovial joint</span>: two bones, each capped with slick cartilage, sealed inside a capsule of <span class="term">synovial fluid</span>. That fluid lubricates the joint — and holds dissolved gases, mostly carbon dioxide, the same way a sealed soda holds its fizz.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step__n">02</div>
+        <div>
+          <h4>You pull the joint apart</h4>
+          <p>Bending or tugging the finger stretches the capsule and pulls the bone surfaces apart. The sealed space inside gets bigger, so the <span class="term">pressure of the fluid drops</span> sharply — there&rsquo;s suddenly more room than fluid to fill it.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step__n">03</div>
+        <div>
+          <h4>A gas cavity snaps into being — the pop</h4>
+          <p>Once pressure falls far enough, dissolved gas can no longer stay in solution. It rushes out all at once to form a <span class="term">gas-filled cavity</span>. A 2015 MRI study (&ldquo;Real-Time Visualization of Joint Cavitation&rdquo;) showed the crack coincides with this cavity <em>forming</em>, not a bubble bursting. That rapid formation is the sound you hear.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step__n">04</div>
+        <div>
+          <h4>The reset</h4>
+          <p>The cavity lingers as the gas slowly <span class="term">redissolves</span> back into the fluid over roughly 20 minutes. Until it does, the joint physically can&rsquo;t crack again — which is exactly why you have to wait before that knuckle will pop a second time.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="myth">
+      <div class="card myth-false">
+        <span class="tag">Myth</span>
+        <p><strong>&ldquo;It causes arthritis.&rdquo;</strong> Long-term studies — including one researcher who cracked the knuckles of only one hand for 60 years — found no link between knuckle-cracking and arthritis.</p>
+      </div>
+      <div class="card myth-true">
+        <span class="tag">True</span>
+        <p><strong>The pop is the cavity forming.</strong> Not bones grinding, not a bubble collapsing. It&rsquo;s dissolved gas flashing into a cavity as joint pressure drops — a process called <em>tribonucleation</em>.</p>
+      </div>
+    </div>
+
+    <p class="footnote">
+      Simplified educational visualization — anatomy is stylized, not to scale. Based on Kawchuk et&nbsp;al.,
+      &ldquo;Real-Time Visualization of Joint Cavitation,&rdquo; <em>PLOS ONE</em> (2015); Unsworth et&nbsp;al. (1971);
+      and Deweber et&nbsp;al. on knuckle-cracking and hand osteoarthritis (2011). MCP&nbsp;=&nbsp;metacarpophalangeal joint.
+    </p>
+  </section>
+
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  var svgNS = "http://www.w3.org/2000/svg";
+  var $ = function(id){ return document.getElementById(id); };
+
+  // ---- timeline (ms) ----
+  var P = [
+    { name:"RESTING",  start:0,     end:3400  },
+    { name:"PULLING",  start:3400,  end:7000  },
+    { name:"CAVITATION", start:7000, end:9600 },
+    { name:"AFTER",    start:9600,  end:13800 }
+  ];
+  var POP_T = 7050;            // instant the cavity forms
+  var TOTAL = 13800;
+  var TAIL  = 1100;           // pause before loop
+
+  // captions
+  var CAPS = [
+    { n:"01 / 04", t:"The joint at rest",
+      d:"Two bones, capped in smooth cartilage, float in a sealed capsule of slippery synovial fluid. Gas — mostly carbon dioxide — sits quietly dissolved in that fluid." },
+    { n:"02 / 04", t:"You pull it apart",
+      d:"Stretching the finger pulls the bone surfaces apart and widens the sealed space. With more room than fluid to fill it, the pressure inside drops fast." },
+    { n:"03 / 04", t:"The pop — a cavity forms",
+      d:"Pressure falls past the limit and dissolved gas can’t stay in solution. It flashes into a gas-filled cavity in an instant. That formation is the crack you hear." },
+    { n:"04 / 04", t:"The 20-minute reset",
+      d:"The cavity slowly redissolves back into the fluid over ~20 minutes. Until it does, the joint simply can’t crack again." }
+  ];
+
+  // ---- elements ----
+  var boneRight = $("boneRight");
+  var capFill = $("capsuleFill"), capRing = $("capsuleRing");
+  var cavity = $("cavity"), flash = $("flash");
+  var ring1=$("ring1"), ring2=$("ring2"), ring3=$("ring3"), popText=$("popText");
+  var labels=$("labels"), cavLabel=$("cavLabel");
+  var gasGroup = $("gasDots");
+  var pressFill = $("pressFill");
+  var phaseName=$("phaseName"), tc=$("tc"), stateVal=$("stateVal");
+  var capNum=$("capNum"), capTitle=$("capTitle"), capText=$("capText");
+  var playhead=$("playhead"), track=$("track");
+  var segs = Array.prototype.slice.call(document.querySelectorAll(".seg"));
+  var playBtn=$("playBtn"), playIco=$("playIco"), playTxt=$("playTxt"), replayBtn=$("replayBtn");
+
+  // ---- gas dots ----
+  // fixed pseudo-random layout (deterministic, no reliance on Math.random for layout)
+  // clustered in the visible synovial-fluid lens between the two bone heads
+  var GAS = [
+    {x:412,y:186,r:3},{x:426,y:214,r:4},{x:410,y:238,r:5},{x:430,y:262,r:3},
+    {x:414,y:286,r:4},{x:428,y:312,r:3},{x:400,y:200,r:3},{x:404,y:326,r:3},
+    {x:420,y:172,r:3},{x:418,y:340,r:3},{x:436,y:238,r:3},{x:406,y:262,r:4}
+  ];
+  var dots = GAS.map(function(g){
+    var c = document.createElementNS(svgNS,"circle");
+    c.setAttribute("cx",g.x); c.setAttribute("cy",g.y); c.setAttribute("r",g.r);
+    c.setAttribute("fill","#bfeef2"); c.setAttribute("opacity",".85");
+    gasGroup.appendChild(c);
+    return {el:c, x0:g.x, y0:g.y, r:g.r};
+  });
+
+  // ---- helpers ----
+  function clamp(v,a,b){ return v<a?a:(v>b?b:v); }
+  function lerp(a,b,t){ return a+(b-a)*t; }
+  function easeInOut(t){ return t<.5 ? 2*t*t : 1-Math.pow(-2*t+2,2)/2; }
+  function easeOut(t){ return 1-Math.pow(1-t,3); }
+  function local(now,a,b){ return clamp((now-a)/(b-a),0,1); }
+
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // ---- render a given time ----
+  var lastPhase = -1;
+  function render(now){
+    now = clamp(now,0,TOTAL);
+
+    // phase index
+    var pi = 0;
+    for(var i=0;i<P.length;i++){ if(now>=P[i].start) pi=i; }
+
+    // --- PULL amount: 0 at rest, ramps through phase 2, held after ---
+    var pull = 0;
+    if(now < P[1].start){ pull = 0; }
+    else if(now < POP_T){ pull = easeInOut(local(now,P[1].start,POP_T)); }
+    else { pull = 1; }
+
+    // slight relaxation in the aftermath
+    var relax = local(now,P[3].start+600,P[3].end);
+    var pullEff = pull * (1 - 0.35*easeInOut(relax));
+
+    // bone separation
+    var sep = pullEff * 62;
+    boneRight.setAttribute("transform","translate("+sep.toFixed(2)+",0)");
+
+    // capsule stretch + centre shift
+    var rx = lerp(150,150+sep*0.9, 1);
+    capFill.setAttribute("rx",rx.toFixed(1));
+    capRing.setAttribute("rx",rx.toFixed(1));
+    var cxc = 400 + sep*0.42;
+    capFill.setAttribute("cx",cxc.toFixed(1));
+    capRing.setAttribute("cx",cxc.toFixed(1));
+    // capsule thins slightly as it stretches
+    var ry = lerp(104, 96, pullEff);
+    capFill.setAttribute("ry",ry.toFixed(1));
+    capRing.setAttribute("ry",ry.toFixed(1));
+
+    // --- pressure meter: 100% rest -> ~8% at pop -> recover to ~70% ---
+    var press;
+    if(now < P[1].start) press = 1;
+    else if(now < POP_T) press = lerp(1, 0.08, easeInOut(local(now,P[1].start,POP_T)));
+    else press = lerp(0.30, 0.72, easeOut(local(now,POP_T,P[3].end))); // gas redissolving raises it back
+    pressFill.style.transform = "scaleX("+press.toFixed(3)+")";
+    if(press < 0.35) pressFill.classList.add("low"); else pressFill.classList.remove("low");
+
+    // --- cavity (appears at the pop) ---
+    var cavR = 0, cavCx = cxc - sep*0.02;
+    if(now >= POP_T){
+      var g = easeOut(local(now,POP_T,POP_T+320));   // snap open
+      cavR = lerp(0,46,g);
+      // slowly shrink as it redissolves in aftermath
+      var sh = local(now,P[3].start+800,P[3].end);
+      cavR = cavR * (1 - 0.55*easeInOut(sh));
+    }
+    cavity.setAttribute("r",cavR.toFixed(1));
+    cavity.setAttribute("cx",cavCx.toFixed(1));
+
+    // --- gas dots: drift out slightly on pull; rush into cavity at pop; fade as it forms ---
+    var pop = local(now,POP_T,POP_T+300);
+    for(var d=0; d<dots.length; d++){
+      var dot = dots[d];
+      // gentle spread while pulling
+      var spread = 1 + 0.10*pullEff;
+      var bx = 400 + (dot.x0-400)*spread + sep*0.30;
+      var by = 250 + (dot.y0-250)*spread;
+      if(now < POP_T){
+        dot.el.setAttribute("cx",bx.toFixed(1));
+        dot.el.setAttribute("cy",by.toFixed(1));
+        dot.el.setAttribute("opacity", (0.85).toString());
+      } else {
+        // collapse toward cavity centre, then vanish (absorbed into cavity)
+        var tx = lerp(bx, cavCx, easeOut(pop));
+        var ty = lerp(by, 250, easeOut(pop));
+        dot.el.setAttribute("cx",tx.toFixed(1));
+        dot.el.setAttribute("cy",ty.toFixed(1));
+        dot.el.setAttribute("opacity", (0.85*(1-pop)).toFixed(2));
+      }
+    }
+
+    // --- pop FX (flash, rings, text) ---
+    var fx = local(now,POP_T,POP_T+700);
+    if(now >= POP_T-30 && fx < 1){
+      var fo = 1-fx;
+      flash.setAttribute("r", lerp(10,140,easeOut(fx)).toFixed(1));
+      flash.setAttribute("cx",cavCx.toFixed(1));
+      flash.setAttribute("opacity", (fo*0.95).toFixed(2));
+      setRing(ring1,cavCx,fx,60,190,1);
+      setRing(ring2,cavCx,local(now,POP_T+70,POP_T+770),50,210,0.8);
+      setRing(ring3,cavCx,local(now,POP_T+150,POP_T+850),40,230,0.7);
+      popText.setAttribute("x",cavCx.toFixed(1));
+      var pt = local(now,POP_T-20,POP_T+120);
+      var pf = 1-local(now,POP_T+500,POP_T+1100);
+      popText.setAttribute("opacity", clamp(Math.min(pt,pf),0,1).toFixed(2));
+      popText.setAttribute("y", lerp(140,116,easeOut(pt)).toFixed(1));
+    } else {
+      flash.setAttribute("opacity","0");
+      ring1.setAttribute("opacity","0"); ring2.setAttribute("opacity","0"); ring3.setAttribute("opacity","0");
+      popText.setAttribute("opacity","0");
+    }
+
+    // --- labels ---
+    // resting labels: visible only during phase 1
+    var lblOn = now < P[1].start+200 ? local(now,300,900) - local(now,P[1].start-400,P[1].start+200) : 0;
+    labels.setAttribute("opacity", clamp(lblOn,0,1).toFixed(2));
+    // cavity label: from just after pop through aftermath
+    var clOn = now>=POP_T+250 ? Math.min(local(now,POP_T+250,POP_T+650), 1-relax*0.9) : 0;
+    cavLabel.setAttribute("opacity", clamp(clOn,0,1).toFixed(2));
+    if(clOn>0){ cavLabel.querySelector("line").setAttribute("x1",cavCx.toFixed(1));
+                cavLabel.querySelector("circle").setAttribute("cx",cavCx.toFixed(1)); }
+
+    // --- HUD text ---
+    phaseName.textContent = P[pi].name;
+    tc.textContent = (now/1000).toFixed(1).padStart(4,"0")+"s";
+    if(now>=POP_T && now < P[3].start+1600){ stateVal.textContent="CAVITY FORMED"; stateVal.classList.add("pop"); }
+    else if(now>=P[3].start+1600){ stateVal.textContent="REDISSOLVING"; stateVal.classList.remove("pop"); }
+    else if(now>=P[1].start){ stateVal.textContent="COMING OUT"; stateVal.classList.remove("pop"); }
+    else { stateVal.textContent="DISSOLVED"; stateVal.classList.remove("pop"); }
+
+    // --- caption + segments (only update on phase change to avoid layout thrash) ---
+    if(pi !== lastPhase){
+      capNum.textContent = CAPS[pi].n;
+      capTitle.textContent = CAPS[pi].t;
+      capText.textContent = CAPS[pi].d;
+      for(var s=0;s<segs.length;s++){ segs[s].classList.toggle("active", s===pi); }
+      track.setAttribute("aria-valuenow", Math.round(now/TOTAL*100));
+      lastPhase = pi;
+    }
+
+    // --- playhead ---
+    playhead.style.left = (now/TOTAL*100)+"%";
+  }
+
+  function setRing(el,cx,t,r0,r1,op){
+    if(t<=0||t>=1){ el.setAttribute("opacity","0"); return; }
+    el.setAttribute("cx",cx.toFixed(1));
+    el.setAttribute("r", lerp(r0,r1,easeOut(t)).toFixed(1));
+    el.setAttribute("opacity", (op*(1-t)).toFixed(2));
+  }
+
+  // ---- playback loop ----
+  var playing = true, cur = 0, last = null, speed = 1;
+
+  function frame(ts){
+    if(last==null) last = ts;
+    var dt = ts - last; last = ts;
+    if(playing){
+      cur += dt*speed;
+      if(cur > TOTAL + TAIL){ cur = 0; lastPhase = -1; }
+    }
+    render(Math.min(cur,TOTAL));
+    requestAnimationFrame(frame);
+  }
+
+  function setPlaying(v){
+    playing = v;
+    playIco.textContent = v ? "❚❚" : "▶";
+    playTxt.textContent = v ? "Pause" : "Play";
+  }
+
+  playBtn.addEventListener("click", function(){ setPlaying(!playing); });
+  replayBtn.addEventListener("click", function(){ cur=0; lastPhase=-1; setPlaying(true); });
+
+  // speed buttons
+  Array.prototype.forEach.call(document.querySelectorAll(".speed button"), function(b){
+    b.addEventListener("click", function(){
+      speed = parseFloat(b.getAttribute("data-s"));
+      document.querySelectorAll(".speed button").forEach(function(x){ x.classList.remove("on"); });
+      b.classList.add("on");
+    });
+  });
+
+  // scrub
+  function scrubTo(clientX){
+    var rect = track.getBoundingClientRect();
+    var p = clamp((clientX-rect.left)/rect.width,0,1);
+    cur = p*TOTAL; lastPhase=-1; render(cur);
+  }
+  var scrubbing=false;
+  track.addEventListener("pointerdown", function(e){ scrubbing=true; setPlaying(false); scrubTo(e.clientX); track.setPointerCapture(e.pointerId); });
+  track.addEventListener("pointermove", function(e){ if(scrubbing) scrubTo(e.clientX); });
+  track.addEventListener("pointerup", function(){ scrubbing=false; });
+  track.addEventListener("keydown", function(e){
+    if(e.key==="ArrowRight"){ cur=clamp(cur+400,0,TOTAL); lastPhase=-1; render(cur); e.preventDefault(); }
+    if(e.key==="ArrowLeft"){ cur=clamp(cur-400,0,TOTAL); lastPhase=-1; render(cur); e.preventDefault(); }
+    if(e.key===" "||e.key==="Enter"){ setPlaying(!playing); e.preventDefault(); }
+  });
+  // jump to a phase by clicking its segment label region handled by track scrub already
+
+  // reduced motion: start paused on the pop frame so the key idea is visible statically
+  if(reduce){
+    setPlaying(false);
+    cur = POP_T + 200;
+    render(cur);
+  }
+
+  // testing/deep-link hook: seek to a millisecond mark
+  window.CRACK = { seek:function(ms){ cur=clamp(ms,0,TOTAL); lastPhase=-1; setPlaying(false); render(cur); } };
+
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
