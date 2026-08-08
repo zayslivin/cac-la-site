@@ -84,6 +84,13 @@ Hero (bg image) → info strip (When/Where/Price/Spots) → The Concept/Vibe →
 - Don't put the model identifier in commits/PRs. End commit messages with the Co-Authored-By
   + Claude-Session trailers; PR bodies with the Claude Code footer.
 
+## Claude Code skills
+- **`compact`** (`.claude/skills/compact/`) — say "COMPACT" to get a 5–7
+  bullet summary of the current session, formatted to paste into a new chat.
+- **`stop-slop`** (`.claude/skills/stop-slop/`) — triggers when drafting
+  user-facing copy (event descriptions, captions, RSVP text) to strip AI
+  writing tells and match the site's direct, specific voice.
+
 ## Change log
 ### 2026-07-28 — Studio Sets Social (SSS) + The Creative Collective (TCC) updates
 - SSS page (`events/studio-sets-social/`): added Nat's **12 studio-set photos** throughout;
