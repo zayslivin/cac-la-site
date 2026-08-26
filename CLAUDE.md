@@ -33,8 +33,9 @@ file updated when the site's structure, design system, or conventions change.
 /images/gallery/<venue>/ past-event galleries
 /_templates/          reusable HTML section snippets (NOT published — "_" ignored by Pages/Jekyll)
 ```
-- **Events** (slugs): `the-pink-issue`, `studio-sets-social`, `the-creative-collective`,
-  `poolside-summer-social`, `artists-and-muses`, `modinochi-ii`.
+- **Events** (slugs): `the-pink-issue`, `studio-sets-social`, `the-creative-collective`
+  (**CANCELLED** — pages kept as cancellation notices), `poolside-summer-social`,
+  `artists-and-muses` (legacy redirect stubs → TCC), `modinochi-ii`.
 - **Nav links** (top bar): Events · Gallery · Testimonials · Brands · About · Contact · RSVP.
 
 ## Design system (styles.css)
@@ -126,9 +127,8 @@ Hero (bg image) → info strip (When/Where/Price/Spots) → The Concept/Vibe →
   "The Pink Issue — payment confirmation email" (SSS direct-SMTP pattern). Left **inactive**
   until the group-chat link is filled in. Pre-repurpose config is backed up at
   `../make-blueprints/creative-collective-5540298-RESTORE-NOTES.md`.
-- **⚠️ Known breakage (pre-existing, not caused here):** all 4 Creative Collective Stripe links
-  are deactivated and serve Stripe's "expired" page, but `events/the-creative-collective/checkout/`
-  still links to them and the events listing still advertises TCC. Its RSVP path is dead.
+- The Creative Collective was cancelled separately in #11; its 4 Stripe links are deactivated
+  by design. Nothing in this change touches TCC.
 
 ### 2026-07-28 — Studio Sets Social (SSS) + The Creative Collective (TCC) updates
 - SSS page (`events/studio-sets-social/`): added Nat's **12 studio-set photos** throughout;
@@ -147,3 +147,33 @@ Hero (bg image) → info strip (When/Where/Price/Spots) → The Concept/Vibe →
   venue photos), **The Creative Collective** (Dress Code & Expectations).
 - SSS pricing: **Photographers/creators $95, Models $55, 30 spots**, Sat Aug 29, 1–4 PM, LA.
   TCC: Thatcher Manor, Gavilan Hills (Colonial estate, 250+ guests), 6 hours, red-carpet.
+
+### 2026-08-24 — The Creative Collective CANCELLED
+- **TCC (Oct 25, Thatcher Manor) is cancelled.** Nat and Zay are no longer working together.
+  Reason given publicly is "unforeseen circumstances" — the split is not mentioned anywhere
+  customer-facing.
+- **Site — soft-cancel in place** (URLs kept alive; ~8 people had bought tickets and hold the
+  link, and the 4 `events/artists-and-muses/*` redirect stubs point into this tree):
+  - `events/index.html` — TCC listing card removed; only the SSS card remains.
+  - `events/the-creative-collective/index.html` — rewritten as a cancellation notice (static
+    `hero.jpg` hero replacing the `hero.mp4` video, cream notice section, gold CTA band to
+    SSS). JSON-LD `eventStatus` → `EventCancelled`, `offers` block dropped, `noindex` added.
+  - `checkout/` — all 4 `buy.stripe.com` buttons, tier cards, spot counters and order summary
+    removed; now a "RSVPs closed / you're being refunded" notice. Partner CTA kept.
+  - `casting/` — Google Form iframe removed; casting closed notice.
+  - `confirmed/` — "You're in" replaced with the cancellation + refund message.
+  - Every RSVP/nav/footer link in the tree repointed to `studio-sets-social/checkout/`.
+- **Stripe** (`acct_1FwjCqFqKR455jnL`): 4 TCC payment links deactivated —
+  `plink_1TnnLP…` ($100 creatives EB), `plink_1TnnPf…` ($150 creatives), `plink_1TnnSG…`
+  ($50 model EB), `plink_1TnnVi…` ($100 model). 13 payments refunded, $602.50 total (8 real
+  customers + 5 of Zay's own $0.50 promo test charges). **The TCC links redirect to
+  `events/artists-and-muses/confirmed/`** — that legacy slug is how TCC purchases are
+  identified in Stripe.
+- **Beehiiv**: 4 scheduled TCC reminder emails (Sep 25 → Oct 23, targeted at segment
+  `seg_840fb10e…`) had to be unscheduled **by hand in the UI** — the MCP `edit_post` tool
+  exposes no status/schedule field, so unscheduling is not automatable. Cancellation email
+  sent to all subscribers.
+- **Gotcha**: the tag is `the-creative-collective-rsvp` (9 subs) but segment
+  `seg_840fb10e…` is stale/paused at 8 and its description wrongly says "Artists & Muses".
+- **Still open**: the "Curated by @natguerrero__" credit remains in the footer site-wide —
+  decide whether to remove it everywhere now that the partnership has ended.
