@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>You're in — Create &amp; Connect LA</title>
+<meta name="description" content="Your spot for The Pink Issue is reserved." />
+<link rel="icon" type="image/svg+xml" href="../../../favicon.svg">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles.css">
+<style>
+  /* The Pink Issue — accent override, scoped to this event's funnel only. */
+  :root { --gold: #ee3d96; --gold-bright: #ff6ab4; --gold-deep: #c2186f; }
+</style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d6cb5e51b2c440719c55f7ca0f3ac260"}'></script><!-- End Cloudflare Web Analytics -->
+</head>
+<body>
+
+<nav class="top">
+  <div class="row">
+    <a href="../../../" class="brand">
+      <span class="brand-mark">Create <span class="amp">&amp;</span> Connect</span>
+      <span class="brand-script">los angeles</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../../../">Home</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="../../../">Home</a></li>
+    <li><a href="../">← Back to event</a></li>
+  </ul>
+</div>
+
+<div class="checkout-wrapper">
+  <div class="container-narrow" style="text-align:center;">
+
+    <div style="font-family:'Cormorant Garamond',serif;font-size:64px;color:var(--gold);margin-bottom:24px;line-height:1;">✓</div>
+
+    <div class="eyebrow" style="color:var(--gold);margin-bottom:14px;">RSVP Confirmed</div>
+    <h1 class="section-title fade-in visible" style="color:var(--cream);margin-bottom:28px;">
+      You're in.
+    </h1>
+
+    <p class="body-serif" style="color:rgba(245,239,228,0.82);font-size:20px;line-height:1.6;max-width:520px;margin:0 auto 16px;">
+      Your spot for <em style="font-style:italic;color:var(--gold);">The Pink Issue</em> —
+      Saturday, September 19, 1–4 PM in Los Angeles — is reserved. A receipt is on its way to your inbox.
+    </p>
+
+    <p class="body-serif" style="color:rgba(245,239,228,0.6);font-size:17px;line-height:1.6;max-width:520px;margin:0 auto 36px;">
+      <strong style="color:var(--cream);">Your next step: get into the event group chat.</strong>
+      That's where the set list, concepts, styling direction, the attendee list, and the
+      exact studio address are shared before event day.
+    </p>
+
+    <!-- TODO(zay): once The Pink Issue IG group chat exists, swap this href for the
+         ig.me/j/... invite link and restore the label "Join the event group chat".
+         Until then this opens a DM so the buyer still has a working next step. -->
+    <a href="https://ig.me/m/createconnect.la" target="_blank" rel="noopener" class="btn-pill lg">Message us for your group chat invite <span class="arrow">→</span></a>
+    <p style="margin:14px auto 28px;font-size:13px;line-height:1.6;color:rgba(245,239,228,0.5);max-width:420px;">
+      DM us on Instagram and we'll add you to The Pink Issue group chat.
+    </p>
+
+    <div style="max-width:420px;margin:20px auto 48px;padding:24px 28px;border:1px solid rgba(245,239,228,0.18);border-radius:14px;text-align:left;">
+      <div class="eyebrow" style="color:var(--gold);margin-bottom:12px;">Save the details</div>
+      <p style="font-size:14px;line-height:1.9;color:rgba(245,239,228,0.75);margin:0;">
+        <strong style="color:var(--cream);">The Pink Issue</strong><br>
+        Saturday, September 19 · 1–4 PM<br>
+        Retro-inspired multi-set studio, Los Angeles<br>
+        Exact address: shared in the group chat before event day<br>
+        Bring: your gear + looks that pop against a candy-bright set
+      </p>
+    </div>
+
+    <a href="../../../" class="btn-pill lg">Back to home <span class="arrow">→</span></a>
+
+    <p style="margin-top:40px;font-size:13px;color:rgba(245,239,228,0.5);">
+      Questions? <a href="mailto:hello@createconnectla.com" style="color:var(--gold);">hello@createconnectla.com</a>
+    </p>
+
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-base">
+      <span>© 2026 Create &amp; Connect LA</span>
+      <span><a href="https://createconnectla.com/privacy/">Privacy</a> · <a href="https://createconnectla.com/terms/">Terms</a></span>
+      <span><a href="../../../" style="color:rgba(245,239,228,0.6);text-decoration:none;">Back to home →</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const hamburger = document.querySelector('.hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger?.addEventListener('click', () => {
+    const open = hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+</script>
+
+</body>
+</html>

@@ -33,9 +33,9 @@ file updated when the site's structure, design system, or conventions change.
 /images/gallery/<venue>/ past-event galleries
 /_templates/          reusable HTML section snippets (NOT published — "_" ignored by Pages/Jekyll)
 ```
-- **Events** (slugs): `studio-sets-social`, `the-creative-collective` (**CANCELLED** —
-  pages kept as cancellation notices), `poolside-summer-social`, `artists-and-muses`
-  (legacy redirect stubs → TCC), `modinochi-ii`.
+- **Events** (slugs): `the-pink-issue`, `studio-sets-social`, `the-creative-collective`
+  (**CANCELLED** — pages kept as cancellation notices), `poolside-summer-social`,
+  `artists-and-muses` (legacy redirect stubs → TCC), `modinochi-ii`.
 - **Nav links** (top bar): Events · Gallery · Testimonials · Brands · About · Contact · RSVP.
 
 ## Design system (styles.css)
@@ -52,6 +52,12 @@ file updated when the site's structure, design system, or conventions change.
   - `.btn-pill.ghost`, `.btn-pill.lg` (bigger), `.btn-pill.block` (full width).
   - Buttons uppercase their text via CSS. Include `<span class="arrow">→</span>` for the arrow.
 - **Sections**: `.event-section` = dark (ink) bg; add `.cream` for cream bg; `.tight` for less padding.
+- **Per-event accent override**: every accent in `styles.css` goes through `var(--gold)` /
+  `--gold-bright` / `--gold-deep`, never a hardcoded hex. So an event that needs its own accent
+  redefines just those 3 tokens in a page-level `<style>` block — it cascades to eyebrows,
+  buttons, hovers and `.capacity`, and stays document-scoped. `the-pink-issue` does this
+  (`#ee3d96` / `#ff6ab4` / `#c2186f`). Check contrast when swapping: the accent is used as
+  button *background* behind ink text AND as text on both ink and cream.
 - **Gallery masonry**: `.gallery-grid` (4 cols desktop / 3 tablet / 2 mobile, 220px rows) +
   `.gallery-cell` (background-image, `data-label` shows on hover in gold) + `.gallery-cell.tall`
   (spans 2 rows). For a gap-free rectangle the cell count + tall spans must total a multiple
@@ -76,9 +82,14 @@ Hero (bg image) → info strip (When/Where/Price/Spots) → The Concept/Vibe →
 ## Conventions / gotchas
 - **Verify visual changes** by rendering with headless Chromium. The background HTTP
   server gets reaped between Bash calls / can trip the sandbox — **load pages via
-  `file://` instead** (relative `../../` paths resolve fine). Playwright core lives at
-  `/opt/node22/lib/node_modules/playwright/node_modules/playwright-core`; Chromium at
-  `/opt/pw-browsers/chromium`. Add `.visible` to `.fade-in` els before screenshotting.
+  `file://` instead** (relative `../../` paths resolve fine). Add `.visible` to `.fade-in`
+  els before screenshotting (or inject `.fade-in{opacity:1!important;transform:none!important}`).
+  Browser binary differs by machine: on **Zay's Mac** it's
+  `~/Library/Caches/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-mac-x64/chrome-headless-shell`
+  (drive it directly: `--headless --hide-scrollbars --window-size=W,H --virtual-time-budget=8000
+  --screenshot=out.png file://...`); in the **cloud sandbox** it's `/opt/pw-browsers/chromium`
+  with playwright-core at `/opt/node22/lib/node_modules/playwright/node_modules/playwright-core`.
+  A temp copy of the page must live in the page's own dir or relative asset paths break.
 - **Images**: optimize before committing (progressive JPEG, ~1320px wide, quality ~82,
   via Pillow). Keep an event's `flyer.jpg` even if not shown on the detail page — it's the
   `og:image`/schema share image. Split multi-photo collages by detecting near-white seam rows.
@@ -86,6 +97,39 @@ Hero (bg image) → info strip (When/Where/Price/Spots) → The Concept/Vibe →
   + Claude-Session trailers; PR bodies with the Claude Code footer.
 
 ## Change log
+### 2026-08-26 — The Pink Issue (Sept 19) added
+- New event `events/the-pink-issue/` + `checkout/` + `confirmed/`, modeled on the SSS page.
+  Sat **Sept 19, 1–4 PM**, LA multi-set studio, **35 spots**, photographers **$95** / models **$55**.
+  Barbie World / Ken Core / creative playground theme.
+- **Pink accent scoped to this event only** via the 3-token override (see Design system above).
+  Applied to all three funnel pages so checkout matches the flyer; the events *listing* card
+  deliberately stays gold so the three cards read as one set.
+- Hero: `.event-detail-hero::before` scrim deepened on this page (mid-stop 0.3 → 0.55) because
+  the flyer crop is bright pink edge-to-edge, unlike the dark venue photos the default was tuned
+  for; hero eyebrow forced to `--cream` (pink-on-pink was illegible).
+- Images from the flyer only (`IMG_7724.JPEG`): `flyer.jpg` (og:image + The Cover section),
+  `hero.jpg` (landscape crop 330,902→1310,1424 — the one text-free band), `model.jpg`
+  (portrait crop 400,648→900,1420). **When Nat sends real studio/set photos, replace The Cover
+  section with a `.sets-gallery` masonry like SSS.**
+- "The Cover" section intentionally *does* show the flyer, unlike SSS which removed its flyer
+  section as redundant — here the event is literally an "issue" and the flyer is the only asset.
+- **Repointed the next-event target site-wide** to `the-pink-issue` (nav RSVP, footer RSVP,
+  homepage hero + text links, gallery's 11 "next room" CTAs, and the retired poolside/modinochi
+  funnels). Left alone: `events/studio-sets-social/index.html` (an event page's own nav points at
+  its own checkout) and the SSS card's RSVP button on the events listing.
+- **Stripe links created + wired** (live mode) — photographer $95 `plink_1U8lGWFqKR455jnLhdgn8wTE`,
+  model $55 `plink_1U8lGiFqKR455jnLO7MvEJwc`, both redirecting to this event's `confirmed/`.
+  Cloned from the SSS link config (adjustable qty 1–10, IG handle + email + guest-handles fields,
+  promo codes on, `tax_code txcd_20030000`). Verified rendering live at $95 / $55.
+- **Open placeholder** — grep `REPLACE_WITH`: the IG group-chat link in `confirmed/` (the same
+  token also sits in the Make email body; fill both, then activate the scenario).
+- **Make**: the Creative Collective scenario `5540298` was repurposed into
+  "The Pink Issue — payment confirmation email" (SSS direct-SMTP pattern). Left **inactive**
+  until the group-chat link is filled in. Pre-repurpose config is backed up at
+  `../make-blueprints/creative-collective-5540298-RESTORE-NOTES.md`.
+- The Creative Collective was cancelled separately in #11; its 4 Stripe links are deactivated
+  by design. Nothing in this change touches TCC.
+
 ### 2026-07-28 — Studio Sets Social (SSS) + The Creative Collective (TCC) updates
 - SSS page (`events/studio-sets-social/`): added Nat's **12 studio-set photos** throughout;
   new **"The Sets" masonry gallery** (11 room sets, labeled) replacing the repeated
