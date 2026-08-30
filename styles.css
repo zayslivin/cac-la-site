@@ -351,7 +351,7 @@ section.tight { padding: 80px 0; }
 }
 .next-event-flyer img { display: block; width: 100%; height: auto; }
 .next-event-flyer:hover {
-  transform: translateY(-4px);
+  --tilt-lift: -4px;
   box-shadow: 0 36px 90px rgba(10,10,10,0.28);
 }
 
@@ -1045,11 +1045,15 @@ footer {
 /* ============== ANIMATIONS ============== */
 .fade-in {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+  transform: perspective(1200px) rotateX(var(--reveal-rot, 5deg)) translate3d(0, 22px, -40px);
+  transform-origin: 50% 100%;
+  transition: opacity 0.9s ease-out, transform 0.9s cubic-bezier(.22,.61,.36,1);
 }
+/* Settles to `none`, not to a zeroed transform: a lingering transform would make
+   these containers a containing block for the gallery's position:fixed lightbox,
+   and would compound with the child card tilt below. */
 .fade-in.visible {
-  opacity: 1; transform: translateY(0);
+  opacity: 1; transform: none;
 }
 @media (prefers-reduced-motion: reduce) {
   .fade-in { opacity: 1; transform: none; transition: none; }
@@ -1319,3 +1323,242 @@ footer {
   transition: color 0.2s ease, border-color 0.2s ease;
 }
 .footer-base a:hover { color: var(--gold); border-color: var(--gold); }
+
+/* ============================================
+   DEPTH & 3D
+   ============================================
+   Appended last on purpose: these rules must win the cascade over the
+   `transition` shorthands declared earlier on .photo and .next-event-flyer.
+
+   The contract: JavaScript never writes a transform. motion.js only sets
+   custom properties (--tilt-rx, --tilt-ry, --par); every transform below
+   reads them with a neutral fallback. So with JS disabled, blocked, or
+   still loading, each element renders exactly as it did before this block
+   existed. Intensity is tunable from the three tokens under :root.
+   ============================================ */
+
+:root {
+  --tilt-max: 5deg;       /* peak card rotation under the cursor */
+  --reveal-rot: 5deg;     /* hinge angle for .fade-in */
+  --par-strength: 1;      /* parallax multiplier; motion.js reads this */
+}
+
+/* ---------- Card tilt ----------
+   perspective() lives inside the transform function rather than on a parent,
+   so no wrapper elements are needed anywhere in the HTML and each card gets
+   its own vanishing point — which is what keeps cards near the viewport edge
+   from shearing toward a shared centre. */
+.gallery-cell.gallery-cell,
+.photo.photo,
+.col-card.col-card,
+.next-event-flyer.next-event-flyer {
+  position: relative;
+  transform:
+    perspective(var(--tilt-persp, 900px))
+    rotateX(var(--tilt-rx, 0deg))
+    rotateY(var(--tilt-ry, 0deg))
+    translate3d(0, var(--tilt-lift, 0px), var(--tilt-z, 0px));
+  transition:
+    transform 0.5s cubic-bezier(.22,.61,.36,1),
+    box-shadow 0.5s ease,
+    filter 0.3s ease;   /* .photo's brightness hover lives here — keep it */
+}
+
+/* While the pointer is over a card, motion.js adds .is-tilting so the card
+   tracks the cursor instead of easing. Dropping the class restores the slow
+   ease-back above. will-change is scoped to this class and never applied at
+   rest — the gallery page has ~80 photos, and permanently promoting all of
+   them would cost more than the effect is worth. */
+.is-tilting {
+  transition: transform 90ms linear, box-shadow 0.3s ease, filter 0.3s ease;
+  will-change: transform;
+}
+
+/* Grid gap is only 8px, so a tilted cell would clip into its neighbour.
+   Raising it and deepening its shadow reads as "lifted off the page". */
+.gallery-cell:hover,
+.photo:hover,
+.col-card:hover {
+  z-index: 2;
+}
+.gallery-cell:hover,
+.col-card:hover {
+  box-shadow: 0 30px 60px rgba(10, 10, 10, 0.45);
+}
+
+/* Touch devices get none of this: there is no hover state to tilt toward,
+   and pointer tracking on a finger only produces jitter. */
+@media (hover: none), (pointer: coarse) {
+  .gallery-cell.gallery-cell, .photo.photo, .col-card.col-card,
+  .next-event-flyer.next-event-flyer {
+    transform: translate3d(0, var(--tilt-lift, 0px), 0);
+  }
+}
+
+/* ---------- Staggered reveal ----------
+   The grids themselves carry .fade-in, so their children are not observed.
+   Animating the children directly (and standing the parent down) gives a
+   stagger with no markup changes. */
+.what-to-expect.fade-in,
+.stats.fade-in {
+  opacity: 1;
+  transform: none;
+}
+.what-to-expect.fade-in > *,
+.stats.fade-in > * {
+  opacity: 0;
+  transform: translate3d(0, 18px, 0);
+  transition:
+    opacity 0.7s ease-out,
+    transform 0.7s cubic-bezier(.22,.61,.36,1);
+}
+.what-to-expect.fade-in.visible > *,
+.stats.fade-in.visible > * {
+  opacity: 1;
+  transform: none;
+}
+.what-to-expect.fade-in > *:nth-child(2),
+.stats.fade-in > *:nth-child(2) { transition-delay: 0.07s; }
+.what-to-expect.fade-in > *:nth-child(3),
+.stats.fade-in > *:nth-child(3) { transition-delay: 0.14s; }
+.what-to-expect.fade-in > *:nth-child(4) { transition-delay: 0.21s; }
+
+/* ---------- Parallax ----------
+   Transform-only, so it stays on the compositor. The 1.08 scale gives the
+   image room to travel without exposing an edge; it is applied only once
+   motion.js confirms parallax is actually running, so the no-JS and
+   reduced-motion renders keep the original framing. */
+.hero-image,
+.featured-image {
+  transform: scale(var(--par-scale, 1)) translate3d(0, var(--par, 0px), 0);
+  will-change: transform;
+}
+.parallax-on .hero-image,
+.parallax-on .featured-image { --par-scale: 1.08; }
+
+.hero-inner,
+.event-detail-hero > .container {
+  transform: translate3d(0, var(--par, 0px), 0);
+}
+
+@media (max-width: 900px), (pointer: coarse) {
+  .hero-image, .featured-image,
+  .hero-inner, .event-detail-hero > .container {
+    transform: none;
+    will-change: auto;
+  }
+}
+
+/* ---------- Button lift ---------- */
+.btn-pill:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px rgba(10, 10, 10, 0.18);
+}
+
+/* ---------- The flyer card ----------
+   A two-faced card that spins on drag and flips on click. The flip itself is
+   driven by the .flipped class, so it works with JavaScript unavailable —
+   motion.js only adds drag-to-spin on top. */
+.flyer-stage {
+  perspective: 1600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+}
+.flyer-card {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  transform-style: preserve-3d;
+  transform: rotateY(var(--flip, 0deg));
+  transition: transform 0.9s cubic-bezier(.3,1.2,.4,1);
+  cursor: grab;
+  touch-action: pan-y;   /* keep vertical page scrolling working over the card */
+}
+.flyer-card.flipped { --flip: 180deg; }
+.flyer-card.is-dragging {
+  transition: none;
+  cursor: grabbing;
+}
+.flyer-face {
+  position: absolute;
+  inset: 0;
+  /* overridden on .front below */
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 30px 70px rgba(10, 10, 10, 0.28);
+}
+.flyer-face.front {
+  position: relative;
+  inset: auto;
+}
+.flyer-face.front img {
+  width: 100%;
+  height: auto;
+  display: block;
+  -webkit-user-drag: none;
+  user-select: none;
+}
+.flyer-face.back {
+  transform: rotateY(180deg);
+  background: var(--ink);
+  border: 1px solid var(--gold);
+  color: var(--cream);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 22px;
+  padding: 44px 36px;
+  text-align: center;
+  overflow-y: auto;
+}
+.flyer-face.back .flyer-row {
+  border-bottom: 1px solid var(--hairline);
+  padding-bottom: 16px;
+}
+.flyer-face.back .flyer-row:last-of-type { border-bottom: 0; padding-bottom: 0; }
+.flyer-face.back .flyer-row span {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+.flyer-face.back .flyer-row strong {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400; font-size: 23px; line-height: 1.2;
+  color: var(--cream);
+}
+
+@media (max-width: 640px) {
+  .flyer-face.back { padding: 32px 24px; gap: 16px; }
+  .flyer-face.back .flyer-row strong { font-size: 19px; }
+}
+
+/* ---------- Reduced motion ----------
+   The existing block near .fade-in already neutralises the reveal; this
+   switches off everything added above, in one place. */
+@media (prefers-reduced-motion: reduce) {
+  :root { --tilt-max: 0deg; --reveal-rot: 0deg; --par-strength: 0; }
+  .gallery-cell.gallery-cell, .photo.photo, .col-card.col-card,
+  .next-event-flyer.next-event-flyer,
+  .hero-image, .featured-image, .hero-inner,
+  .event-detail-hero > .container {
+    transform: none;
+    transition: none;
+    will-change: auto;
+  }
+  .what-to-expect.fade-in > *,
+  .stats.fade-in > * {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    transition-delay: 0s;
+  }
+  .btn-pill:hover { transform: none; }
+  .flyer-card { transition: none; }
+}
