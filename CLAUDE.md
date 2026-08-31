@@ -167,10 +167,15 @@ Nat is still editing.
   All repointed to The Pink Issue.
 - Also corrected the SSS checkout's `<meta name="description">`, which still read
   "Reserve your spot" — the Poolside precedent left its own stale, ours doesn't.
-- **Still open — Stripe**: the two SSS payment links
-  (`buy.stripe.com/28E9AT7UVfXLg3igRlgjC09` $95, `.../14AaEX5MN5j704k8kPgjC0a` $55)
-  are **still live**; the site no longer links to them, but a saved link still charges.
-  Deactivating was approved but the Stripe MCP call needs tool approval to run.
+- **Stripe — done**: both SSS payment links deactivated (`plink_1Txv2wFqKR455jnLI7LeOunO`
+  $95 photographer / `28E9AT7UVfXLg3igRlgjC09`, `plink_1Txv30FqKR455jnLfqhcPrPK` $55 model /
+  `14AaEX5MN5j704k8kPgjC0a`). A saved link can no longer take a payment for a finished
+  event. Live mode now has exactly **two** active payment links account-wide, both
+  The Pink Issue. Deactivation is reversible (`active: true`) and left the 5 + 10
+  completed sessions and the `confirmed/` redirect untouched.
+- **Checked and clean, no action needed** — the two systems that bit us during the TCC
+  cancellation: Beehiiv had **0 scheduled posts** (no stale SSS reminders queued), and
+  Make scenario `5540298` is active with its filter keyed to the Pink Issue links only.
 - **Flagged, not done**: `events/modinochi-ii/` has the same problem in worse form —
   a June 20 event still reading `InStock`, `$90 / attendee`, "8 of 30 remaining",
   "RSVP closes when the room is full". It is orphaned (nothing links to it) but live
@@ -215,11 +220,13 @@ is one `<script defer>` line on the 27 styled pages.
   model $55 `plink_1U8lGiFqKR455jnLO7MvEJwc`, both redirecting to this event's `confirmed/`.
   Cloned from the SSS link config (adjustable qty 1–10, IG handle + email + guest-handles fields,
   promo codes on, `tax_code txcd_20030000`). Verified rendering live at $95 / $55.
-- **Open placeholder** — grep `REPLACE_WITH`: the IG group-chat link in `confirmed/` (the same
-  token also sits in the Make email body; fill both, then activate the scenario).
+- **Group-chat link — done** (was a `REPLACE_WITH` placeholder): `confirmed/` and the Make
+  email body both carry the real invite, `instagram.com/j/AbYz5nhs4Oe_9hjG/`. No
+  `REPLACE_WITH` tokens remain anywhere in the repo.
 - **Make**: the Creative Collective scenario `5540298` was repurposed into
-  "The Pink Issue — payment confirmation email" (SSS direct-SMTP pattern). Left **inactive**
-  until the group-chat link is filled in. Pre-repurpose config is backed up at
+  "The Pink Issue — payment confirmation email" (SSS direct-SMTP pattern) and is **active**.
+  Its filter keys on the two Pink Issue `plink_` IDs specifically, so retiring another
+  event's links can't affect it. Pre-repurpose config is backed up at
   `../make-blueprints/creative-collective-5540298-RESTORE-NOTES.md`.
 - The Creative Collective was cancelled separately in #11; its 4 Stripe links are deactivated
   by design. Nothing in this change touches TCC.
