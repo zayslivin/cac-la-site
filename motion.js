@@ -62,14 +62,88 @@
   }
 
   function initTilt() {
+    // Touch devices fall through to initScrollTilt() below. The two are
+    // mutually exclusive — no element is ever driven by both.
     if (reduced.matches || !canHover.matches) return;
     tiltMax = num('--tilt-max', 5);
     if (tiltMax <= 0) return;
+    // Opts these cards into the 3D transform in styles.css. Until one of the
+    // two modes adds this, they stay flat.
+    document.documentElement.classList.add('tilt-on');
     document.addEventListener('pointermove', onTiltMove, { passive: true });
     document.addEventListener('pointerleave', clearTilt, { passive: true });
     // A card that scrolls out from under a stationary cursor would otherwise
     // keep its tilt frozen in place.
     window.addEventListener('scroll', clearTilt, { passive: true });
+  }
+
+  /* ---------- Scroll tilt (touch) --------------------------------------
+     The mobile equivalent of cursor tilt. A card's distance from the centre
+     of the viewport stands in for the pointer's distance from the card's
+     centre, so it lies back on the way in and stands up as it passes the
+     middle. Writes the same --tilt-rx the cursor path writes; --tilt-ry is
+     left alone because there is no horizontal position to map. */
+  var tiltNodes = [];
+  var inView = [];
+  var tiltQueued = false;
+
+  function paintTilt() {
+    tiltQueued = false;
+    var vh = window.innerHeight;
+    var half = vh / 2;
+    for (var i = 0; i < inView.length; i++) {
+      var el = inView[i];
+      var r = el.getBoundingClientRect();
+      if (!r.height) continue;
+      // -1 (card centre at the bottom edge) … 0 (centre) … 1 (top edge).
+      var p = (half - (r.top + r.height / 2)) / half;
+      if (p > 1) p = 1; else if (p < -1) p = -1;
+      el.style.setProperty('--tilt-rx', (p * tiltMax).toFixed(2) + 'deg');
+    }
+  }
+
+  function onTiltScroll() {
+    if (tiltQueued || !inView.length) return;
+    tiltQueued = true;
+    requestAnimationFrame(paintTilt);
+  }
+
+  function initScrollTilt() {
+    if (reduced.matches || canHover.matches) return;
+    tiltMax = num('--tilt-scroll-max', 7);
+    if (tiltMax <= 0) return;
+
+    tiltNodes = Array.prototype.slice.call(
+      document.querySelectorAll('.gallery-cell, .photo, .col-card, .next-event-flyer')
+    );
+    if (!tiltNodes.length) return;
+
+    // Tells styles.css the mode is actually running, so the instant transition
+    // and will-change only apply where something is driving them.
+    document.documentElement.classList.add('tilt-on');
+    document.documentElement.classList.add('scroll-tilt');
+
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        var el = entry.target;
+        var at = inView.indexOf(el);
+        if (entry.isIntersecting) {
+          if (at === -1) inView.push(el);
+          el.classList.add('in-view');
+        } else if (at !== -1) {
+          inView.splice(at, 1);
+          el.classList.remove('in-view');
+          // Leave no frozen tilt behind on a card that has scrolled away.
+          el.style.removeProperty('--tilt-rx');
+        }
+      });
+      onTiltScroll();
+    }, { rootMargin: '10% 0px' });
+
+    tiltNodes.forEach(function (el) { io.observe(el); });
+    window.addEventListener('scroll', onTiltScroll, { passive: true });
+    window.addEventListener('resize', onTiltScroll, { passive: true });
+    paintTilt();
   }
 
   /* ---------- Parallax -------------------------------------------------
@@ -106,14 +180,16 @@
 
   function initParallax() {
     if (reduced.matches) return;
-    if (!window.matchMedia('(min-width: 901px)').matches) return;
-    if (window.matchMedia('(pointer: coarse)').matches) return;
     if (num('--par-strength', 1) <= 0) return;
+
+    // A phone viewport is tall, so the same rate would travel further in
+    // absolute pixels than the overscan can cover. Ease off to match.
+    var scale = window.matchMedia('(max-width: 900px)').matches ? 0.55 : 1;
 
     PARALLAX.forEach(function (cfg) {
       Array.prototype.forEach.call(
         document.querySelectorAll(cfg.sel),
-        function (el) { layers.push({ el: el, rate: cfg.rate }); }
+        function (el) { layers.push({ el: el, rate: cfg.rate * scale }); }
       );
     });
     if (!layers.length) return;
@@ -206,6 +282,7 @@
 
   function init() {
     initTilt();
+    initScrollTilt();
     initParallax();
     initFlyer();
   }
