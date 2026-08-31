@@ -1338,7 +1338,11 @@ footer {
    ============================================ */
 
 :root {
-  --tilt-max: 5deg;       /* peak card rotation under the cursor */
+  --tilt-max: 5deg;        /* peak card rotation under the cursor */
+  --tilt-scroll-max: 7deg; /* peak rotation from scroll position, on touch.
+                              Runs a little bolder than the cursor tilt: it is
+                              the only depth cue a phone gets, and it reads in
+                              motion rather than on a still frame. */
   --reveal-rot: 5deg;     /* hinge angle for .fade-in */
   --par-strength: 1;      /* parallax multiplier; motion.js reads this */
 }
@@ -1353,15 +1357,28 @@ footer {
 .col-card.col-card,
 .next-event-flyer.next-event-flyer {
   position: relative;
+  transform: translate3d(0, var(--tilt-lift, 0px), 0);
+  transition:
+    transform 0.5s cubic-bezier(.22,.61,.36,1),
+    box-shadow 0.5s ease,
+    filter 0.3s ease;   /* .photo's brightness hover lives here — keep it */
+}
+
+/* The 3D form is opt-in: motion.js adds .tilt-on only once a tilt mode is
+   actually driving these. Otherwise `perspective()` would put every card into
+   a 3D rendering context permanently — an identity transform visually, but a
+   real cost on the gallery page's ~80 cards, and pointless when nothing is
+   writing the variables. With JS off, blocked, or still parsing, the flat 2D
+   rule above stands and the page renders as it did before any of this. */
+.tilt-on .gallery-cell.gallery-cell,
+.tilt-on .photo.photo,
+.tilt-on .col-card.col-card,
+.tilt-on .next-event-flyer.next-event-flyer {
   transform:
     perspective(var(--tilt-persp, 900px))
     rotateX(var(--tilt-rx, 0deg))
     rotateY(var(--tilt-ry, 0deg))
     translate3d(0, var(--tilt-lift, 0px), var(--tilt-z, 0px));
-  transition:
-    transform 0.5s cubic-bezier(.22,.61,.36,1),
-    box-shadow 0.5s ease,
-    filter 0.3s ease;   /* .photo's brightness hover lives here — keep it */
 }
 
 /* While the pointer is over a card, motion.js adds .is-tilting so the card
@@ -1386,13 +1403,22 @@ footer {
   box-shadow: 0 30px 60px rgba(10, 10, 10, 0.45);
 }
 
-/* Touch devices get none of this: there is no hover state to tilt toward,
-   and pointer tracking on a finger only produces jitter. */
-@media (hover: none), (pointer: coarse) {
-  .gallery-cell.gallery-cell, .photo.photo, .col-card.col-card,
-  .next-event-flyer.next-event-flyer {
-    transform: translate3d(0, var(--tilt-lift, 0px), 0);
-  }
+/* A phone has no cursor to tilt toward, so motion.js drives --tilt-rx from each
+   card's position in the viewport instead — it lies back on the way in and
+   stands up at centre. Same variable, same transform; only the input differs.
+   No CSS kill-switch is needed here: with the neutral fallbacks above, a card
+   nothing is writing to already resolves to an identity transform. The choice
+   of which mode runs lives in motion.js, which is the only place that knows.
+
+   Scroll tilt rewrites --tilt-rx every frame, so the 0.5s ease that gives the
+   cursor tilt its weight would smear it into lag instead. .in-view is applied
+   by an IntersectionObserver, keeping both the instant transition and
+   will-change bounded to the ~dozen cards actually on screen — the gallery
+   page has ~80 .photo cards and promoting all of them would cost more than
+   the effect is worth. Same discipline as .is-tilting on desktop. */
+.scroll-tilt .in-view {
+  transition: transform 0s, box-shadow 0.5s ease, filter 0.3s ease;
+  will-change: transform;
 }
 
 /* ---------- Staggered reveal ----------
@@ -1441,12 +1467,12 @@ footer {
   transform: translate3d(0, var(--par, 0px), 0);
 }
 
-@media (max-width: 900px), (pointer: coarse) {
-  .hero-image, .featured-image,
-  .hero-inner, .event-detail-hero > .container {
-    transform: none;
-    will-change: auto;
-  }
+/* A phone viewport is tall, so the image needs more room to travel before an
+   edge shows. Still gated behind .parallax-on, so the no-JS framing is
+   unchanged. motion.js also uses a gentler rate here — see PARALLAX there. */
+@media (max-width: 900px) {
+  .parallax-on .hero-image,
+  .parallax-on .featured-image { --par-scale: 1.12; }
 }
 
 /* ---------- Button lift ---------- */
@@ -1547,7 +1573,8 @@ footer {
   .gallery-cell.gallery-cell, .photo.photo, .col-card.col-card,
   .next-event-flyer.next-event-flyer,
   .hero-image, .featured-image, .hero-inner,
-  .event-detail-hero > .container {
+  .event-detail-hero > .container,
+  .scroll-tilt .in-view {
     transform: none;
     transition: none;
     will-change: auto;

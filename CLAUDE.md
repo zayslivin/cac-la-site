@@ -72,10 +72,25 @@ file updated when the site's structure, design system, or conventions change.
     fallbacks. With JS off/blocked/slow, every page renders exactly as it would
     without the file. Intensity is three tokens in `:root`: `--tilt-max`,
     `--reveal-rot`, `--par-strength`.
-  - **Cursor tilt** on `.gallery-cell`, `.photo`, `.col-card`, `.next-event-flyer`.
-    `perspective()` sits *inside* the transform function, so no wrapper elements are
-    needed and each card gets its own vanishing point. Gated to
-    `(hover: hover) and (pointer: fine)` — never on touch.
+  - **Tilt has two modes**, on `.gallery-cell`, `.photo`, `.col-card`,
+    `.next-event-flyer`. Both write the same `--tilt-rx`; only the input differs,
+    and `motion.js` picks exactly one — they are never both live.
+    - **Cursor tilt**, `(hover: hover) and (pointer: fine)`: pointer position
+      within the card drives `--tilt-rx` + `--tilt-ry`. Max `--tilt-max` (5deg).
+    - **Scroll tilt**, everything else (touch/coarse): the card's distance from
+      the viewport centre drives `--tilt-rx` alone — it lies back on the way in
+      and stands up at centre. Max `--tilt-scroll-max` (7deg, deliberately
+      bolder: it is the only depth cue a phone gets, and it reads in motion
+      rather than on a still). `.in-view` (IntersectionObserver) bounds both the
+      instant transition and `will-change` to the cards on screen.
+    - **No gyroscope**, on purpose: iOS 13+ needs a
+      `DeviceOrientationEvent.requestPermission()` prompt on first visit, and a
+      permission dialog on an RSVP page is a conversion risk.
+    - `perspective()` sits *inside* the transform function, so no wrapper elements
+      are needed and each card gets its own vanishing point. It is applied only
+      under `.tilt-on`, which a mode adds when it starts — otherwise every card
+      would sit in a 3D rendering context permanently for no reason (the gallery
+      page has ~80). With JS off the flat 2D rule stands.
   - **Two cascade traps**, both already bitten once: (1) the tilt selectors are
     written doubled (`.photo.photo`) to outrank `.fade-in.visible { transform: none }`,
     because some tilt targets carry `.fade-in` themselves (`.next-event-flyer`);
@@ -85,11 +100,13 @@ file updated when the site's structure, design system, or conventions change.
   - `will-change: transform` is scoped to `.is-tilting` and never applied at rest —
     the gallery page has ~80 `.photo` cards.
   - **Parallax** is transform-only (`.hero-image`, `.featured-image`, `.hero-inner`,
-    `.event-detail-hero > .container`), rAF-coalesced, and disabled below 900px and
-    on coarse pointers. The 1.08 overscan is applied only under `.parallax-on`, which
-    `motion.js` adds once parallax actually runs — so the no-JS framing is unchanged.
-    Deliberately **no** `background-position` parallax: that repaints a full-viewport
-    image on the main thread every frame.
+    `.event-detail-hero > .container`), rAF-coalesced, and runs **everywhere** —
+    only `prefers-reduced-motion` switches it off. Below 900px the rate eases to
+    0.55× and the overscan deepens to 1.12, because a phone viewport is tall and
+    the image needs more room to travel before an edge shows. The overscan applies
+    only under `.parallax-on`, which `motion.js` adds once parallax actually runs,
+    so the no-JS framing is unchanged. Deliberately **no** `background-position`
+    parallax: that repaints a full-viewport image on the main thread every frame.
   - **`.flyer-card`** — two-faced spinnable flyer. The flip is the `.flipped` class
     (pure CSS, works with JS off); `motion.js` only adds drag-to-spin. The card takes
     its height from the front image, so **the `<img>` needs `width`/`height` attrs** or
@@ -153,6 +170,29 @@ Hero (bg image) → info strip (When/Where/Price/Spots) → The Concept/Vibe →
   + Claude-Session trailers; PR bodies with the Claude Code footer.
 
 ## Change log
+### 2026-08-31 — depth made to work on phones
+The 3D layer shipped the day before was **invisible on mobile**: two media queries
+in the `DEPTH & 3D` block switched off cursor tilt on any touch device and parallax
+below 900px, so a phone got only a 5deg reveal hinge and the flyer card. Zay checked
+on his phone and correctly said nothing looked different. Defensible in the abstract
+— a phone has no cursor — but wrong for a brand whose traffic arrives from an
+Instagram bio link. (The stated reason for killing mobile parallax was also wrong on
+the facts: it is transform-only and composited, not `background-position`.)
+- **Scroll-driven tilt** replaces the kill-switch: a card's distance from the
+  viewport centre drives the same `--tilt-rx` the cursor path drives, so the CSS
+  transform needed no new plumbing. Verified the value **flips sign** across the
+  centre (−4.89deg at 85%vh → 0.04 at centre → +4.94deg at 15%vh, monotonic) — a
+  constant offset would have looked identical in a screenshot while being broken.
+- **Parallax now runs on mobile**, gentler rate + deeper overscan.
+- **3D became opt-in** (`.tilt-on`). Removing the touch block initially left every
+  card carrying a `perspective()` identity transform with nothing driving it — a
+  3D rendering context on ~80 gallery cards for no reason. The flat 2D rule is now
+  the default and the modes opt in, which also makes the no-JS render *cleaner*
+  than before this change.
+- 17/17 mobile checks + 21/21 desktop checks, zero JS errors. One assertion from
+  the previous round ("touch: no perspective tilt applied") was superseded rather
+  than deleted — it now asserts touch gets scroll tilt with `--tilt-ry` untouched.
+
 ### 2026-08-30 — Studio Sets Social retired; CSS-3D depth layer added
 **Part 1 — SSS became a past event** (it ran Aug 29). Followed the Poolside recipe
 (`f42fbd0`), now written up under Conventions. Detail page kept whole with 11 surface
