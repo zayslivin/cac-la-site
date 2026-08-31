@@ -34,10 +34,13 @@
   .event-detail-hero::before {
     background: linear-gradient(0deg, rgba(10,10,10,0.88) 0%, rgba(10,10,10,0.55) 60%, rgba(10,10,10,0.72) 100%);
   }
-  .cover-frame {
-    display: block; width: 100%; max-width: 440px;
-    margin: 0 auto; border-radius: 14px;
-    box-shadow: 0 30px 70px rgba(10,10,10,0.28);
+  /* The flyer card sits on a cream section, so the ghost button's cream
+     border would vanish. Re-tone it to ink for this one placement. */
+  .flyer-flip.btn-pill.ghost {
+    color: var(--ink); border-color: rgba(10,10,10,0.35);
+  }
+  .flyer-flip.btn-pill.ghost:hover {
+    background: var(--ink); border-color: var(--ink); color: var(--cream);
   }
 </style>
 <script type="application/ld+json">
@@ -206,9 +209,25 @@
       you can walk into for one afternoon. The exact studio, address, and parking
       instructions are released to confirmed attendees after RSVP.
     </p>
-    <img src="../../images/events/the-pink-issue/flyer.jpg"
-         alt="The Pink Issue — Create &amp; Connect LA, Saturday September 19, 1–4 PM, 35 creatives"
-         class="cover-frame fade-in" loading="lazy" />
+    <div class="flyer-stage fade-in">
+      <div class="flyer-card" id="flyerCard">
+        <div class="flyer-face front">
+          <img src="../../images/events/the-pink-issue/flyer.jpg"
+               alt="The Pink Issue — Create &amp; Connect LA, Saturday September 19, 1–4 PM, 35 creatives"
+               width="1320" height="1968" loading="lazy" />
+        </div>
+        <div class="flyer-face back" aria-hidden="true">
+          <div class="flyer-row"><span>When</span><strong>Saturday, September 19<br>1–4 PM</strong></div>
+          <div class="flyer-row"><span>Where</span><strong>Multi-set studio<br>Los Angeles</strong></div>
+          <div class="flyer-row"><span>Price</span><strong>Photographers $95<br>Models $55</strong></div>
+          <div class="flyer-row"><span>Spots</span><strong>35 max — kept small</strong></div>
+        </div>
+      </div>
+      <button type="button" class="flyer-flip btn-pill ghost" aria-pressed="false"
+              aria-label="Flip the flyer to see the event details">
+        Flip the cover <span class="arrow">→</span>
+      </button>
+    </div>
     <div class="fade-in" style="margin-top:44px;">
       <a href="https://createconnectla.com/events/the-pink-issue/checkout/" target="_blank" rel="noopener" class="btn-pill ink lg">Secure a Spot <span class="arrow">→</span></a>
     </div>
@@ -350,6 +369,8 @@
     document.body.style.overflow = '';
   }));
 </script>
+
+<script defer src="../../motion.js"></script>
 
 </body>
 </html>

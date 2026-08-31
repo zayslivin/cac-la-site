@@ -1,0 +1,45 @@
+<!-- =========== 3D FLYER CARD ===========
+     Drop-in replacement for a static flyer <img> inside an event section.
+     Assumes the page is two levels deep (events/<slug>/), like the partner
+     template. Replace [SLUG], [EVENT NAME] and the four detail rows.
+
+     How it behaves:
+       - The flip is driven by the .flipped class, which the button toggles.
+         That path is pure CSS, so it still works with JavaScript disabled.
+       - motion.js adds drag-to-spin and cursor tilt on top when available.
+       - Styles live in the DEPTH & 3D block of styles.css (.flyer-stage,
+         .flyer-card, .flyer-face). Nothing to copy there.
+
+     Set width/height to the flyer's real pixel dimensions. The card takes its
+     height from the image, so without them a lazily-loaded flyer collapses the
+     card (and the back face with it) until it loads.
+
+     Accessibility: the back face repeats what the .event-detail-strip near
+     the top of the page already states, so it is aria-hidden rather than
+     announced twice. Keep the page's real RSVP button outside this component
+     — never put the only call to action on a face the reader has to spin to.
+
+     On a cream section, add this page-level override so the ghost button
+     stays visible:
+       .flyer-flip.btn-pill.ghost { color: var(--ink); border-color: rgba(10,10,10,0.35); }
+       .flyer-flip.btn-pill.ghost:hover { background: var(--ink); border-color: var(--ink); color: var(--cream); }
+-->
+<div class="flyer-stage fade-in">
+  <div class="flyer-card" id="flyerCard">
+    <div class="flyer-face front">
+      <img src="../../images/events/[SLUG]/flyer.jpg"
+           alt="[EVENT NAME] — Create &amp; Connect LA, [DATE], [TIME], [N] creatives"
+           width="[FLYER PX WIDTH]" height="[FLYER PX HEIGHT]" loading="lazy" />
+    </div>
+    <div class="flyer-face back" aria-hidden="true">
+      <div class="flyer-row"><span>When</span><strong>[DAY, MONTH D]<br>[TIME]</strong></div>
+      <div class="flyer-row"><span>Where</span><strong>[VENUE]<br>[CITY]</strong></div>
+      <div class="flyer-row"><span>Price</span><strong>Photographers $[XX]<br>Models $[XX]</strong></div>
+      <div class="flyer-row"><span>Spots</span><strong>[N] max — kept small</strong></div>
+    </div>
+  </div>
+  <button type="button" class="flyer-flip btn-pill ghost" aria-pressed="false"
+          aria-label="Flip the flyer to see the event details">
+    Flip the cover <span class="arrow">→</span>
+  </button>
+</div>
