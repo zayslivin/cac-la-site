@@ -33,8 +33,8 @@ file updated when the site's structure, design system, or conventions change.
 /images/gallery/<venue>/ past-event galleries
 /_templates/          reusable HTML section snippets (NOT published — "_" ignored by Pages/Jekyll)
 ```
-- **Events** (slugs): `the-pink-issue` (**the live one**), `studio-sets-social`
-  (**PAST** — Aug 29, retired to a recap page), `the-creative-collective`
+- **Events** (slugs): `the-statement` (**the live one** — Nov 14), `the-pink-issue`
+  (**PAST** — Sept 19, retired), `studio-sets-social` (**PAST** — Aug 29, retired to a recap page), `the-creative-collective`
   (**CANCELLED** — pages kept as cancellation notices), `poolside-summer-social`,
   `artists-and-muses` (legacy redirect stubs → TCC), `modinochi-ii`.
 - **Nav links** (top bar): Events · Gallery · Testimonials · Brands · About · Contact · RSVP.
@@ -57,12 +57,15 @@ file updated when the site's structure, design system, or conventions change.
   `--gold-bright` / `--gold-deep`, never a hardcoded hex. So an event that needs its own accent
   redefines just those 3 tokens in a page-level `<style>` block — it cascades to eyebrows,
   buttons, hovers and `.capacity`, and stays document-scoped. `the-pink-issue` does this
-  (`#ee3d96` / `#ff6ab4` / `#c2186f`). Check contrast when swapping: the accent is used as
+  (`#ee3d96` / `#ff6ab4` / `#c2186f`); `the-statement` uses red (`#f03a3a` / `#ff5a52` / `#c0141c`). Check contrast when swapping: the accent is used as
   button *background* behind ink text AND as text on both ink and cream.
 - **Gallery masonry**: `.gallery-grid` (4 cols desktop / 3 tablet / 2 mobile, 220px rows) +
   `.gallery-cell` (background-image, `data-label` shows on hover in gold) + `.gallery-cell.tall`
   (spans 2 rows). For a gap-free rectangle the cell count + tall spans must total a multiple
   of the column count (e.g. 11 cells + 4 tall = 15 units → leaves 1 gap; unavoidable at 4 cols).
+  A multiple isn't enough on its own — the *order* decides it. 9 cells + 3 tall packs flush at
+  4/3/2 cols only as T,T,S,S,S,T,S,S,S (see `the-statement`). Measure with `offsetTop/Height`,
+  not `getBoundingClientRect` — the tilt transform skews rects and fakes gaps.
 - **Reveal-on-scroll**: add class `fade-in`; an IntersectionObserver adds `.visible`.
   Settles to `transform: none` (not a zeroed transform) so it leaves no containing
   block behind — `position:fixed` children like the gallery lightbox depend on that.
@@ -170,6 +173,30 @@ Hero (bg image) → info strip (When/Where/Price/Spots) → The Concept/Vibe →
   + Claude-Session trailers; PR bodies with the Claude Code footer.
 
 ## Change log
+### 2026-10-08 — The Statement (Nov 14) added; The Pink Issue retired
+- New `events/the-statement/` + `checkout/` + `confirmed/`. Sat **Nov 14, 10:30 AM–1:30 PM**,
+  LA multi-set studio, **20 spots** (smallest room yet), photographers **$95** / models **$55**.
+  Brief: "Bring a look that makes a statement." Red accent via the 3-token override.
+- Images in `images/events/the-statement/`: `flyer.jpg` (og:image + spinnable "The Cover"),
+  `hero.jpg` (crop of `look-red-ruffle`), 9 `look-*`/`set-*` photos in "The Looks" masonry.
+  The red-coat look doubles as the For Models image.
+- **No group chat** for this event (unlike Pink Issue): every surface — page FAQ, checkout
+  aside, `confirmed/`, the Make email — says the address and styling notes come **by email**.
+  If a chat link appears later, add it to `confirmed/` and the Make email together.
+- **Stripe (live)**: photographer $95 `plink_1UONQsFqKR455jnL9Ikhz0r3`
+  (`buy.stripe.com/5kQbJ17UVbHv5oE30vgjC0d`, `prod_VPBoIxF9jGlE3I`), model $55
+  `plink_1UONQvFqKR455jnL22fyXz4N` (`buy.stripe.com/7sY9ATejj12RdVa6cHgjC0e`,
+  `prod_VPBony0qAoqTL6`). Cloned from the Pink Issue config; redirect to this event's
+  `confirmed/`; metadata `event: the-statement`. No per-link cap (limit 999) — the 20-spot cap
+  is enforced by hand, as before.
+- **Make** scenario `5540298` renamed "The Statement — payment confirmation email"; filter now
+  keys on the two Statement plinks, Beehiiv `event` field + tag `the-statement-rsvp`.
+- **Pink Issue retired** per the recipe: SoldOut, Past Event eyebrow, Status cell, checkout →
+  "event has passed" panel, archive row **10**, `gallery/#pinkissue` placeholder. Both Pink
+  Stripe links **deactivated** (`plink_1U8lGW…` 3 sales, `plink_1U8lGi…` 6 sales). `confirmed/`
+  untouched. Every site-wide next-event link (nav, footers, homepage, gallery, and the
+  retired/cancelled TCC, SSS, Poolside, ModiNochi trees) repointed to The Statement.
+
 ### 2026-08-31 — depth made to work on phones
 The 3D layer shipped the day before was **invisible on mobile**: two media queries
 in the `DEPTH & 3D` block switched off cursor tilt on any touch device and parallax
