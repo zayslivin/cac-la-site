@@ -124,6 +124,13 @@ nav.top .row {
   font-size: 12px; font-weight: 500;
   letter-spacing: 0.18em; text-transform: uppercase;
   transition: color 0.2s ease;
+  white-space: nowrap;
+}
+/* Eight items no longer fit between tablet and laptop widths: tighten the
+   spacing first, then hand off to the hamburger before anything wraps. */
+@media (max-width: 1240px) {
+  .nav-links { gap: 24px; }
+  .nav-links a { letter-spacing: 0.14em; }
 }
 .nav-links a:hover { color: var(--gold); }
 .nav-links a.active { color: var(--gold); }
@@ -145,6 +152,10 @@ nav.top .row {
 .hamburger.open span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
 .hamburger.open span:nth-child(2) { opacity: 0; }
 .hamburger.open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+@media (max-width: 1080px) {
+  .nav-links { display: none; }
+  .hamburger { display: inline-flex; }
+}
 
 .mobile-menu {
   display: block;

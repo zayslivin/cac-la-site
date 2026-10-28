@@ -27,6 +27,7 @@ file updated when the site's structure, design system, or conventions change.
 ```
 /                     index.html (home), styles.css, motion.js, CNAME, favicon.svg, og-image
 /about /contact /brands /gallery /guide /privacy /terms /testimonials /venues
+/fitness-shoot/       Aurea Nat Photo fitness shoot booking page (+ confirmed/) — a service, not an event
 /events/              index.html = event listing (cards)
 /events/<slug>/       index.html (detail) + checkout/ + confirmed/ (+ casting/ for some)
 /images/events/<slug>/  per-event imagery
@@ -37,7 +38,7 @@ file updated when the site's structure, design system, or conventions change.
   (**PAST** — Sept 19, retired), `studio-sets-social` (**PAST** — Aug 29, retired to a recap page), `the-creative-collective`
   (**CANCELLED** — pages kept as cancellation notices), `poolside-summer-social`,
   `artists-and-muses` (legacy redirect stubs → TCC), `modinochi-ii`.
-- **Nav links** (top bar): Events · Gallery · Testimonials · Brands · About · Contact · RSVP.
+- **Nav links** (top bar): Events · Gallery · Testimonials · Brands · Fitness Shoot · About · Contact · RSVP.
 
 ## Design system (styles.css)
 - **Color tokens** (`:root`):
@@ -173,6 +174,24 @@ Hero (bg image) → info strip (When/Where/Price/Spots) → The Concept/Vibe →
   + Claude-Session trailers; PR bodies with the Claude Code footer.
 
 ## Change log
+### 2026-10-28 — Fitness Shoot booking page (QR target)
+- New `fitness-shoot/` + `confirmed/`, linked as a **nav tab on all 18 nav pages** (after
+  Brands). Nat's one-on-one fitness shoot by **Aurea Nat Photo**, San Bernardino, **$250 for
+  20 edited images**. No calendar: a **$125 deposit** (50%) through Stripe collects IG handle +
+  preferred days/times, then `confirmed/` sends them to **DM @createconnect.la**
+  (`ig.me/m/createconnect.la`) to lock a date. Balance of $125 is due on shoot day.
+- Olive-gold accent via the 3-token override (`#b39a62` / `#c7ad72` / `#6f5a30`) from the flyer.
+- Swipe gallery = `.fs-carousel` (page-local CSS, native scroll-snap, works with JS off; JS
+  only adds dots/arrows). Images in `images/fitness-shoot/` are **cropped from the flyer**
+  (low-res, ~400–800px). **Replace with Nat's originals when she sends them** and add more slides.
+- Nav now has 8 items: `.nav-links a` is `nowrap`, gap tightens ≤1240px, and the hamburger
+  takes over at **≤1080px** (was 768) so nothing wraps on laptops.
+- **Stripe (live, CCLA account)**: product `prod_VWj10WICDXMOzk`, price
+  `price_1UVfZoFqKR455jnLU4YJuMYr` ($125), link `plink_1UVfZyFqKR455jnLmL0I3XJq`
+  (`buy.stripe.com/fZuaEXejj3aZ7wM44zgjC0f`), metadata `service: fitness-shoot`. Money lands
+  in Zay's account — Nat's payout is handled by hand. No Make/Beehiiv automation for it yet.
+- QR code points at `createconnectla.com/fitness-shoot/?utm_source=qr&utm_medium=print&utm_campaign=fitness-shoot`.
+
 ### 2026-10-08 — The Statement (Nov 14) added; The Pink Issue retired
 - New `events/the-statement/` + `checkout/` + `confirmed/`. Sat **Nov 14, 10:30 AM–1:30 PM**,
   LA multi-set studio, **20 spots** (smallest room yet), photographers **$95** / models **$55**.
