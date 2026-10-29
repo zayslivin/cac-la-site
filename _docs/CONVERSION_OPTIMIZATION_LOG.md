@@ -139,3 +139,4 @@ data per event plus qualitative feedback.
 - **Tests:** 390px + 1440px on both pages, no overflow, 0 JS errors. Accent cascades red.
 - **Expected impact:** small-to-moderate lift in event-page → checkout and checkout → paid. Can't be isolated (Nat is also pushing sales).
 - **Measure:** Stripe Statement sales after merge vs. the 19-day zero streak before; model share of sales.
+- **Follow-up (same PR):** first private-shoot testimonial (a client message @aureanatphoto shared on her IG story; sender unnamed, so attributed "Private shoot client"). Added as a new **Private Shoots** tab on `testimonials/` and as a card above "DM to book" in Book a Shoot's How Booking Works. Emojis dropped; text otherwise verbatim, trims marked "…". Also fixed `testimonials/`'s final CTA, which still sent "View the next event" to the past Poolside page → The Statement.
