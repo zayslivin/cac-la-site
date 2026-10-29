@@ -219,7 +219,9 @@ Zay earns a share of ticket revenue, so **paid RSVPs are the north-star metric**
 ### 2026-10-29 — Fitness Shoot → Book a Shoot
 - Nav tab renamed **Book a Shoot** → `book-a-shoot/`. Hero H1 is "A private shoot with *Natalie*." (Zay, 2026-10-29) — keep it clear this is private, not an event. Four service cards (`#fitness`,
   `#headshots`, `#individual`, `#family`), all **"Contact for pricing"**; every CTA is a DM to
-  `ig.me/m/createconnect.la`. No prices or deposit on the page by Zay's call.
+  `ig.me/m/aureanatphoto` (Nat's own IG — changed from `createconnect.la` 2026-10-29, Zay's call;
+  site-wide incl. `fitness-shoot/confirmed/`). Hero eyebrow: "Shot by @aureanatphoto · Inland Empire,
+  Orange County & LA" (handle links to her IG). Service area = IE, OC, LA. No prices or deposit on the page by Zay's call.
 - New hero (copy + fanned 3-photo stack) replaced the bland info strip; portfolio reel
   `.bs-reel` keeps each photo's own aspect ratio (fixed height desktop, 76vw width mobile) —
   never `object-fit: cover`, which is what cropped heads before.
