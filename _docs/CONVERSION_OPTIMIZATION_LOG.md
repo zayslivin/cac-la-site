@@ -14,6 +14,31 @@ data per event plus qualitative feedback.
 
 ---
 
+## 2026-10-29 — Homepage hero sells the next event; ticket inclusions on checkout
+- **Pages:** `index.html` hero, `styles.css` (hero block), `events/the-statement/checkout/`
+- **Category:** A → D (implemented; impact unmeasured)
+- **Problem:** The hero said "Where creatives turn portfolios into art" + "View the next event" —
+  no event name, date or price anywhere on the homepage (verified). Ticket inclusions lived
+  only in the event FAQ, not beside the price.
+- **Change:** Kept the brand headline; added a one-line plain description ("Curated editorial
+  photoshoots in Los Angeles…") and a **next-event card** in the hero: The Statement · Sat Nov 14
+  · LA · Photographers $95 · Models $55 · **Reserve your spot** (→ checkout) + "See the event".
+  Free guide demoted to a quiet "Not ready yet?" link (hidden in the mobile hero; still in
+  #subscribe). Checkout: 4 "✓ included" lines per ticket, all taken from the event FAQ.
+- **Evidence:** NN/g *Homepage Design: 5 Fundamental Principles* — communicate who you are and
+  what you do in the hero, prompt the key action; NN/g *"Get Started" Stops Users* — specific CTA
+  labels beat generic ones. Baymard — surprise terms/unclear inclusions drive abandonment.
+- **Layout/faces:** hero grows with content (no clipping under the fixed nav on short screens);
+  copy column capped at `50vw − 200px` on desktop so it stays left of the model's face; on
+  phones the photo is a top band that fades to ink, face fully clear above the copy.
+- **Tested:** 360×640, 390×844, 768×1024, 1024×768, 1280×720, 1440×900, 1920×1080 — no
+  overflow, tag always below the nav, zero JS errors. Reserve button above the fold at 390×844
+  (810px) and every desktop size; below the fold only on 360×640.
+- **Expected impact:** High (largest gap in the audit). Uncertainty: the card must be updated
+  by hand each event (HTML comment marks it) or it will advertise a past event.
+- **Measure:** Compare Statement Stripe sales/day before vs after merge; tag the hero CTA with
+  `?utm_source=site&utm_medium=home-hero` once UTMs are adopted (backlog #4).
+
 ## 2026-10-29 — Refund policy link fixed + visible on The Statement checkout
 - **Pages:** `events/*/checkout/` (5), `terms/`
 - **Category:** A → D
