@@ -122,7 +122,10 @@ file updated when the site's structure, design system, or conventions change.
 ## Event detail page anatomy (typical order)
 Hero (bg image) → info strip (When/Where/Price/Spots) → The Concept/Vibe → visual section
 (gallery or venue photos) → What to Expect / The Experience (numbered) → For Models callout →
-**Partner With Us** (brands/sponsors/vendors) → FAQ ("Before You RSVP") → final `.cta-band` → footer.
+**Partner With Us** (brands/sponsors/vendors) → **From Past Rooms** (testimonials — required) → FAQ
+("Before You RSVP") → final `.cta-band` → email capture → footer.
+- **Every new event page gets testimonials, every time** (Zay, 2026-10-29): the "From Past Rooms"
+  section from `_templates/event-testimonials-section.html` + 2 excerpts in its checkout aside.
 - Each page has JSON-LD `Event` schema in `<head>` and OG/Twitter meta (og:image = the flyer).
 - Checkout links go to `https://createconnectla.com/events/<slug>/checkout/` (target=_blank).
 
@@ -134,6 +137,9 @@ Hero (bg image) → info strip (When/Where/Price/Spots) → The Concept/Vibe →
   vendors → *Inquire to partner*) section. Copy into a new event page near the bottom
   (after For Models, before FAQ). Replace `[EVENT NAME]`; the link `../../brands/inquire/`
   assumes the page is 2 levels deep (`events/<slug>/`).
+
+- **`_templates/event-testimonials-section.html`** — "From Past Rooms" (4 real quotes, verbatim
+  from `testimonials/`). Required on every new event page; replace `[SLUG]`. Rules are in its header.
 
 ## Conventions / gotchas
 - **Verify visual changes** by rendering with headless Chromium. The background HTTP
