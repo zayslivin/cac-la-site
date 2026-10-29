@@ -196,6 +196,14 @@ Zay earns a share of ticket revenue, so **paid RSVPs are the north-star metric**
   site (it was publicly served until 2026-10-29). The GitHub repo itself is still public.
 
 ## Change log
+### 2026-10-29 — Signup form on more pages
+- The Beehiiv form (`data-beehiiv-form="e0353720-9779-4e4e-95bb-e47ae062e4ae"`) now also sits in
+  an `.email-capture#subscribe` section before the footer on `events/the-statement/`,
+  `gallery/` and `book-a-shoot/`, with page-specific headlines. **When an event is retired,
+  update its "Can't make Nov 14?" eyebrow** (or drop the section).
+- Meta line everywhere: "600+ creatives have been in our rooms · No spam · Unsubscribe anytime".
+  **600+ = total attendees** (Zay); the old 270+ stat on home and brands now matches. Never
+  say "biweekly" — sends are sporadic.
 ### 2026-10-29 — Quick fixes: retire Orange County (`modinochi-ii`); no-JS fallback
 - **`events/modinochi-ii/` retired** per the recipe, with one deliberate difference: it is not
   certain this June 20 Orange County room ever ran (its checkout never had a Stripe link), so the
