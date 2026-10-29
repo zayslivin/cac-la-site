@@ -27,7 +27,8 @@ file updated when the site's structure, design system, or conventions change.
 ```
 /                     index.html (home), styles.css, motion.js, CNAME, favicon.svg, og-image
 /about /contact /brands /gallery /guide /privacy /terms /testimonials /venues
-/fitness-shoot/       Aurea Nat Photo fitness shoot booking page (+ confirmed/) — a service, not an event
+/book-a-shoot/        Aurea Nat Photo services page: Fitness · Headshots · Individual · Family (contact for pricing)
+/fitness-shoot/       redirect stub → book-a-shoot/#fitness (printed QR target — never delete) + confirmed/
 /events/              index.html = event listing (cards)
 /events/<slug>/       index.html (detail) + checkout/ + confirmed/ (+ casting/ for some)
 /images/events/<slug>/  per-event imagery
@@ -38,7 +39,7 @@ file updated when the site's structure, design system, or conventions change.
   (**PAST** — Sept 19, retired), `studio-sets-social` (**PAST** — Aug 29, retired to a recap page), `the-creative-collective`
   (**CANCELLED** — pages kept as cancellation notices), `poolside-summer-social`,
   `artists-and-muses` (legacy redirect stubs → TCC), `modinochi-ii`.
-- **Nav links** (top bar): Events · Gallery · Testimonials · Brands · Fitness Shoot · About · Contact · RSVP.
+- **Nav links** (top bar): Events · Gallery · Testimonials · Brands · Book a Shoot · About · Contact · RSVP.
 
 ## Design system (styles.css)
 - **Color tokens** (`:root`):
@@ -174,6 +175,26 @@ Hero (bg image) → info strip (When/Where/Price/Spots) → The Concept/Vibe →
   + Claude-Session trailers; PR bodies with the Claude Code footer.
 
 ## Change log
+### 2026-10-29 — Fitness Shoot → Book a Shoot
+- Nav tab renamed **Book a Shoot** → `book-a-shoot/`. Four service cards (`#fitness`,
+  `#headshots`, `#individual`, `#family`), all **"Contact for pricing"**; every CTA is a DM to
+  `ig.me/m/createconnect.la`. No prices or deposit on the page by Zay's call.
+- New hero (copy + fanned 3-photo stack) replaced the bland info strip; portfolio reel
+  `.bs-reel` keeps each photo's own aspect ratio (fixed height desktop, 76vw width mobile) —
+  never `object-fit: cover`, which is what cropped heads before.
+- `fitness-shoot/index.html` is now a **redirect stub** to `../book-a-shoot/#fitness` that keeps
+  the query string, because the printed QR code points at it. `confirmed/` kept for anyone who
+  paid the deposit.
+- Images (`images/book-a-shoot/`): `fitness-bench` + `fitness-portrait` are flyer crops
+  **upscaled 4× with Real-ESRGAN** (ONNX on CPU, `Meeperomi/RealESRGAN_x4-onnx`; the HF
+  ZeroGPU Space ran out of free quota). The dumbbell-row crop was dropped — flyer text and
+  frames cover it. `editorial-red` + `portrait-blue` are from Nat's Beacons page
+  (`beacons.ai/aureaphoto`). Instagram can't be scraped (Firecrawl refuses it; direct API
+  calls are blocked as bot-check circumvention) — real IG images must come from Nat/Zay.
+- **Family card has no photo** (typographic placeholder) until Nat sends one.
+- The $125 deposit link `plink_1UVfZyFqKR455jnLmL0I3XJq` is no longer linked anywhere but is
+  still **active** in Stripe.
+
 ### 2026-10-28 — Fitness Shoot booking page (QR target)
 - New `fitness-shoot/` + `confirmed/`, linked as a **nav tab on all 18 nav pages** (after
   Brands). Nat's one-on-one fitness shoot by **Aurea Nat Photo**, San Bernardino, **$250 for
