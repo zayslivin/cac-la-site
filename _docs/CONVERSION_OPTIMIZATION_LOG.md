@@ -14,6 +14,24 @@ data per event plus qualitative feedback.
 
 ---
 
+## 2026-10-29 — Book a Shoot images enhanced; no heads cut off
+- **Pages:** `book-a-shoot/`, `images/book-a-shoot/` (16 images)
+- **Category:** A → D
+- **Problem:** Portfolio images were ~1170px screen-recording crops (soft, HEVC artifacts);
+  two crops cut heads (silver-beard portrait's top-knot, fitness-bench beanie); the hero stack's
+  front card covered part of a face at every width.
+- **Change:** Every image re-run through Real-ESRGAN ×4 (CPU/ONNX) from the cleanest source
+  frame, saved at 1400px (runway 900px). Silver portrait: IG's "1/2" badge inpainted instead of
+  cropped, so the full head is back. Fitness bench: re-cropped higher from the flyer and the
+  tilted frame line inpainted, so the whole beanie is in frame. Hero stack front card lowered
+  (top 22%→30%, height 72%→68%).
+- **Tested:** automated face check — head boxes for all 17 images mapped through object-fit/
+  object-position and sampled with `elementFromPoint` (catches crop *and* overlap) at
+  360/390/768/1081/1280/1400/1920px: 0 failures. Page total images 3.8 MB, all below-the-fold
+  ones lazy-loaded.
+- **Expected impact:** Medium on trust/perceived quality of the shoot offer; unmeasured.
+- **Measure:** DM inquiries per week from the Book a Shoot page (ask "where did you find us").
+
 ## 2026-10-29 — Homepage hero sells the next event; ticket inclusions on checkout
 - **Pages:** `index.html` hero, `styles.css` (hero block), `events/the-statement/checkout/`
 - **Category:** A → D (implemented; impact unmeasured)
