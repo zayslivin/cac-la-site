@@ -143,6 +143,22 @@
     border: 1px solid rgba(245,239,228,0.3); background: transparent; color: var(--cream); font-size: 16px;
   }
   .bs-arrow:hover { border-color: var(--gold); color: var(--gold); }
+  /* ---- Meet Nat ---- */
+  .bs-meet { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 64px; align-items: center; }
+  .bs-meet figure { margin: 0; }
+  .bs-meet img {
+    display: block; width: 100%; height: auto; border-radius: 16px;
+    box-shadow: 0 30px 70px rgba(10,10,10,0.18);
+  }
+  .bs-meet .handles { display: flex; flex-wrap: wrap; gap: 10px 22px; margin: 26px 0 32px; }
+  .bs-meet .handles a {
+    color: var(--gold-deep); text-decoration: none; font-size: 12px; font-weight: 600;
+    letter-spacing: 0.16em; text-transform: uppercase; border-bottom: 1px solid currentColor; padding-bottom: 3px;
+  }
+  @media (max-width: 900px) {
+    .bs-meet { grid-template-columns: 1fr; gap: 36px; }
+    .bs-meet figure { max-width: 420px; }
+  }
 </style>
 <script type="application/ld+json">
 {
@@ -326,8 +342,40 @@
   </div>
 </section>
 
+<!-- =========== MEET NAT =========== -->
+<section class="event-section cream" id="meet-nat">
+  <div class="container-narrow bs-meet">
+    <figure class="fade-in">
+      <!-- Photo of Nat by another photographer: add a visible credit (figcaption) once Zay confirms who shot it. -->
+      <img src="../images/book-a-shoot/meet-nat.jpg" width="1168" height="1608" loading="lazy"
+           alt="Nat Guerrero seated on a director's chair holding a clapperboard in a studio">
+    </figure>
+    <div>
+      <div class="eyebrow">Meet the Photographer</div>
+      <h2 class="section-title fade-in" style="margin:18px 0 24px;">Nat Guerrero.</h2>
+      <p class="lede fade-in" style="margin-bottom:20px;">
+        The photographer behind Aurea Nat Photo and the curator of Create &amp; Connect LA.
+      </p>
+      <p class="body-serif fade-in" style="margin-bottom:18px;">
+        Nat shoots editorial, commercial and social work across San Bernardino and Los Angeles,
+        and she runs the photomeets where LA's models, photographers and brands come together.
+        As a portfolio consultant she knows what a strong image needs before the camera comes out.
+      </p>
+      <p class="body-serif fade-in">
+        Every session starts with a clear concept and easy direction, so you can stop thinking
+        about the camera and just show up as yourself.
+      </p>
+      <div class="handles fade-in">
+        <a href="https://instagram.com/aureanatphoto" target="_blank" rel="noopener">@aureanatphoto</a>
+        <a href="https://instagram.com/natguerrero__" target="_blank" rel="noopener">@natguerrero__</a>
+      </div>
+      <a href="https://ig.me/m/createconnect.la" target="_blank" rel="noopener" class="btn-pill ink">Book with Nat <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
 <!-- =========== HOW BOOKING WORKS =========== -->
-<section class="event-section cream">
+<section class="event-section">
   <div class="container-narrow">
     <div class="eyebrow">How Booking Works</div>
     <h2 class="section-title fade-in" style="margin:18px 0 32px;">Three steps.<br>No calendar to fight.</h2>
@@ -349,13 +397,13 @@
       </div>
     </div>
     <div class="fade-in" style="text-align:center;margin-top:52px;">
-      <a href="https://ig.me/m/createconnect.la" target="_blank" rel="noopener" class="btn-pill ink lg">DM to book <span class="arrow">→</span></a>
+      <a href="https://ig.me/m/createconnect.la" target="_blank" rel="noopener" class="btn-pill lg">DM to book <span class="arrow">→</span></a>
     </div>
   </div>
 </section>
 
 <!-- =========== FAQ =========== -->
-<section class="event-section cream" style="padding-top:0;">
+<section class="event-section cream">
   <div class="container-narrow">
     <div class="eyebrow">Before You Book</div>
     <h2 class="section-title fade-in" style="margin:18px 0 32px;">Questions, answered.</h2>

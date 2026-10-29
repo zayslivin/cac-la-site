@@ -198,6 +198,12 @@ Hero (bg image) → info strip (When/Where/Price/Spots) → The Concept/Vibe →
   Cropped off: IG corner icons (bottom ~150px), carousel `1/2` badges, Nat's baked-in
   `@aureanatphoto` credit boxes, and a scrollbar sliver at x≈1190 (so width is 1168).
   ~1170px wide — fine for the reel; ask Nat for originals if they're ever shown larger.
+- **"Meet the Photographer" section** (`#meet-nat`, cream, between the reel and How Booking
+  Works, which went dark to keep sections alternating). Photo `meet-nat.jpg` is from Nat's
+  personal account **@natguerrero__** (3rd iCloud recording). That account is mostly photos
+  *of* Nat by other photographers, so **nothing from it goes in the "shot by Aurea Nat Photo"
+  reel** — Zay chose the Meet Nat section only. The portrait still needs a **visible photographer
+  credit** (HTML comment marks the spot) once Zay confirms who shot it.
 - **Family card has no photo** (typographic placeholder) until Nat sends one.
 - The $125 deposit link `plink_1UVfZyFqKR455jnLmL0I3XJq` is no longer linked anywhere but is
   still **active** in Stripe.
