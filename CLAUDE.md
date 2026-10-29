@@ -191,6 +191,13 @@ Hero (bg image) → info strip (When/Where/Price/Spots) → The Concept/Vibe →
   frames cover it. `editorial-red` + `portrait-blue` are from Nat's Beacons page
   (`beacons.ai/aureaphoto`). Instagram can't be scraped (Firecrawl refuses it; direct API
   calls are blocked as bot-check circumvention) — real IG images must come from Nat/Zay.
+- **12 portfolio images from Nat's IG** (`editorial-*`, `headshot-*`, `portrait-*`, `runway`,
+  `duo`) were pulled from **screen recordings Zay shared via iCloud links** (iCloud share →
+  CloudKit `records/resolve` + `records/query` with the share's anonymous token → original
+  `.mov`; ffmpeg 4fps frames; posts auto-detected as the non-UI band between IG's dark chrome).
+  Cropped off: IG corner icons (bottom ~150px), carousel `1/2` badges, Nat's baked-in
+  `@aureanatphoto` credit boxes, and a scrollbar sliver at x≈1190 (so width is 1168).
+  ~1170px wide — fine for the reel; ask Nat for originals if they're ever shown larger.
 - **Family card has no photo** (typographic placeholder) until Nat sends one.
 - The $125 deposit link `plink_1UVfZyFqKR455jnLmL0I3XJq` is no longer linked anywhere but is
   still **active** in Stripe.
