@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fitness Shoot — Create &amp; Connect LA · $250, 20 edited images</title>
+<meta name="description" content="A one-on-one fitness photoshoot in San Bernardino with Aurea Nat Photo. $250 for 20 edited images. Book with a $125 deposit, then pick your date with us on Instagram." />
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<meta property="og:title" content="Fitness Shoot — Create & Connect LA" />
+<meta property="og:description" content="Your strength. Your brand. Your next level. $250 · 20 edited images · San Bernardino. Book with a $125 deposit." />
+<meta property="og:image" content="https://createconnectla.com/images/fitness-shoot/flyer.jpg" />
+<meta property="og:url" content="https://createconnectla.com/fitness-shoot/" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="theme-color" content="#0a0a0a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  /* ---- Fitness Shoot: accent override, scoped to this page ----
+     Olive gold, taken from the brush strokes on the Aurea Nat Photo flyer.
+     Contrast checked: #b39a62 on ink = 7.3:1 (also ink text on a gold
+     button), #6f5a30 on cream = 5.8:1. Both pass WCAG AA. */
+  :root {
+    --gold: #b39a62;
+    --gold-bright: #c7ad72;
+    --gold-deep: #6f5a30;
+  }
+  .event-detail-hero { background-position: center 30%; }
+  .fs-tagline {
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-size: clamp(20px, 2.6vw, 28px); color: rgba(245,239,228,0.85);
+    margin: -12px 0 32px;
+  }
+
+  /* ---- Swipe gallery: native scroll-snap, works with JS off ---- */
+  .fs-carousel {
+    display: flex; gap: 16px;
+    overflow-x: auto; scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch; scrollbar-width: none;
+    padding: 4px max(16px, calc((100vw - 1100px) / 2)) 8px;
+    scroll-padding-inline: max(16px, calc((100vw - 1100px) / 2));
+  }
+  .fs-carousel::-webkit-scrollbar { display: none; }
+  .fs-slide {
+    flex: 0 0 auto; scroll-snap-align: start;
+    width: min(78vw, 420px); margin: 0;
+  }
+  .fs-slide img {
+    display: block; width: 100%; height: min(104vw, 560px);
+    object-fit: cover; border-radius: 14px;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+  }
+  .fs-slide.flyer img { object-fit: contain; background: #f2efe6; }
+  .fs-slide figcaption {
+    margin-top: 12px; font-size: 11px; font-weight: 600;
+    letter-spacing: 0.18em; text-transform: uppercase; color: rgba(245,239,228,0.55);
+  }
+  .fs-controls {
+    display: flex; justify-content: center; align-items: center; gap: 18px; margin-top: 28px;
+  }
+  .fs-dots { display: flex; gap: 8px; }
+  .fs-dots button {
+    width: 8px; height: 8px; border-radius: 50%; border: 0; padding: 0; cursor: pointer;
+    background: rgba(245,239,228,0.28); transition: background .2s, transform .2s;
+  }
+  .fs-dots button[aria-current="true"] { background: var(--gold); transform: scale(1.3); }
+  .fs-arrow {
+    width: 40px; height: 40px; border-radius: 50%; cursor: pointer;
+    border: 1px solid rgba(245,239,228,0.3); background: transparent; color: var(--cream);
+    font-size: 16px; line-height: 1;
+  }
+  .fs-arrow:hover { border-color: var(--gold); color: var(--gold); }
+  .fs-hint { text-align: center; margin-top: 14px; font-size: 12px; color: rgba(245,239,228,0.45); }
+  @media (hover: hover) and (pointer: fine) { .fs-hint { display: none; } }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Fitness Shoot",
+  "serviceType": "Fitness photography session",
+  "description": "A one-on-one fitness photoshoot in San Bernardino with Aurea Nat Photo. 20 edited images.",
+  "image": ["https://createconnectla.com/images/fitness-shoot/flyer.jpg"],
+  "areaServed": "San Bernardino, CA",
+  "provider": {
+    "@type": "Organization",
+    "name": "Create & Connect LA",
+    "url": "https://createconnectla.com/"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": "https://createconnectla.com/fitness-shoot/",
+    "price": "250.00",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock"
+  }
+}
+</script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d6cb5e51b2c440719c55f7ca0f3ac260"}'></script><!-- End Cloudflare Web Analytics -->
+</head>
+<body>
+
+<nav class="top">
+  <div class="row">
+    <a href="../" class="brand">
+      <span class="brand-mark">Create <span class="amp">&amp;</span> Connect</span>
+      <span class="brand-script">los angeles</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../events/">Events</a></li>
+      <li><a href="../gallery/">Gallery</a></li>
+      <li><a href="../testimonials/">Testimonials</a></li>
+      <li><a href="../brands/">Brands</a></li>
+      <li><a href="./" class="active">Fitness Shoot</a></li>
+      <li><a href="../about/">About</a></li>
+      <li><a href="../contact/">Contact</a></li>
+      <li><a href="https://buy.stripe.com/fZuaEXejj3aZ7wM44zgjC0f" class="btn-pill">Book <span class="arrow">→</span></a></li>
+    </ul>
+    <button class="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="../events/">Events</a></li>
+    <li><a href="../gallery/">Gallery</a></li>
+    <li><a href="../testimonials/">Testimonials</a></li>
+    <li><a href="../brands/">Brands</a></li>
+    <li><a href="./">Fitness Shoot</a></li>
+    <li><a href="../about/">About</a></li>
+    <li><a href="../contact/">Contact</a></li>
+  </ul>
+  <div class="secondary">
+    <a href="https://buy.stripe.com/fZuaEXejj3aZ7wM44zgjC0f">Book your fitness shoot →</a>
+    <a href="https://createconnectla.com/events/the-statement/checkout/" target="_blank" rel="noopener">RSVP — Next Event →</a>
+    <a href="https://instagram.com/createconnect.la" target="_blank" rel="noopener">@createconnect.la →</a>
+  </div>
+</div>
+
+<!-- =========== HERO =========== -->
+<header class="event-detail-hero" style="background-image:url('../images/fitness-shoot/row.jpg');">
+  <div class="container">
+    <div class="eyebrow" style="color:var(--cream);">One-on-one · San Bernardino · Shot by Aurea Nat Photo</div>
+    <h1>Fitness <em style="font-style:italic;color:var(--gold);">Shoot</em></h1>
+    <p class="fs-tagline">Your strength. Your brand. Your next level.</p>
+    <a href="https://buy.stripe.com/fZuaEXejj3aZ7wM44zgjC0f" class="btn-pill lg">Book with a $125 deposit <span class="arrow">→</span></a>
+  </div>
+</header>
+
+<div class="event-detail-strip">
+  <div class="meta-group">
+    <div class="meta">Price<strong>$250 total</strong></div>
+    <div class="meta">You get<strong>20 edited images</strong></div>
+    <div class="meta">Where<strong>San Bernardino gym</strong></div>
+    <div class="meta">To book<strong class="capacity">$125 deposit, balance on shoot day</strong></div>
+  </div>
+  <a href="https://buy.stripe.com/fZuaEXejj3aZ7wM44zgjC0f" class="btn-pill ink">Book <span class="arrow">→</span></a>
+</div>
+
+<!-- =========== THE SHOOT (swipe gallery) =========== -->
+<section class="event-section">
+  <div class="container-narrow">
+    <div class="eyebrow">The Shoot</div>
+    <h2 class="section-title fade-in" style="margin:18px 0 20px;">Swipe the work.</h2>
+    <p class="body-serif fade-in" style="margin-bottom:40px;max-width:620px;opacity:0.85;">
+      Real gym, real training and real light. It's built for trainers, athletes, coaches and
+      anyone who's put in the work and wants images that show it, for your socials, your
+      website or your brand.
+    </p>
+  </div>
+  <div class="fs-carousel" id="fsCarousel" tabindex="0" aria-label="Fitness shoot photos — swipe or scroll sideways">
+    <figure class="fs-slide flyer">
+      <img src="../images/fitness-shoot/flyer.jpg" width="1320" height="1614"
+           alt="Fitness Shoot flyer by Aurea Nat Photo — $250 for 20 edited images, San Bernardino" />
+      <figcaption>The offer</figcaption>
+    </figure>
+    <figure class="fs-slide">
+      <img src="../images/fitness-shoot/portrait.jpg" width="384" height="426" loading="lazy"
+           alt="Smiling woman in a black tank top with arms crossed in a gym" />
+      <figcaption>Portrait</figcaption>
+    </figure>
+    <figure class="fs-slide">
+      <img src="../images/fitness-shoot/row.jpg" width="795" height="770" loading="lazy"
+           alt="Tattooed woman in black training gear doing a dumbbell row" />
+      <figcaption>In motion</figcaption>
+    </figure>
+    <figure class="fs-slide">
+      <img src="../images/fitness-shoot/bench.jpg" width="370" height="545" loading="lazy"
+           alt="Woman in a black beanie and training set seated on a gym bench in front of a dumbbell rack" />
+      <figcaption>Editorial</figcaption>
+    </figure>
+  </div>
+  <div class="fs-controls">
+    <button type="button" class="fs-arrow" data-dir="-1" aria-label="Previous photo">←</button>
+    <div class="fs-dots" id="fsDots"></div>
+    <button type="button" class="fs-arrow" data-dir="1" aria-label="Next photo">→</button>
+  </div>
+  <p class="fs-hint">Swipe to see more →</p>
+</section>
+
+<!-- =========== HOW BOOKING WORKS =========== -->
+<section class="event-section cream">
+  <div class="container-narrow">
+    <div class="eyebrow">How Booking Works</div>
+    <h2 class="section-title fade-in" style="margin:18px 0 32px;">Three steps.<br>No calendar to fight.</h2>
+    <div class="what-to-expect fade-in">
+      <div class="expect-item">
+        <div class="num">01</div>
+        <h4>Hold your shoot</h4>
+        <p>Pay the $125 deposit, half the $250 total, through secure Stripe checkout. Tell us the days and times that work for you.</p>
+      </div>
+      <div class="expect-item">
+        <div class="num">02</div>
+        <h4>Lock your date</h4>
+        <p>After checkout, DM <strong>@createconnect.la</strong> on Instagram. We'll confirm a date from your windows and send the gym location.</p>
+      </div>
+      <div class="expect-item">
+        <div class="num">03</div>
+        <h4>Shoot day</h4>
+        <p>Show up ready to train. The remaining $125 is due on the day, and you leave knowing 20 edited images are on the way.</p>
+      </div>
+    </div>
+    <div class="fade-in" style="text-align:center;margin-top:52px;">
+      <a href="https://buy.stripe.com/fZuaEXejj3aZ7wM44zgjC0f" class="btn-pill ink lg">Book my shoot <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- =========== FAQ =========== -->
+<section class="event-section cream">
+  <div class="container-narrow">
+    <div class="eyebrow">Before You Book</div>
+    <h2 class="section-title fade-in" style="margin:18px 0 32px;">Questions, answered.</h2>
+    <div class="faq fade-in">
+      <details class="faq-item">
+        <summary>What's included?</summary>
+        <p>A one-on-one fitness shoot in a San Bernardino gym, and 20 professionally edited images. $250 total.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Why is there a deposit?</summary>
+        <p>The $125 deposit holds your shoot and counts toward the $250. You pay the other $125 on shoot day.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How do I pick a date?</summary>
+        <p>Add your preferred days and times at checkout. Then DM @createconnect.la on Instagram and we'll lock in a date that works.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What should I wear?</summary>
+        <p>Bring 2–3 fitted training looks you feel strong in. Solid colors photograph best, and black always works. Come warmed up and ready to move.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Who's behind the camera?</summary>
+        <p>Aurea Nat Photo (<a href="https://instagram.com/aureanatphoto" target="_blank" rel="noopener" style="color:var(--gold-deep);">@aureanatphoto</a>), who shot every image on this page.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- =========== FINAL CTA =========== -->
+<section class="cta-band">
+  <div class="container-narrow">
+    <h2>Ready for your<br>next level?</h2>
+    <a href="https://buy.stripe.com/fZuaEXejj3aZ7wM44zgjC0f" class="btn-pill ink lg">Book with a $125 deposit <span class="arrow">→</span></a>
+  </div>
+</section>
+
+<!-- =========== FOOTER =========== -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="brand-mark">Create <span class="amp">&amp;</span> Connect</span>
+        <span class="brand-script">los angeles</span>
+        <p>Where creatives turn portfolios into art.</p>
+      </div>
+      <div class="footer-col">
+        <h4>The Community</h4>
+        <ul>
+          <li><a href="../events/">Events</a></li>
+          <li><a href="../gallery/">Gallery</a></li>
+          <li><a href="../testimonials/">Testimonials</a></li>
+          <li><a href="../about/">About</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Partner</h4>
+        <ul>
+          <li><a href="../brands/">Brands</a></li>
+          <li><a href="https://createconnectla.com/events/the-statement/checkout/" target="_blank" rel="noopener">RSVP</a></li>
+          <li><a href="../contact/">Contact</a></li>
+          <li><a href="../venues/">Venues</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="https://instagram.com/createconnect.la" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="mailto:hello@createconnectla.com">hello@createconnectla.com</a></li>
+          <li><a href="../#subscribe">Newsletter</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>© 2026 Create &amp; Connect LA · Los Angeles</span>
+      <span><a href="https://createconnectla.com/privacy/">Privacy</a> · <a href="https://createconnectla.com/terms/">Terms</a></span>
+      <span>Curated by <a href="https://instagram.com/natguerrero__" target="_blank" rel="noopener">@natguerrero__</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+  const hamburger = document.querySelector('.hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger?.addEventListener('click', () => {
+    const open = hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+    hamburger.setAttribute('aria-expanded', open);
+  });
+  mobileMenu?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    document.body.style.overflow = '';
+  }));
+
+  // Swipe gallery: scroll-snap does the swiping; this only adds dots + arrows.
+  const track = document.getElementById('fsCarousel');
+  const slides = [...track.querySelectorAll('.fs-slide')];
+  const dots = document.getElementById('fsDots');
+  const go = i => {
+    const s = slides[Math.max(0, Math.min(slides.length - 1, i))];
+    track.scrollTo({ left: s.offsetLeft - track.offsetLeft - parseFloat(getComputedStyle(track).scrollPaddingLeft || 0), behavior: 'smooth' });
+  };
+  slides.forEach((_, i) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.setAttribute('aria-label', `Photo ${i + 1} of ${slides.length}`);
+    b.addEventListener('click', () => go(i));
+    dots.appendChild(b);
+  });
+  const current = () => {
+    const pad = parseFloat(getComputedStyle(track).scrollPaddingLeft || 0);
+    let best = 0, bestD = Infinity;
+    slides.forEach((s, i) => {
+      const d = Math.abs(s.offsetLeft - track.offsetLeft - pad - track.scrollLeft);
+      if (d < bestD) { bestD = d; best = i; }
+    });
+    return best;
+  };
+  const sync = () => {
+    const c = current();
+    [...dots.children].forEach((d, i) => d.setAttribute('aria-current', i === c));
+  };
+  track.addEventListener('scroll', () => requestAnimationFrame(sync), { passive: true });
+  document.querySelectorAll('.fs-arrow').forEach(a =>
+    a.addEventListener('click', () => go(current() + Number(a.dataset.dir))));
+  sync();
+</script>
+
+<script defer src="../motion.js"></script>
+
+</body>
+</html>
