@@ -20,6 +20,7 @@ revenue, so paid RSVPs are the north-star metric.
 | 10 | Retire `modinochi-ii` (June event still "InStock", indexable) | Orphan page | CLAUDE.md flag 2026-08-30 | 2 | 5 | 1 | 10.0 | — (trust/SEO hygiene) | **Done 2026-10-29** |
 | 11 | No-JS fallback: every `.fade-in` is invisible without JS | Site-wide | CLAUDE.md flag; affects crawlers/old browsers | 2 | 4 | 1 | 8.0 | — | **Done 2026-10-29** |
 | 12 | Make the GitHub repo private (internal notes are public on GitHub) | Repo | Verified public | — | — | — | — | — | Zay chose to leave public (2026-10-29) |
+| 13 | Signup form on the pages people actually land on (event, gallery, Book a Shoot), not just the homepage; honest copy | Event/gallery → list → next event | 49 subscribers, 3 new in 3 months, 1 from the site (Beehiiv stats). Form existed only at the bottom of the homepage. Copy claimed "Biweekly" (sends are sporadic) | 4 | 3 | 1 | 12.0 | Beehiiv new subs/week + subscriber source; later, subscriber → Stripe buyer | **Built 2026-10-29** (draft PR) |
 
 Not adopted from the ChatGPT prompt (and why): CMS / event "single source of truth"
 (needs a build system for a 25-page static site — revisit only if events become weekly);

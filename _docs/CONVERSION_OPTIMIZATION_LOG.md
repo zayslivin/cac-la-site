@@ -95,3 +95,39 @@ data per event plus qualitative feedback.
 - **Change:** `_config.yml` excludes `CLAUDE.md` from the Pages build.
 - **Remaining:** the GitHub repo is **public**, so the file is still readable on GitHub.
   Fix = make the repo private (needs GitHub Pro for Pages) — Zay's decision.
+
+## 2026-10-29 — Signup form added to The Statement, gallery and Book a Shoot
+- **Pages:** `events/the-statement/`, `gallery/`, `book-a-shoot/` (new `#subscribe` section
+  before the footer); `index.html` (copy); `index.html` + `brands/` (stat 270+ → 600+).
+- **Category:** B (list growth → future paid RSVPs)
+- **Problem:** The list is 49 active subscribers, 3 new in the last 3 months, 1 of them from
+  the site (Beehiiv stats). The only form sat at the bottom of the homepage, while traffic
+  from IG lands on event and gallery pages. A visitor who can't make Nov 14 had no way to
+  hear about the next room except following IG. The meta line claimed "Biweekly" (false:
+  sends are sporadic), and "600+ creatives" read like a subscriber count.
+- **Change:** Same Beehiiv form (`e0353720…`) in a page-specific section on 3 more pages:
+  The Statement leads with "Can't make Nov 14? Hear about the next room first." Pitch = early
+  word on new dates + the free prep guide. Meta → "600+ creatives have been in our rooms ·
+  No spam · Unsubscribe anytime". "Biweekly" removed. On those 3 pages the mobile-menu /
+  footer "Newsletter" / "Get the free guide" links now jump to the on-page form. The 270+ stat
+  on home and brands → 600+ (Zay: 600+ = total attendees), so the site states one number.
+- **Evidence (weak):** Vendor blog guidance only, not controlled studies — place forms where
+  intent is (end of content / exit points), lead with a specific benefit rather than
+  "subscribe to our newsletter", set honest frequency expectations
+  (tajo.io/blog/newsletter-signup-optimization; orbitforms.ai/blog/newsletter-signup-form-best-practices).
+  The stronger argument is our own data: 1 site signup in 3 months from one placement.
+- **Tested:** headless Chromium at 390 and 1440px on all 5 changed pages: no horizontal
+  overflow, 0 JS errors, exactly one `#subscribe` per page, `<noscript>` fallback present,
+  per-event accent cascades (red on The Statement, olive on Book a Shoot). The Beehiiv embed
+  itself can't load in the sandbox; check it renders on the live pages after merge.
+- **Expected impact:** Medium on list growth; indirect on sales (the list sold nothing yet
+  that we can attribute).
+- **Measure:** Beehiiv new subscribers/week for 4 weeks after merge vs the 3-month baseline
+  (~1/month); Beehiiv subscriber source/referring URL if exposed.
+
+## 2026-10-29 — Book a Shoot hero: "A private shoot with Natalie."
+- **Problem:** H1 read "Book a Shoot", which on a site of group events doesn't say this is a private, one-on-one session or who shoots it.
+- **Change (Zay's call):** H1 → "A private shoot with *Natalie*."; lede opens "Your own session behind her lens, not a group event."; `<title>`/og:title name it a private shoot with Natalie. H1 clamp eased (56–112px → 46–92px) for the longer line.
+- **Evidence:** no live research; a clarity edit. Headline names the offer + the person (NN/g: say what you offer up front).
+- **Tests:** 390px + 1440px, no overflow, 0 JS errors.
+- **Measure:** DMs to @createconnect.la mentioning a shoot, per month.
