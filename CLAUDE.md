@@ -38,7 +38,7 @@ file updated when the site's structure, design system, or conventions change.
 - **Events** (slugs): `the-statement` (**the live one** — Nov 14), `the-pink-issue`
   (**PAST** — Sept 19, retired), `studio-sets-social` (**PAST** — Aug 29, retired to a recap page), `the-creative-collective`
   (**CANCELLED** — pages kept as cancellation notices), `poolside-summer-social`,
-  `artists-and-muses` (legacy redirect stubs → TCC), `modinochi-ii`.
+  `artists-and-muses` (legacy redirect stubs → TCC), `modinochi-ii` (**PAST** — June 20 Orange County, retired 2026-10-29).
 - **Nav links** (top bar): Events · Gallery · Testimonials · Brands · Book a Shoot · About · Contact · RSVP.
 
 ## Design system (styles.css)
@@ -196,6 +196,18 @@ Zay earns a share of ticket revenue, so **paid RSVPs are the north-star metric**
   site (it was publicly served until 2026-10-29). The GitHub repo itself is still public.
 
 ## Change log
+### 2026-10-29 — Quick fixes: retire Orange County (`modinochi-ii`); no-JS fallback
+- **`events/modinochi-ii/` retired** per the recipe, with one deliberate difference: it is not
+  certain this June 20 Orange County room ever ran (its checkout never had a Stripe link), so the
+  copy says **"Past event — RSVP closed"** / "This room has passed" and makes no gallery or results
+  claim. JSON-LD `SoldOut`, Price cell kept, no `noindex`; every RSVP (hero, strip, nav, mobile
+  menu, For Models, footer, final band) → The Statement. `checkout/` rewritten to the dashed
+  "This event has passed" panel (also removed its stale "Full refund up to 7 days" promise, which
+  contradicted `terms/#refunds`); order-summary aside kept.
+- **No-JS fallback:** every page that uses `.fade-in` (30) now carries, right after the
+  stylesheet link: `<noscript><style>.fade-in,.what-to-expect.fade-in>*,.stats.fade-in>*{opacity:1!important;transform:none!important}</style></noscript>`.
+  **New pages that use `.fade-in` must include it.** Verified: JS off → 0 hidden elements on 8
+  page types; JS on → reveal-on-scroll unchanged.
 ### 2026-10-29 — Fitness Shoot → Book a Shoot
 - Nav tab renamed **Book a Shoot** → `book-a-shoot/`. Four service cards (`#fitness`,
   `#headshots`, `#individual`, `#family`), all **"Contact for pricing"**; every CTA is a DM to
@@ -335,7 +347,7 @@ is one `<script defer>` line on the 27 styled pages.
   forced grayscale text antialiasing and `transform: none` no longer does.
 - **Pre-existing, not introduced here**: with JS disabled every `.fade-in` stays at
   `opacity: 0`, since the inline IntersectionObserver is what reveals it. True on
-  `main` too. Worth fixing one day with a `<noscript>` override.
+  `main` too. **Fixed 2026-10-29** with a `<noscript>` override (see that change log entry).
 
 ### 2026-08-26 — The Pink Issue (Sept 19) added
 - New event `events/the-pink-issue/` + `checkout/` + `confirmed/`, modeled on the SSS page.
