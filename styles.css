@@ -295,6 +295,62 @@ section.cream .text-link:hover { color: var(--gold-deep); }
   display: flex; align-items: center; gap: 24px;
   margin-top: 36px; flex-wrap: wrap;
 }
+/* Homepage hero: brand line on the left, next-event card on the right.
+   The card puts name, date, prices and the RSVP above the fold. */
+.hero-lede {
+  color: rgba(245,239,228,0.82); max-width: 560px;
+  font-family: 'Cormorant Garamond', serif; font-size: clamp(19px, 2vw, 23px); line-height: 1.45;
+  margin-top: 18px;
+}
+.hero-next {
+  background: rgba(10,10,10,0.62);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  border: 1px solid rgba(245,239,228,0.16); border-radius: 18px;
+  padding: 26px 28px; max-width: 420px; color: var(--cream);
+}
+.hero-next .eyebrow { color: var(--gold); font-size: 10px; letter-spacing: 0.24em; }
+.hero-next .hn-title {
+  font-family: 'Cormorant Garamond', serif; font-size: 40px; line-height: 1.05; margin: 10px 0 10px;
+}
+.hero-next .hn-copy { font-size: 14px; line-height: 1.6; color: rgba(245,239,228,0.75); margin-bottom: 16px; }
+.hero-next .hn-prices {
+  display: flex; flex-wrap: wrap; gap: 8px 22px; margin-bottom: 20px;
+  font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(245,239,228,0.7);
+}
+.hero-next .hn-prices strong {
+  font-family: 'Cormorant Garamond', serif; font-size: 22px; letter-spacing: 0; color: var(--gold); font-weight: 400;
+  margin-left: 6px;
+}
+.hero-next .hn-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; }
+/* With the card, the hero grows with its content instead of a fixed 100vh,
+   so nothing is clipped on short screens or hidden under the fixed nav. */
+.hero.has-next { height: auto; min-height: max(100vh, 720px); }
+.hero.has-next .hero-inner { height: auto; min-height: max(100vh, 720px); padding-top: 150px; }
+@media (min-width: 1000px) {
+  .hero-inner.has-next { flex-direction: row; align-items: flex-end; justify-content: space-between; gap: 48px; }
+  .hero-inner.has-next .hero-main { flex: 1 1 auto; }
+  /* Keep the copy column left of the model's face (centred in the photo). */
+  .hero-inner.has-next .hero-main { max-width: calc(50vw - 200px); }
+  .hero.has-next h1 { font-size: clamp(48px, 4.7vw, 96px); }
+  .hero.has-next .hero-lede { font-size: clamp(18px, 1.5vw, 22px); }
+  .hero-inner.has-next .hero-next { flex: 0 0 380px; }
+}
+/* Phones/tablets: the photo becomes a top band that fades into ink, so the
+   model's face stays clear of the text; copy and the event card sit below it. */
+@media (max-width: 999px) {
+  .hero.has-next { min-height: 0; background: var(--ink); }
+  .hero.has-next .hero-image { bottom: auto; height: 600px; }
+  .hero.has-next .hero-image::after {
+    background: linear-gradient(180deg, rgba(10,10,10,0.35) 0%, rgba(10,10,10,0) 30%, rgba(10,10,10,0.55) 70%, var(--ink) 100%);
+  }
+  .hero.has-next .hero-inner { min-height: 0; padding-top: 290px; padding-bottom: 56px; }
+  .hero.has-next h1 { font-size: clamp(38px, 10.4vw, 64px); }
+  .hero.has-next .hero-tag { margin-bottom: 14px; }
+  .hero.has-next .hero-lede { font-size: 18px; margin-top: 10px; }
+  .hero.has-next .hero-cta-row, .hero.has-next .hero-scroll { display: none; }
+  .hero-next { margin-top: 24px; padding: 22px; }
+  .hero-next .hn-title { font-size: 32px; }
+}
 .hero-scroll {
   position: absolute; bottom: 36px; left: 50%;
   transform: translateX(-50%);
