@@ -174,6 +174,27 @@ Hero (bg image) → info strip (When/Where/Price/Spots) → The Concept/Vibe →
 - Don't put the model identifier in commits/PRs. End commit messages with the Co-Authored-By
   + Claude-Session trailers; PR bodies with the Claude Code footer.
 
+## Conversion optimization — standing rules (every session)
+Zay earns a share of ticket revenue, so **paid RSVPs are the north-star metric**. Adopted
+2026-10-29 from a ChatGPT CRO audit + master prompt (scope: full plan, in phases).
+- **On every site change** (not on a schedule — Zay's choice): before significant
+  conversion-related edits, research current evidence (Baymard for checkout/forms, NN/g for
+  UX, Google docs for CWV/structured data/SEO, official docs for Stripe/Beehiiv). Cite the
+  source; say when it's from a different context; say plainly when no live research was done.
+  Scale it: a styling tweak gets a sentence, a checkout or landing-page change gets real research.
+- **Log it** in `_docs/CONVERSION_OPTIMIZATION_LOG.md` (problem, evidence, change, tests,
+  expected impact, how to measure). Keep `_docs/CONVERSION_OPTIMIZATION_BACKLOG.md` scored
+  (Impact × Confidence ÷ Effort). Read both before substantial work in a new session.
+- **End every meaningful change** with a short **"Next Conversion Optimization Opportunity"**:
+  the single best next change, why, evidence, impact (H/M/L), effort, how we'd validate it.
+  If nothing material is left, say so rather than inventing work.
+- **Never fabricate** testimonials, stats, scarcity, deadlines, sponsor ties, analytics or
+  "tested" claims. "Implemented" is not "worked" until Stripe/analytics show it.
+- **Measurement:** Cloudflare Web Analytics (pageviews only) + **Stripe as the source of truth**.
+  Rooms are 20–35 spots: no A/B testing; compare per-event Stripe data before/after.
+- `_docs/` and `_templates/` are never published; `_config.yml` excludes `CLAUDE.md` from the
+  site (it was publicly served until 2026-10-29). The GitHub repo itself is still public.
+
 ## Change log
 ### 2026-10-29 — Fitness Shoot → Book a Shoot
 - Nav tab renamed **Book a Shoot** → `book-a-shoot/`. Four service cards (`#fitness`,

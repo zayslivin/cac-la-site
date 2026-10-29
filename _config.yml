@@ -1,0 +1,5 @@
+# GitHub Pages (Jekyll) config. The site is plain HTML; this file exists only to keep
+# internal project notes out of the published site. Underscore folders (_docs/,
+# _templates/) are already excluded by Jekyll.
+exclude:
+  - CLAUDE.md
