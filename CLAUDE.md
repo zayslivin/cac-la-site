@@ -217,7 +217,7 @@ Zay earns a share of ticket revenue, so **paid RSVPs are the north-star metric**
   **New pages that use `.fade-in` must include it.** Verified: JS off → 0 hidden elements on 8
   page types; JS on → reveal-on-scroll unchanged.
 ### 2026-10-29 — Fitness Shoot → Book a Shoot
-- Nav tab renamed **Book a Shoot** → `book-a-shoot/`. Hero H1 is "A private shoot with *Natalie*." (Zay, 2026-10-29) — keep it clear this is private, not an event. Four service cards (`#fitness`,
+- Nav tab renamed **Book a Shoot** → `book-a-shoot/`. Hero H1 is "A private shoot with *Nathalie*." (Zay, 2026-10-29) — keep it clear this is private, not an event. Four service cards (`#fitness`,
   `#headshots`, `#individual`, `#family`), all **"Contact for pricing"**; every CTA is a DM to
   `ig.me/m/createconnect.la`. No prices or deposit on the page by Zay's call.
 - New hero (copy + fanned 3-photo stack) replaced the bland info strip; portfolio reel
