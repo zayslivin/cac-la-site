@@ -220,11 +220,11 @@ Zay earns a share of ticket revenue, so **paid RSVPs are the north-star metric**
 - Nav tab renamed **Book a Shoot** → `book-a-shoot/`. Hero H1 is "A private shoot with *Nathalie*." (Zay, 2026-10-29) — keep it clear this is private, not an event. Four service cards (`#fitness`,
   `#headshots`, `#individual`, `#family`), all **"Contact for pricing"**; every CTA is a DM to
   `ig.me/m/aureanatphoto` (Nat's own IG — changed from `createconnect.la` 2026-10-29, Zay's call;
-  site-wide incl. `fitness-shoot/confirmed/`). **No photo appears twice on the page**: the hero stack
-  (left `editorial-blue`, right `portrait-white-dress`, front/middle `portrait-denim` with the handle tag) and the service cards use images the
-  `.bs-reel` portfolio doesn't (reel = 10). Individual card = `portrait-blue`; `editorial-lace` lives in the reel.
-  Visible copy credits **Nathalie Guerrero** (not "Aurea Nat Photo"); the brand name stays only in
-  the Meet section line and meta/schema. Hero eyebrow: "Shot by @aureanatphoto · Inland Empire,
+  site-wide incl. `fitness-shoot/confirmed/`). Hero stack: left `editorial-blue`, right `portrait-white-dress`,
+  front/middle `portrait-denim` (handle tag), spread so the left face clears the front card.
+  Individual card = `portrait-blue`; `editorial-lace` appears only in the reel. The reel keeps all 16
+  photos, repeats included (Zay restored them 2026-10-29). Visible copy credits **Nathalie Guerrero**;
+  Meet section reads "The photographer behind Create & Connect LA." Hero eyebrow: "Shot by @aureanatphoto · Inland Empire,
   Orange County & LA" (handle links to her IG). Service area = IE, OC, LA. No prices or deposit on the page by Zay's call.
 - New hero (copy + fanned 3-photo stack) replaced the bland info strip; portfolio reel
   `.bs-reel` keeps each photo's own aspect ratio (fixed height desktop, 76vw width mobile) —
