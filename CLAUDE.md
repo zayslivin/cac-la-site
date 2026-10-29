@@ -252,8 +252,8 @@ Zay earns a share of ticket revenue, so **paid RSVPs are the north-star metric**
   reel** — Zay chose the Meet Nat section only. The portrait still needs a **visible photographer
   credit** (HTML comment marks the spot) once Zay confirms who shot it.
 - **Family card has no photo** (typographic placeholder) until Nat sends one.
-- The $125 deposit link `plink_1UVfZyFqKR455jnLmL0I3XJq` is no longer linked anywhere but is
-  still **active** in Stripe.
+- The $125 deposit link `plink_1UVfZyFqKR455jnLmL0I3XJq` was **deactivated 2026-10-29** (Zay's call);
+  reversible with `active: true`. Its checkout text still says "DM @createconnect.la" — irrelevant while off.
 
 ### 2026-10-28 — Fitness Shoot booking page (QR target)
 - New `fitness-shoot/` + `confirmed/`, linked as a **nav tab on all 18 nav pages** (after
