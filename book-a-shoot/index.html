@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Book a Shoot — Create &amp; Connect LA · Fitness, Headshots, Individual &amp; Family</title>
+<meta name="description" content="Book a photoshoot with Aurea Nat Photo: fitness shoots, headshots, individual portraits and family photos. Contact us for pricing and dates." />
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<meta property="og:title" content="Book a Shoot — Create & Connect LA" />
+<meta property="og:description" content="Fitness · Headshots · Individual · Family. Shot by Aurea Nat Photo. DM @createconnect.la for pricing and dates." />
+<meta property="og:image" content="https://createconnectla.com/images/book-a-shoot/editorial-lace.jpg" />
+<meta property="og:url" content="https://createconnectla.com/book-a-shoot/" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="theme-color" content="#0a0a0a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  /* ---- Book a Shoot: accent override, scoped to this page ----
+     Olive gold from the Aurea Nat Photo fitness flyer.
+     #b39a62 on ink = 7.3:1 (also ink text on a gold button),
+     #6f5a30 on cream = 5.8:1. Both pass WCAG AA. */
+  :root { --gold: #b39a62; --gold-bright: #c7ad72; --gold-deep: #6f5a30; }
+
+  /* ---- Hero: copy left, fanned photo stack right ---- */
+  .bs-hero {
+    position: relative; overflow: hidden;
+    padding: 150px 0 110px;
+    background:
+      radial-gradient(1100px 600px at 85% 30%, rgba(179,154,98,0.16), transparent 60%),
+      radial-gradient(700px 500px at 0% 100%, rgba(179,154,98,0.08), transparent 60%),
+      var(--ink);
+  }
+  .bs-hero .container {
+    display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; align-items: center;
+  }
+  .bs-hero h1 {
+    font-family: 'Cormorant Garamond', serif; font-weight: 400;
+    font-size: clamp(56px, 8vw, 112px); line-height: 0.98; letter-spacing: -0.015em;
+    color: var(--cream); margin: 18px 0 24px;
+  }
+  .bs-hero h1 em { font-style: italic; color: var(--gold); }
+  .bs-hero .lede { color: rgba(245,239,228,0.78); max-width: 480px; margin-bottom: 30px; }
+  .bs-types {
+    display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 36px; list-style: none; padding: 0;
+  }
+  .bs-types a {
+    display: inline-block; padding: 9px 16px; border-radius: 999px;
+    border: 1px solid rgba(245,239,228,0.22); color: var(--cream); text-decoration: none;
+    font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase;
+    transition: border-color .2s, color .2s;
+  }
+  .bs-types a:hover { border-color: var(--gold); color: var(--gold); }
+  .bs-cta-row { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+  .bs-stack { position: relative; height: 560px; }
+  .bs-stack figure {
+    position: absolute; margin: 0; border-radius: 14px; overflow: hidden;
+    box-shadow: 0 30px 70px rgba(0,0,0,0.55); border: 1px solid rgba(245,239,228,0.10);
+    background: #111;
+  }
+  .bs-stack img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .bs-stack .s1 { width: 54%; height: 76%; left: 0;   top: 12%; transform: rotate(-6deg); }
+  .bs-stack .s2 { width: 54%; height: 76%; right: 0;  top: 4%;  transform: rotate(5deg); }
+  .bs-stack .s3 { width: 52%; height: 72%; left: 24%; top: 22%; transform: rotate(-1deg); z-index: 2; }
+  .bs-stack figcaption {
+    position: absolute; left: 12px; bottom: 12px; padding: 6px 10px; border-radius: 999px;
+    background: rgba(10,10,10,0.7); color: var(--cream);
+    font-size: 10px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
+  }
+  @media (max-width: 900px) {
+    .bs-hero { padding: 120px 0 72px; }
+    .bs-hero .container { grid-template-columns: 1fr; gap: 40px; }
+    .bs-stack { height: 420px; max-width: 460px; width: 100%; margin: 0 auto; }
+  }
+
+  /* ---- Service cards ---- */
+  .bs-services {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 8px;
+  }
+  .bs-card {
+    display: flex; flex-direction: column; background: #fff; border-radius: 16px; overflow: hidden;
+    border: 1px solid var(--hairline-dark); box-shadow: 0 18px 50px rgba(10,10,10,0.08);
+    scroll-margin-top: 110px;
+  }
+  .bs-card:target { outline: 2px solid var(--gold); outline-offset: 4px; }
+  .bs-card .media { aspect-ratio: 4 / 5; background: var(--ink); overflow: hidden; }
+  .bs-card .media img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
+  .bs-card .media.type {
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+    background: radial-gradient(circle at 30% 20%, rgba(179,154,98,0.35), transparent 60%), var(--ink);
+    color: var(--cream); text-align: center;
+  }
+  .bs-card .media.type .script { font-family: 'Pinyon Script', cursive; font-size: 64px; color: var(--gold); line-height: 1; }
+  .bs-card .media.type small { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.6; }
+  .bs-card .body { padding: 22px 22px 24px; display: flex; flex-direction: column; flex: 1; }
+  .bs-card .tag {
+    font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-deep);
+  }
+  .bs-card h3 {
+    font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 30px; line-height: 1.1;
+    color: var(--ink); margin: 8px 0 10px;
+  }
+  .bs-card p { font-size: 14px; line-height: 1.6; color: rgba(10,10,10,0.68); margin-bottom: 18px; }
+  .bs-card .price {
+    margin-top: auto; padding-top: 14px; border-top: 1px solid var(--hairline-dark);
+    font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 19px; color: var(--ink);
+    margin-bottom: 16px;
+  }
+  @media (max-width: 1080px) { .bs-services { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px)  { .bs-services { grid-template-columns: 1fr; } .bs-card .media { aspect-ratio: 4 / 4.4; } }
+
+  /* ---- Portfolio: swipe row; each photo keeps its own aspect ratio, never cropped ---- */
+  .bs-reel {
+    display: flex; gap: 16px; align-items: flex-end;
+    overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+    padding: 4px max(16px, calc((100vw - 1100px) / 2)) 8px;
+    scroll-padding-inline: max(16px, calc((100vw - 1100px) / 2));
+  }
+  .bs-reel::-webkit-scrollbar { display: none; }
+  .bs-reel figure { flex: 0 0 auto; margin: 0; scroll-snap-align: start; }
+  .bs-reel img {
+    display: block; height: min(70vh, 540px); width: auto; max-width: 86vw;
+    object-fit: contain; border-radius: 14px; box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+  }
+  @media (max-width: 600px) {
+    .bs-reel img { width: 76vw; height: auto; max-width: none; }
+  }
+  .bs-reel figcaption {
+    margin-top: 12px; font-size: 11px; font-weight: 600; letter-spacing: 0.18em;
+    text-transform: uppercase; color: rgba(245,239,228,0.55);
+  }
+  .bs-controls { display: flex; justify-content: center; align-items: center; gap: 18px; margin-top: 28px; }
+  .bs-dots { display: flex; gap: 8px; }
+  .bs-dots button {
+    width: 8px; height: 8px; border-radius: 50%; border: 0; padding: 0; cursor: pointer;
+    background: rgba(245,239,228,0.28); transition: background .2s, transform .2s;
+  }
+  .bs-dots button[aria-current="true"] { background: var(--gold); transform: scale(1.3); }
+  .bs-arrow {
+    width: 40px; height: 40px; border-radius: 50%; cursor: pointer;
+    border: 1px solid rgba(245,239,228,0.3); background: transparent; color: var(--cream); font-size: 16px;
+  }
+  .bs-arrow:hover { border-color: var(--gold); color: var(--gold); }
+  /* ---- Meet Nat ---- */
+  .bs-meet { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 64px; align-items: center; }
+  .bs-meet figure { margin: 0; }
+  .bs-meet img {
+    display: block; width: 100%; height: auto; border-radius: 16px;
+    box-shadow: 0 30px 70px rgba(10,10,10,0.18);
+  }
+  .bs-meet .handles { display: flex; flex-wrap: wrap; gap: 10px 22px; margin: 26px 0 32px; }
+  .bs-meet .handles a {
+    color: var(--gold-deep); text-decoration: none; font-size: 12px; font-weight: 600;
+    letter-spacing: 0.16em; text-transform: uppercase; border-bottom: 1px solid currentColor; padding-bottom: 3px;
+  }
+  @media (max-width: 900px) {
+    .bs-meet { grid-template-columns: 1fr; gap: 36px; }
+    .bs-meet figure { max-width: 420px; }
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Book a Shoot",
+  "serviceType": "Photography session",
+  "description": "Fitness shoots, headshots, individual portraits and family photos by Aurea Nat Photo. Contact for pricing.",
+  "image": ["https://createconnectla.com/images/book-a-shoot/editorial-lace.jpg"],
+  "areaServed": ["San Bernardino, CA", "Los Angeles, CA"],
+  "provider": { "@type": "Organization", "name": "Create & Connect LA", "url": "https://createconnectla.com/" },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Photoshoots",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Fitness Shoot" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Headshots" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Individual Shoot" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Family Photos" } }
+    ]
+  }
+}
+</script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d6cb5e51b2c440719c55f7ca0f3ac260"}'></script><!-- End Cloudflare Web Analytics -->
+</head>
+<body>
+
+<nav class="top">
+  <div class="row">
+    <a href="../" class="brand">
+      <span class="brand-mark">Create <span class="amp">&amp;</span> Connect</span>
+      <span class="brand-script">los angeles</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../events/">Events</a></li>
+      <li><a href="../gallery/">Gallery</a></li>
+      <li><a href="../testimonials/">Testimonials</a></li>
+      <li><a href="../brands/">Brands</a></li>
+      <li><a href="./" class="active">Book a Shoot</a></li>
+      <li><a href="../about/">About</a></li>
+      <li><a href="../contact/">Contact</a></li>
+      <li><a href="https://ig.me/m/createconnect.la" target="_blank" rel="noopener" class="btn-pill">Inquire <span class="arrow">→</span></a></li>
+    </ul>
+    <button class="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="../events/">Events</a></li>
+    <li><a href="../gallery/">Gallery</a></li>
+    <li><a href="../testimonials/">Testimonials</a></li>
+    <li><a href="../brands/">Brands</a></li>
+    <li><a href="./">Book a Shoot</a></li>
+    <li><a href="../about/">About</a></li>
+    <li><a href="../contact/">Contact</a></li>
+  </ul>
+  <div class="secondary">
+    <a href="https://ig.me/m/createconnect.la" target="_blank" rel="noopener">DM to book a shoot →</a>
+    <a href="https://createconnectla.com/events/the-statement/checkout/" target="_blank" rel="noopener">RSVP — Next Event →</a>
+    <a href="https://instagram.com/createconnect.la" target="_blank" rel="noopener">@createconnect.la →</a>
+  </div>
+</div>
+
+<!-- =========== HERO =========== -->
+<header class="bs-hero">
+  <div class="container">
+    <div>
+      <div class="eyebrow">Shot by Aurea Nat Photo · San Bernardino &amp; LA</div>
+      <h1>Book a <em>Shoot</em></h1>
+      <p class="lede body-serif">
+        Editorial-grade images for your brand, your career and your people.
+        Pick your shoot, send us a message, and we'll build it around you.
+      </p>
+      <ul class="bs-types" aria-label="Shoot types">
+        <li><a href="#fitness">Fitness</a></li>
+        <li><a href="#headshots">Headshots</a></li>
+        <li><a href="#individual">Individual</a></li>
+        <li><a href="#family">Family</a></li>
+      </ul>
+      <div class="bs-cta-row">
+        <a href="#shoots" class="btn-pill lg">Choose your shoot <span class="arrow">→</span></a>
+        <a href="https://ig.me/m/createconnect.la" target="_blank" rel="noopener" class="text-link">DM @createconnect.la</a>
+      </div>
+    </div>
+    <div class="bs-stack" aria-hidden="true">
+      <figure class="s1"><img src="../images/book-a-shoot/editorial-lace.jpg" alt="" width="1168" height="1455"></figure>
+      <figure class="s2"><img src="../images/book-a-shoot/editorial-blue.jpg" alt="" width="1168" height="1340" style="object-position:center 20%"></figure>
+      <figure class="s3"><img src="../images/book-a-shoot/portrait-white-dress.jpg" alt="" width="1168" height="1340" style="object-position:62% center"><figcaption>@aureanatphoto</figcaption></figure>
+    </div>
+  </div>
+</header>
+
+<!-- =========== CHOOSE YOUR SHOOT =========== -->
+<section class="event-section cream" id="shoots">
+  <div class="container">
+    <div class="eyebrow">Choose Your Shoot</div>
+    <h2 class="section-title fade-in" style="margin:18px 0 16px;">Four ways<br>to get in front of the lens.</h2>
+    <p class="body-serif fade-in" style="max-width:620px;margin-bottom:44px;opacity:0.8;">
+      Every shoot is quoted for what you need: the time, the location and how many final
+      images. Tap <strong>Inquire</strong> on the one you want and we'll send pricing and open dates.
+    </p>
+    <div class="bs-services">
+      <article class="bs-card" id="fitness">
+        <div class="media"><img src="../images/book-a-shoot/fitness-bench.jpg" alt="Woman in a black training set seated on a gym bench in front of a dumbbell rack" width="1200" height="1784" loading="lazy" style="object-position:center 4%"></div>
+        <div class="body">
+          <div class="tag">In the gym</div>
+          <h3>Fitness Shoot</h3>
+          <p>For trainers, athletes, coaches and anyone who's put in the work. Real gym, real training, images built for your socials and your brand.</p>
+          <div class="price">Contact for pricing</div>
+          <a href="https://ig.me/m/createconnect.la" target="_blank" rel="noopener" class="btn-pill ink block">Inquire <span class="arrow">→</span></a>
+        </div>
+      </article>
+      <article class="bs-card" id="headshots">
+        <div class="media"><img src="../images/book-a-shoot/headshot-blonde.jpg" alt="Close-up portrait of a woman with long wavy strawberry-blonde hair" width="1168" height="940" loading="lazy" style="object-position:48% center"></div>
+        <div class="body">
+          <div class="tag">Professional</div>
+          <h3>Headshots</h3>
+          <p>Clean, confident headshots for LinkedIn, your website, casting and press. Directed so you look like yourself on your best day.</p>
+          <div class="price">Contact for pricing</div>
+          <a href="https://ig.me/m/createconnect.la" target="_blank" rel="noopener" class="btn-pill ink block">Inquire <span class="arrow">→</span></a>
+        </div>
+      </article>
+      <article class="bs-card" id="individual">
+        <div class="media"><img src="../images/book-a-shoot/editorial-lace.jpg" alt="Woman in black lace and thigh-high boots posing on a chair among stacked vintage TVs" width="1168" height="1455" loading="lazy" style="object-position:center 15%"></div>
+        <div class="body">
+          <div class="tag">Portrait &amp; editorial</div>
+          <h3>Individual Shoot</h3>
+          <p>A one-on-one portrait or editorial session for models, creatives and personal brands. Studio or on location, styled around your concept.</p>
+          <div class="price">Contact for pricing</div>
+          <a href="https://ig.me/m/createconnect.la" target="_blank" rel="noopener" class="btn-pill ink block">Inquire <span class="arrow">→</span></a>
+        </div>
+      </article>
+      <article class="bs-card" id="family">
+        <div class="media type"><span class="script">family</span><small>Portraits · Milestones · Holidays</small></div>
+        <div class="body">
+          <div class="tag">Your people</div>
+          <h3>Family Photos</h3>
+          <p>Relaxed, guided family sessions for holiday cards, milestones and the walls at home. Everyone in the frame, nobody stiff.</p>
+          <div class="price">Contact for pricing</div>
+          <a href="https://ig.me/m/createconnect.la" target="_blank" rel="noopener" class="btn-pill ink block">Inquire <span class="arrow">→</span></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- =========== THE WORK (swipe reel) =========== -->
+<section class="event-section">
+  <div class="container-narrow">
+    <div class="eyebrow">The Work</div>
+    <h2 class="section-title fade-in" style="margin:18px 0 20px;">Swipe the portfolio.</h2>
+    <p class="body-serif fade-in" style="margin-bottom:40px;max-width:620px;opacity:0.85;">
+      Studio editorials, runway, portraits and gym sessions, all shot by Aurea Nat Photo.
+      More at <a href="https://instagram.com/aureanatphoto" target="_blank" rel="noopener" style="color:var(--gold);">@aureanatphoto</a>.
+    </p>
+  </div>
+  <div class="bs-reel" id="bsReel" tabindex="0" aria-label="Portfolio photos. Swipe or scroll sideways">
+    <figure><img src="../images/book-a-shoot/editorial-blue.jpg" width="1168" height="1340" alt="Woman with long blonde hair lit in blue, hands raised to her head"><figcaption>Editorial</figcaption></figure>
+    <figure><img src="../images/book-a-shoot/headshot-blonde.jpg" width="1168" height="940" loading="lazy" alt="Close-up portrait of a woman with long wavy strawberry-blonde hair"><figcaption>Headshot</figcaption></figure>
+    <figure><img src="../images/book-a-shoot/editorial-lace.jpg" width="1168" height="1455" loading="lazy" alt="Woman in black lace and thigh-high boots among stacked vintage TVs"><figcaption>Editorial</figcaption></figure>
+    <figure><img src="../images/book-a-shoot/fitness-bench.jpg" width="1200" height="1784" loading="lazy" alt="Woman in a black training set seated on a gym bench"><figcaption>Fitness</figcaption></figure>
+    <figure><img src="../images/book-a-shoot/editorial-bw.jpg" width="1168" height="1380" loading="lazy" alt="Black-and-white poolside portrait of a woman in a polka-dot swimsuit, headscarf and sunglasses"><figcaption>Editorial</figcaption></figure>
+    <figure><img src="../images/book-a-shoot/portrait-white-dress.jpg" width="1168" height="1340" loading="lazy" alt="Woman in a white slip dress seated by a window"><figcaption>Portrait</figcaption></figure>
+    <figure><img src="../images/book-a-shoot/editorial-fur.jpg" width="1168" height="1450" loading="lazy" alt="Woman in a fur coat and western boots in a white light tunnel"><figcaption>Editorial</figcaption></figure>
+    <figure><img src="../images/book-a-shoot/headshot-silver.jpg" width="1168" height="980" loading="lazy" alt="Man with a long white beard and bold black glasses in a white shirt"><figcaption>Portrait</figcaption></figure>
+    <figure><img src="../images/book-a-shoot/editorial-purple.jpg" width="1168" height="1455" loading="lazy" alt="Man in sunglasses and a utility vest against a purple collage wall"><figcaption>Editorial</figcaption></figure>
+    <figure><img src="../images/book-a-shoot/runway.jpg" width="680" height="1500" loading="lazy" alt="Model in a sheer black gown on an outdoor runway at night"><figcaption>Runway</figcaption></figure>
+    <figure><img src="../images/book-a-shoot/portrait-denim.jpg" width="898" height="1345" loading="lazy" alt="Man in a patchwork denim jacket posing against a denim wall"><figcaption>Portrait</figcaption></figure>
+    <figure><img src="../images/book-a-shoot/editorial-pool.jpg" width="1168" height="1200" loading="lazy" alt="Woman in sunglasses and a black-and-white set leaning on a tiled poolside bar"><figcaption>Editorial</figcaption></figure>
+    <figure><img src="../images/book-a-shoot/duo.jpg" width="1168" height="1440" loading="lazy" alt="Two women with red neck scarves posing together on a tufted sofa"><figcaption>Duo</figcaption></figure>
+    <figure><img src="../images/book-a-shoot/editorial-red.jpg" width="1170" height="1270" loading="lazy" alt="Man in a striped knit stretching in front of a red circle on a white set"><figcaption>Editorial</figcaption></figure>
+    <figure><img src="../images/book-a-shoot/portrait-blue.jpg" width="1055" height="1417" loading="lazy" alt="Man in an open black wrap shirt against a pale blue backdrop"><figcaption>Portrait</figcaption></figure>
+    <figure><img src="../images/book-a-shoot/fitness-portrait.jpg" width="1200" height="1297" loading="lazy" alt="Smiling woman in a black tank top with arms crossed in a gym"><figcaption>Fitness</figcaption></figure>
+  </div>
+  <div class="bs-controls">
+    <button type="button" class="bs-arrow" data-dir="-1" aria-label="Previous photo">←</button>
+    <div class="bs-dots" id="bsDots"></div>
+    <button type="button" class="bs-arrow" data-dir="1" aria-label="Next photo">→</button>
+  </div>
+</section>
+
+<!-- =========== MEET NAT =========== -->
+<section class="event-section cream" id="meet-nat">
+  <div class="container-narrow bs-meet">
+    <figure class="fade-in">
+      <!-- Photo of Nat by another photographer: add a visible credit (figcaption) once Zay confirms who shot it. -->
+      <img src="../images/book-a-shoot/meet-nat.jpg" width="1168" height="1608" loading="lazy"
+           alt="Nat Guerrero seated on a director's chair holding a clapperboard in a studio">
+    </figure>
+    <div>
+      <div class="eyebrow">Meet the Photographer</div>
+      <h2 class="section-title fade-in" style="margin:18px 0 24px;">Nat Guerrero.</h2>
+      <p class="lede fade-in" style="margin-bottom:20px;">
+        The photographer behind Aurea Nat Photo and the curator of Create &amp; Connect LA.
+      </p>
+      <p class="body-serif fade-in" style="margin-bottom:18px;">
+        Nat shoots editorial, commercial and social work across San Bernardino and Los Angeles,
+        and she runs the photomeets where LA's models, photographers and brands come together.
+        As a portfolio consultant she knows what a strong image needs before the camera comes out.
+      </p>
+      <p class="body-serif fade-in">
+        Every session starts with a clear concept and easy direction, so you can stop thinking
+        about the camera and just show up as yourself.
+      </p>
+      <div class="handles fade-in">
+        <a href="https://instagram.com/aureanatphoto" target="_blank" rel="noopener">@aureanatphoto</a>
+        <a href="https://instagram.com/natguerrero__" target="_blank" rel="noopener">@natguerrero__</a>
+      </div>
+      <a href="https://ig.me/m/createconnect.la" target="_blank" rel="noopener" class="btn-pill ink">Shoot with Nat <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- =========== HOW BOOKING WORKS =========== -->
+<section class="event-section">
+  <div class="container-narrow">
+    <div class="eyebrow">How Booking Works</div>
+    <h2 class="section-title fade-in" style="margin:18px 0 32px;">Three steps.<br>No calendar to fight.</h2>
+    <div class="what-to-expect fade-in">
+      <div class="expect-item">
+        <div class="num">01</div>
+        <h4>Pick your shoot</h4>
+        <p>Fitness, headshots, an individual session or family photos. Not sure which fits? Tell us what the photos are for.</p>
+      </div>
+      <div class="expect-item">
+        <div class="num">02</div>
+        <h4>Send a DM</h4>
+        <p>Message <strong>@createconnect.la</strong> on Instagram with your shoot type and the days that work. We'll reply with pricing and open dates.</p>
+      </div>
+      <div class="expect-item">
+        <div class="num">03</div>
+        <h4>Lock it in and shoot</h4>
+        <p>A deposit holds your date. Show up ready, and your edited images follow after the shoot.</p>
+      </div>
+    </div>
+    <div class="fade-in" style="text-align:center;margin-top:52px;">
+      <a href="https://ig.me/m/createconnect.la" target="_blank" rel="noopener" class="btn-pill lg">DM to book <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- =========== FAQ =========== -->
+<section class="event-section cream">
+  <div class="container-narrow">
+    <div class="eyebrow">Before You Book</div>
+    <h2 class="section-title fade-in" style="margin:18px 0 32px;">Questions, answered.</h2>
+    <div class="faq fade-in">
+      <details class="faq-item">
+        <summary>How much does a shoot cost?</summary>
+        <p>It depends on the shoot type, how long we shoot, the location and how many edited images you want. DM us what you have in mind and we'll send a quote.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Where do shoots happen?</summary>
+        <p>Fitness shoots happen in a San Bernardino gym. Headshots, individual and family sessions can be in studio or on location around San Bernardino and Los Angeles. Ask about your spot.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What should I wear?</summary>
+        <p>After you book we'll send styling notes for your shoot type. Short version: fitted pieces you feel strong in, solid colors over busy prints, and a second look if you want variety.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Who's behind the camera?</summary>
+        <p>Aurea Nat Photo (<a href="https://instagram.com/aureanatphoto" target="_blank" rel="noopener" style="color:var(--gold-deep);">@aureanatphoto</a>), who curates Create &amp; Connect LA and shot the work on this page.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- =========== FINAL CTA =========== -->
+<section class="cta-band">
+  <div class="container-narrow">
+    <h2>Ready for your<br>next level?</h2>
+    <a href="https://ig.me/m/createconnect.la" target="_blank" rel="noopener" class="btn-pill ink lg">Inquire about a shoot <span class="arrow">→</span></a>
+  </div>
+</section>
+
+<!-- =========== FOOTER =========== -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="brand-mark">Create <span class="amp">&amp;</span> Connect</span>
+        <span class="brand-script">los angeles</span>
+        <p>Where creatives turn portfolios into art.</p>
+      </div>
+      <div class="footer-col">
+        <h4>The Community</h4>
+        <ul>
+          <li><a href="../events/">Events</a></li>
+          <li><a href="../gallery/">Gallery</a></li>
+          <li><a href="../testimonials/">Testimonials</a></li>
+          <li><a href="../about/">About</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Partner</h4>
+        <ul>
+          <li><a href="../brands/">Brands</a></li>
+          <li><a href="https://createconnectla.com/events/the-statement/checkout/" target="_blank" rel="noopener">RSVP</a></li>
+          <li><a href="../contact/">Contact</a></li>
+          <li><a href="../venues/">Venues</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="https://instagram.com/createconnect.la" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="mailto:hello@createconnectla.com">hello@createconnectla.com</a></li>
+          <li><a href="../#subscribe">Newsletter</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>© 2026 Create &amp; Connect LA · Los Angeles</span>
+      <span><a href="https://createconnectla.com/privacy/">Privacy</a> · <a href="https://createconnectla.com/terms/">Terms</a></span>
+      <span>Curated by <a href="https://instagram.com/natguerrero__" target="_blank" rel="noopener">@natguerrero__</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+  const hamburger = document.querySelector('.hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger?.addEventListener('click', () => {
+    const open = hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+    hamburger.setAttribute('aria-expanded', open);
+  });
+  mobileMenu?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    document.body.style.overflow = '';
+  }));
+
+  // Portfolio reel: scroll-snap does the swiping; this only adds dots + arrows.
+  const track = document.getElementById('bsReel');
+  const slides = [...track.querySelectorAll('figure')];
+  const dots = document.getElementById('bsDots');
+  const pad = () => parseFloat(getComputedStyle(track).scrollPaddingLeft) || 0;
+  const go = i => {
+    const s = slides[Math.max(0, Math.min(slides.length - 1, i))];
+    track.scrollTo({ left: s.offsetLeft - track.offsetLeft - pad(), behavior: 'smooth' });
+  };
+  slides.forEach((_, i) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.setAttribute('aria-label', `Photo ${i + 1} of ${slides.length}`);
+    b.addEventListener('click', () => go(i));
+    dots.appendChild(b);
+  });
+  const current = () => {
+    let best = 0, bestD = Infinity;
+    slides.forEach((s, i) => {
+      const d = Math.abs(s.offsetLeft - track.offsetLeft - pad() - track.scrollLeft);
+      if (d < bestD) { bestD = d; best = i; }
+    });
+    return best;
+  };
+  const sync = () => {
+    const c = current();
+    [...dots.children].forEach((d, i) => d.setAttribute('aria-current', i === c));
+  };
+  track.addEventListener('scroll', () => requestAnimationFrame(sync), { passive: true });
+  document.querySelectorAll('.bs-arrow').forEach(a =>
+    a.addEventListener('click', () => go(current() + Number(a.dataset.dir))));
+  sync();
+</script>
+
+<script defer src="../motion.js"></script>
+
+</body>
+</html>
