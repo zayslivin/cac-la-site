@@ -131,3 +131,11 @@ data per event plus qualitative feedback.
 - **Evidence:** no live research; a clarity edit. Headline names the offer + the person (NN/g: say what you offer up front).
 - **Tests:** 390px + 1440px, no overflow, 0 JS errors.
 - **Measure:** DMs to @createconnect.la mentioning a shoot, per month.
+
+## 2026-10-29 — Real testimonials on The Statement page + checkout
+- **Problem:** the pages where people decide to pay (event detail + checkout) carried zero social proof; 20 real quotes with IG handles sat only on `testimonials/`. Statement sales: 2 of 20, 0 models, none since Oct 10 (Stripe).
+- **Evidence:** NN/g "Social Proof in the User Experience" (people are guided by others' behavior; show it where the decision happens); Baymard trust research (social proof as a trust signal) and its product-page finding that users leave the page to look for proof when it isn't there. Ecommerce context, not events — placement principle transfers, effect size does not.
+- **Change:** new dark "From Past Rooms" section (4 cards: 2 models, 2 photographers, verbatim; one trimmed with "…") before the FAQ, with a Reserve button and a link to `testimonials/`. Checkout aside gets 2 short excerpts under "After you RSVP". Models picked deliberately — model sales are at zero.
+- **Tests:** 390px + 1440px on both pages, no overflow, 0 JS errors. Accent cascades red.
+- **Expected impact:** small-to-moderate lift in event-page → checkout and checkout → paid. Can't be isolated (Nat is also pushing sales).
+- **Measure:** Stripe Statement sales after merge vs. the 19-day zero streak before; model share of sales.

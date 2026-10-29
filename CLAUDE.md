@@ -196,6 +196,11 @@ Zay earns a share of ticket revenue, so **paid RSVPs are the north-star metric**
   site (it was publicly served until 2026-10-29). The GitHub repo itself is still public.
 
 ## Change log
+### 2026-10-29 — Testimonials on the event page + checkout
+- `events/the-statement/` has a dark **"From Past Rooms"** section (reuses `.testimonial-grid` /
+  `.testimonial-card` from `styles.css`) between Partner With Us and the FAQ; its checkout aside
+  has 2 short excerpts. **Quotes are verbatim from `testimonials/`** — trims marked with "…",
+  never reworded. Copy this section into each new event page (and keep it when retiring one).
 ### 2026-10-29 — Signup form on more pages
 - The Beehiiv form (`data-beehiiv-form="e0353720-9779-4e4e-95bb-e47ae062e4ae"`) now also sits in
   an `.email-capture#subscribe` section before the footer on `events/the-statement/`,
