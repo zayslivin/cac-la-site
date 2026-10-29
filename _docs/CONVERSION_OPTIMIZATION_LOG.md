@@ -124,3 +124,10 @@ data per event plus qualitative feedback.
   that we can attribute).
 - **Measure:** Beehiiv new subscribers/week for 4 weeks after merge vs the 3-month baseline
   (~1/month); Beehiiv subscriber source/referring URL if exposed.
+
+## 2026-10-29 — Book a Shoot hero: "A private shoot with Natalie."
+- **Problem:** H1 read "Book a Shoot", which on a site of group events doesn't say this is a private, one-on-one session or who shoots it.
+- **Change (Zay's call):** H1 → "A private shoot with *Natalie*."; lede opens "Your own session behind her lens, not a group event."; `<title>`/og:title name it a private shoot with Natalie. H1 clamp eased (56–112px → 46–92px) for the longer line.
+- **Evidence:** no live research; a clarity edit. Headline names the offer + the person (NN/g: say what you offer up front).
+- **Tests:** 390px + 1440px, no overflow, 0 JS errors.
+- **Measure:** DMs to @createconnect.la mentioning a shoot, per month.
