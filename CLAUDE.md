@@ -122,7 +122,10 @@ file updated when the site's structure, design system, or conventions change.
 ## Event detail page anatomy (typical order)
 Hero (bg image) → info strip (When/Where/Price/Spots) → The Concept/Vibe → visual section
 (gallery or venue photos) → What to Expect / The Experience (numbered) → For Models callout →
-**Partner With Us** (brands/sponsors/vendors) → FAQ ("Before You RSVP") → final `.cta-band` → footer.
+**Partner With Us** (brands/sponsors/vendors) → **From Past Rooms** (testimonials — required) → FAQ
+("Before You RSVP") → final `.cta-band` → email capture → footer.
+- **Every new event page gets testimonials, every time** (Zay, 2026-10-29): the "From Past Rooms"
+  section from `_templates/event-testimonials-section.html` + 2 excerpts in its checkout aside.
 - Each page has JSON-LD `Event` schema in `<head>` and OG/Twitter meta (og:image = the flyer).
 - Checkout links go to `https://createconnectla.com/events/<slug>/checkout/` (target=_blank).
 
@@ -134,6 +137,9 @@ Hero (bg image) → info strip (When/Where/Price/Spots) → The Concept/Vibe →
   vendors → *Inquire to partner*) section. Copy into a new event page near the bottom
   (after For Models, before FAQ). Replace `[EVENT NAME]`; the link `../../brands/inquire/`
   assumes the page is 2 levels deep (`events/<slug>/`).
+
+- **`_templates/event-testimonials-section.html`** — "From Past Rooms" (4 real quotes, verbatim
+  from `testimonials/`). Required on every new event page; replace `[SLUG]`. Rules are in its header.
 
 ## Conventions / gotchas
 - **Verify visual changes** by rendering with headless Chromium. The background HTTP
@@ -196,6 +202,14 @@ Zay earns a share of ticket revenue, so **paid RSVPs are the north-star metric**
   site (it was publicly served until 2026-10-29). The GitHub repo itself is still public.
 
 ## Change log
+### 2026-10-29 — Testimonials on the event page + checkout
+- `events/the-statement/` has a dark **"From Past Rooms"** section (reuses `.testimonial-grid` /
+  `.testimonial-card` from `styles.css`) between Partner With Us and the FAQ; its checkout aside
+  has 2 short excerpts. **Quotes are verbatim from `testimonials/`** — trims marked with "…",
+  never reworded. Copy this section into each new event page (and keep it when retiring one).
+- `testimonials/` has a 3rd tab, **Private Shoots** (Nat's 1:1 clients); Book a Shoot shows the same
+  quote above "DM to book". The client is unnamed ("Private shoot client") — add a handle only with
+  their OK. `testimonials/` final CTA now points at the live event; **repoint it when events change.**
 ### 2026-10-29 — Signup form on more pages
 - The Beehiiv form (`data-beehiiv-form="e0353720-9779-4e4e-95bb-e47ae062e4ae"`) now also sits in
   an `.email-capture#subscribe` section before the footer on `events/the-statement/`,
