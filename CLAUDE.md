@@ -221,7 +221,7 @@ Zay earns a share of ticket revenue, so **paid RSVPs are the north-star metric**
   `#headshots`, `#individual`, `#family`), all **"Contact for pricing"**; every CTA is a DM to
   `ig.me/m/aureanatphoto` (Nat's own IG — changed from `createconnect.la` 2026-10-29, Zay's call;
   site-wide incl. `fitness-shoot/confirmed/`). **No photo appears twice on the page**: the hero stack
-  (`portrait-denim`, `editorial-blue`, `portrait-white-dress`) and the service cards use images the
+  (left `editorial-blue`, right `portrait-white-dress`, front/middle `portrait-denim` with the handle tag) and the service cards use images the
   `.bs-reel` portfolio doesn't (reel = 10). Individual card = `portrait-blue`; `editorial-lace` lives in the reel.
   Visible copy credits **Nathalie Guerrero** (not "Aurea Nat Photo"); the brand name stays only in
   the Meet section line and meta/schema. Hero eyebrow: "Shot by @aureanatphoto · Inland Empire,
