@@ -14,6 +14,19 @@ data per event plus qualitative feedback.
 
 ---
 
+## 2026-10-29 — Retired the stale Orange County page; content visible without JS
+- **Category:** A → D. **Pages:** `events/modinochi-ii/` (+ checkout), 30 pages with `.fade-in`.
+- **Problem:** A June 20 event page still read "InStock", "8 of 30 remaining", "RSVP closes when
+  the room is full", and its checkout promised refunds the terms don't offer — live and indexable.
+  Separately, with JavaScript off every reveal-on-scroll section stayed invisible.
+- **Change:** Retired per the recipe (neutral "past event" copy — no proof it ran); all RSVPs →
+  The Statement. `<noscript>` override un-hides `.fade-in` and the staggered children.
+- **Evidence:** Google Event structured-data guidance — markup must match the page and expired
+  events shouldn't advertise availability; progressive enhancement (content must not depend on JS).
+- **Tested:** JS off → 0 hidden elements on home, Statement, Book a Shoot, gallery, about, both
+  Orange County pages, Statement checkout; JS on → unchanged.
+- **Expected impact:** Low on conversion; removes a trust/SEO liability.
+
 ## 2026-10-29 — Book a Shoot images enhanced; no heads cut off
 - **Pages:** `book-a-shoot/`, `images/book-a-shoot/` (16 images)
 - **Category:** A → D
