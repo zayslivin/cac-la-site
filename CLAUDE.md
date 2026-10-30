@@ -202,6 +202,13 @@ Zay earns a share of ticket revenue, so **paid RSVPs are the north-star metric**
   site (it was publicly served until 2026-10-29). The GitHub repo itself is still public.
 
 ## Change log
+### 2026-10-30 — Gallery: Pink Issue photos + Blue Room additions
+- `gallery/#pinkissue` now has 4 photos (`images/gallery/pinkissue/01–04`): 01–02 by **Mark Bui**, 03–04 by
+  **thu_vans_eyes**, model **Kathryn Rainwater** (credits from Nat's DM). **Nat is sending more** — add them
+  there and drop `.single-row` once the set reaches 7+ (then the 7n+1/7n+4 tall spans apply).
+- `.photo-grid.single-row` (styles.css): one even row for short sets. `.photo.tall`: force a 2-row cell
+  (used on Blue Room 09–10, HoKa / model Aniqa Jaahan, to keep that grid at one gap).
+- Studio Sets Social + Poolside are still "results coming soon" placeholders.
 ### 2026-10-29 — Testimonials on the event page + checkout
 - `events/the-statement/` has a dark **"From Past Rooms"** section (reuses `.testimonial-grid` /
   `.testimonial-card` from `styles.css`) between Partner With Us and the FAQ; its checkout aside
