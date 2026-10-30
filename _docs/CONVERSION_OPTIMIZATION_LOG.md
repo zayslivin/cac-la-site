@@ -140,3 +140,10 @@ data per event plus qualitative feedback.
 - **Expected impact:** small-to-moderate lift in event-page → checkout and checkout → paid. Can't be isolated (Nat is also pushing sales).
 - **Measure:** Stripe Statement sales after merge vs. the 19-day zero streak before; model share of sales.
 - **Follow-up (same PR):** first private-shoot testimonial (a client message @aureanatphoto shared on her IG story; sender unnamed, so attributed "Private shoot client"). Added as a new **Private Shoots** tab on `testimonials/` and as a card above "DM to book" in Book a Shoot's How Booking Works. Emojis dropped; text otherwise verbatim, trims marked "…". Also fixed `testimonials/`'s final CTA, which still sent "View the next event" to the past Poolside page → The Statement.
+
+## 2026-10-30 — Gallery: Pink Issue photos (first batch) + 2 Blue Room photos
+- **Problem:** `gallery/#pinkissue` was a dashed "results coming soon" box six weeks after the event; the retired Pink Issue page and checkout still promised results "soon".
+- **Change:** 4 photos from Nat (credits from her DM): 2 by Mark Bui, 2 by thu_vans_eyes (model Kathryn Rainwater). New `.photo-grid.single-row` (one even row, 2×2 on phones) so a short set leaves no holes. Blue Room +2 (HoKa, model Aniqa Jaahan) as `.photo.tall` cells — keeps that grid at its previous single gap. Pink Issue page/checkout copy → "photos in the gallery". Credits in the section line and each photo's aria-label.
+- **Evidence:** no new research; Baymard trust-signal guidance (already cited) — unfinished sections read as an abandoned site.
+- **Tests:** 390 + 1440px, no overflow, 0 JS errors, lightbox opens on new photos.
+- **Measure:** Cloudflare gallery → checkout visits. Studio Sets Social + Poolside still placeholders.
