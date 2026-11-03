@@ -140,3 +140,26 @@ data per event plus qualitative feedback.
 - **Expected impact:** small-to-moderate lift in event-page → checkout and checkout → paid. Can't be isolated (Nat is also pushing sales).
 - **Measure:** Stripe Statement sales after merge vs. the 19-day zero streak before; model share of sales.
 - **Follow-up (same PR):** first private-shoot testimonial (a client message @aureanatphoto shared on her IG story; sender unnamed, so attributed "Private shoot client"). Added as a new **Private Shoots** tab on `testimonials/` and as a card above "DM to book" in Book a Shoot's How Booking Works. Emojis dropped; text otherwise verbatim, trims marked "…". Also fixed `testimonials/`'s final CTA, which still sent "View the next event" to the past Poolside page → The Statement.
+
+## 2026-11-03 — Past-room photos on The Statement page
+- **Problem:** The Statement's "From Past Rooms" section had quotes but no images, while the
+  thing a buyer is paying for is the photos they leave with. Four past-room galleries
+  (Poolside, Studio Sets Social, Tulum, more Volka/Beverly Hills) went live in the same PR.
+- **Change:** a 4-photo strip (Poolside, Studio Sets, Beverly Hills, Tulum; each links to its
+  gallery) at the top of "From Past Rooms", above the testimonial cards, with "Shot in our
+  rooms. See every gallery →". 4 across on desktop, 2×2 at ≤700px. Page-local CSS only.
+- **Evidence:** Baymard, "Always Integrate Social Media Visuals on the Product Page": users seek
+  real-customer images for an unfiltered view and they raise buyer confidence ("visual social
+  proof"). Ecommerce product pages, not event tickets: the principle transfers, the effect
+  size does not. Live research done 2026-11-03.
+- **Tested:** headless Chromium at 1400 + 390px: no horizontal overflow, 0 JS errors, cells
+  3:4 (253×337 desktop, 171×228 mobile), accent stays red.
+- **Expected impact:** Low-to-medium on event page → checkout. Not isolable from Nat's own
+  promotion.
+- **Measure:** Stripe Statement sales after merge vs. before (2 of 20 as of 2026-10-29).
+
+## 2026-11-03 — Removed a model's photos site-wide (Zay's request)
+- Not a conversion change. Zay asked that one model appear nowhere on the site. Removed
+  `gallery/beverlyhills/07` and `gallery/casaattar/01,02,03,04,06,09` (Casa Attar now has 4
+  photos); two homepage mosaic cells that used Casa Attar now show Poolside + Studio Sets.
+  She was also kept out of every new gallery set. Files remain in git history (repo is public).

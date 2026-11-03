@@ -38,6 +38,10 @@
   .flyer-flip.btn-pill.ghost:hover {
     background: var(--ink); border-color: var(--ink); color: var(--cream);
   }
+  /* Past-rooms photo strip (From Past Rooms) */
+  .past-rooms-strip { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; }
+  .past-rooms-strip .gallery-cell { aspect-ratio:3/4; height:auto; grid-row:auto; }
+  @media (max-width:700px) { .past-rooms-strip { grid-template-columns:repeat(2,1fr); } }
 </style>
 <script type="application/ld+json">
 {
@@ -292,6 +296,14 @@
   <div class="container-narrow">
     <div class="eyebrow">From Past Rooms</div>
     <h2 class="section-title fade-in" style="margin:18px 0 32px;">What the room<br>says after.</h2>
+    <!-- Real images made in past rooms (visual social proof, Baymard). Links go to each room's gallery. -->
+    <div class="past-rooms-strip fade-in">
+      <a class="gallery-cell" href="../../gallery/#poolside" data-label="Poolside" aria-label="Model posing on the rock waterfall at the Poolside Summer Social" style="background-image:url('../../images/gallery/poolside/06.jpg');"></a>
+      <a class="gallery-cell" href="../../gallery/#studiosets" data-label="Studio Sets" aria-label="Model in the orange bubble room at Studio Sets Social" style="background-image:url('../../images/gallery/studiosets/02.jpg');"></a>
+      <a class="gallery-cell" href="../../gallery/#beverlyhills" data-label="Beverly Hills" aria-label="Model in a gold gown against carved wood at the Beverly Hills Mansion" style="background-image:url('../../images/gallery/beverlyhills/04.jpg');"></a>
+      <a class="gallery-cell" href="../../gallery/#tulum" data-label="Tulum" aria-label="Model in a blue crochet dress and white boots at Tulum" style="background-image:url('../../images/gallery/tulum/01.jpg');"></a>
+    </div>
+    <p class="body-serif fade-in" style="text-align:center;opacity:0.75;margin:14px 0 48px;font-size:15px;">Shot in our rooms. <a href="../../gallery/" style="color:var(--gold);">See every gallery →</a></p>
     <div class="testimonial-grid">
       <article class="testimonial-card fade-in">
         <div class="quote-mark">"</div>

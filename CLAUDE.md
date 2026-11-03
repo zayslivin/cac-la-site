@@ -202,6 +202,25 @@ Zay earns a share of ticket revenue, so **paid RSVPs are the north-star metric**
   site (it was publicly served until 2026-10-29). The GitHub repo itself is still public.
 
 ## Change log
+### 2026-11-03 — Galleries filled; a model removed site-wide; photos on The Statement
+- **Galleries now live**: Poolside (18), Studio Sets Social (18), Volka 8 → 18, Beverly Hills
+  14 → 18, and a new **Tulum** section (18) placed after Casa Attar, before ModiNochi, numbered
+  "—" until its date is known (no archive row yet). Sources: Poolside = Google Drive + Dropbox,
+  SSS = Google Photos + Dropbox, Volka/BH = SunToTheShot Pixieset (`/client/loadphotos/` API
+  with the page's `collectionId`; the page itself 403s curl but Firecrawl gets it), Tulum =
+  Google Photos share (image URLs are in the share page HTML; append `=w1600-h1600`).
+  **Photographer credits still unconfirmed** for Poolside, SSS and Tulum (Zay: later).
+- **One model must never appear on the site** (Zay, 2026-11-03): curly highlighted hair with
+  bangs; she wore the green halter dress in Tulum/Casa Attar, the white crochet + orange
+  crochet sets at Poolside, the rust tulle gown at Beverly Hills. Removed `beverlyhills/07`
+  and `casaattar/01,02,03,04,06,09`; reference photo was Drive file `KUYA5970.jpg`. **Screen
+  every new photo set for her.**
+- `.photo-grid` (gallery page) makes every 1st + 4th of 7 tall; at 4 cols only a 6-photo
+  section packs flush, so **every section ends ragged at desktop/tablet**. Fixing it is a
+  separate CSS change (Zay: later).
+- Poolside event page got a "From the Room" 9-photo recap; Poolside + SSS pages and archive
+  rows now say the gallery is live. The Statement's "From Past Rooms" opens with a 4-photo
+  `.past-rooms-strip` (page-local CSS) linking to the galleries.
 ### 2026-10-29 — Testimonials on the event page + checkout
 - `events/the-statement/` has a dark **"From Past Rooms"** section (reuses `.testimonial-grid` /
   `.testimonial-card` from `styles.css`) between Partner With Us and the FAQ; its checkout aside
