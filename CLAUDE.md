@@ -202,10 +202,24 @@ Zay earns a share of ticket revenue, so **paid RSVPs are the north-star metric**
   site (it was publicly served until 2026-10-29). The GitHub repo itself is still public.
 
 ## Change log
+### 2026-11-03 — Pink Issue gallery live; "Tulum" was Casa Attar
+- **Nat names IG highlights after the studio, not the event** ("Pink issue is the boxie studio";
+  "Tulum – was Casa Attar"). The "Tulum" section was Casa Attar's photos: merged into
+  `gallery/#casaattar` (4 → 19, `casaattar/11–25`, 3-per-model cap kept), Tulum section, jump
+  link and `images/gallery/tulum/` removed. Casa Attar's credit line no longer says "Photography
+  by Lakengram" (the merged photos' photographer is unconfirmed).
+- **Pink Issue gallery (12) + 9-photo "From the Room" recap on its event page.** Source: the posts
+  Nat circled on IG screenshots Zay shared (iCloud shared album → CloudKit, see below). Tiles are
+  ~440px grid crops with Nat's red marker strokes; strokes were cropped off (4 posts dropped where
+  strokes crossed faces/bodies), then **upscaled 4× with Real-ESRGAN** and resized to 1100px.
+  Skin reads slightly smooth up close: **replace with originals when Nat/photographers send them**
+  (photographers per IG captions: @darylddelrey, @photosby_bui, @thru_vans_eyes, @natguerrero__).
+- iCloud **shared album** links (`photos.icloud.com/shared/album/<token>`) are CloudKit-based:
+  render the page in Playwright, capture `ckdatabasews` `records/query` responses, and download
+  each `CPLMaster.fields.resOriginalRes.value.downloadURL`. The old `sharedstreams` API 404s.
 ### 2026-11-03 — Galleries filled; a model removed site-wide; photos on The Statement
 - **Galleries now live**: Poolside (18), Studio Sets Social (18), Volka 8 → 18, Beverly Hills
-  14 → 18, and a new **Tulum** section (18) placed after Casa Attar, before ModiNochi, numbered
-  "—" until its date is known (no archive row yet). Sources: Poolside = Google Drive + Dropbox,
+  14 → 18, and a **Tulum** section (later found to be Casa Attar and merged into it — see above). Sources: Poolside = Google Drive + Dropbox,
   SSS = Google Photos + Dropbox, Volka/BH = SunToTheShot Pixieset (`/client/loadphotos/` API
   with the page's `collectionId`; the page itself 403s curl but Firecrawl gets it), Tulum =
   Google Photos share (image URLs are in the share page HTML; append `=w1600-h1600`).
