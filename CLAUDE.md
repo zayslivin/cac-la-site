@@ -215,6 +215,10 @@ Zay earns a share of ticket revenue, so **paid RSVPs are the north-star metric**
   crochet sets at Poolside, the rust tulle gown at Beverly Hills. Removed `beverlyhills/07`
   and `casaattar/01,02,03,04,06,09`; reference photo was Drive file `KUYA5970.jpg`. **Screen
   every new photo set for her.**
+- **Max 3 photos of any one model per gallery section** (Zay, 2026-11-03: "more variety";
+  applied per section and per page feature, not site-wide). Counts now: Poolside 12 (4 models
+  × 3, the pool has no others), SSS 17, Tulum 18, Volka 17, ModiNochi 7. **Count by model
+  before adding photos to any section.**
 - `.photo-grid` (gallery page) makes every 1st + 4th of 7 tall; at 4 cols only a 6-photo
   section packs flush, so **every section ends ragged at desktop/tablet**. Fixing it is a
   separate CSS change (Zay: later).
