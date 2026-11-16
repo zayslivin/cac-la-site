@@ -163,3 +163,19 @@ data per event plus qualitative feedback.
   `gallery/beverlyhills/07` and `gallery/casaattar/01,02,03,04,06,09` (Casa Attar now has 4
   photos); two homepage mosaic cells that used Casa Attar now show Poolside + Studio Sets.
   She was also kept out of every new gallery set. Files remain in git history (repo is public).
+
+## 2026-11-16 — Creative Day (Dec 19) launched; The Statement retired
+- **Not a conversion experiment** — a new event built on the page pattern already in place
+  (testimonials + past-room photo strip, "What's included" per ticket, email capture, refund line
+  on checkout). No live research done for this change; the patterns' evidence is logged above.
+- **Changes vs. The Statement's page:** videographers named in the $95 tier (flyer lists them;
+  the tier was "Photographer / Creator" before) — reduces "is this for me?" doubt for a role the
+  flyer actively recruits. FAQ answers rain-room logistics (rain cover, towel) up front.
+  Past-rooms strip now includes the Pink Issue gallery.
+- **Baseline to beat:** The Statement closed at **6 of 20 sold (5 photographers, 1 model)**
+  per Stripe. Model sales remain the weak side.
+- **Tested:** headless Chromium at 1440 + 390px on the new page, checkout, confirmed, retired
+  Statement page + checkout, events listing, home, gallery: no horizontal overflow, 0 JS errors,
+  accent cascades blue on all three funnel pages.
+- **Measure:** Stripe sales on the two Creative Day links by Dec 19 vs. The Statement's 6/20;
+  model share of sales.
