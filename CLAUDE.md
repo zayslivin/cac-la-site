@@ -35,7 +35,7 @@ file updated when the site's structure, design system, or conventions change.
 /images/gallery/<venue>/ past-event galleries
 /_templates/          reusable HTML section snippets (NOT published — "_" ignored by Pages/Jekyll)
 ```
-- **Events** (slugs): `the-statement` (**the live one** — Nov 14), `the-pink-issue`
+- **Events** (slugs): `creative-day` (**the live one** — Dec 19), `the-statement` (**PAST** — Nov 14, retired 2026-11-16), `the-pink-issue`
   (**PAST** — Sept 19, retired), `studio-sets-social` (**PAST** — Aug 29, retired to a recap page), `the-creative-collective`
   (**CANCELLED** — pages kept as cancellation notices), `poolside-summer-social`,
   `artists-and-muses` (legacy redirect stubs → TCC), `modinochi-ii` (**PAST** — June 20 Orange County, retired 2026-10-29).
@@ -59,7 +59,7 @@ file updated when the site's structure, design system, or conventions change.
   `--gold-bright` / `--gold-deep`, never a hardcoded hex. So an event that needs its own accent
   redefines just those 3 tokens in a page-level `<style>` block — it cascades to eyebrows,
   buttons, hovers and `.capacity`, and stays document-scoped. `the-pink-issue` does this
-  (`#ee3d96` / `#ff6ab4` / `#c2186f`); `the-statement` uses red (`#f03a3a` / `#ff5a52` / `#c0141c`). Check contrast when swapping: the accent is used as
+  (`#ee3d96` / `#ff6ab4` / `#c2186f`); `the-statement` uses red (`#f03a3a` / `#ff5a52` / `#c0141c`); `creative-day` uses rain-room blue (`#5c7cfa` / `#86a0ff` / `#3a3fbf`). Check contrast when swapping: the accent is used as
   button *background* behind ink text AND as text on both ink and cream.
 - **Gallery masonry**: `.gallery-grid` (4 cols desktop / 3 tablet / 2 mobile, 220px rows) +
   `.gallery-cell` (background-image, `data-label` shows on hover in gold) + `.gallery-cell.tall`
@@ -202,6 +202,35 @@ Zay earns a share of ticket revenue, so **paid RSVPs are the north-star metric**
   site (it was publicly served until 2026-10-29). The GitHub repo itself is still public.
 
 ## Change log
+### 2026-11-16 — Creative Day (Dec 19) added; The Statement retired
+- New `events/creative-day/` + `checkout/` + `confirmed/`. Sat **Dec 19, 12–3 PM**, LA multi-set
+  studio with a **rain room**, **25 spots**, photographers & videographers **$95** / models **$55**
+  (Zay: same two tiers as The Statement; videographers buy the $95 tier). No theme/brief on the
+  flyer, so the FAQ says "no strict theme". Address goes out **by email** (no group chat).
+  Blue/violet accent via the 3-token override (contrast 5.4:1 on ink, deep 6.9:1 on cream).
+- Images (`images/events/creative-day/`): `flyer.jpg` (og:image + spinnable "The Cover", from
+  `IMG_1026.jpeg`); real studio photos from Zay: `rain-room.jpg` (also the hero, 1058px — the
+  largest he sent), and `studio-floor` / `laser-wall` / `bulb-wall` split from a 3-panel collage at
+  its white seams (rows 747–770, 1593–1616). "The Room" is a 2×2 `.cd-room` grid (page-local CSS,
+  3:2 `object-fit: cover` — no people in these, so cropping is safe). An earlier flyer-crop hero
+  with the title inpainted out was replaced before merge.
+- **Stripe (live)**: photographer $95 `plink_1UcTR3FqKR455jnLzoKRRidG`
+  (`buy.stripe.com/5kQdR93EFaDrbN258DgjC0g`, `prod_Vdkw6nX0cGL8zH`), model $55
+  `plink_1UcTR7FqKR455jnLZt5O5ULd` (`buy.stripe.com/aFa5kD8YZdPDcR644zgjC0h`,
+  `prod_VdkwSOqYo99q96`). Cloned from The Statement's config; redirect to this event's
+  `confirmed/`; metadata `event: creative-day`. **Capped in Stripe** (Zay, 2026-11-16): model link
+  `completed_sessions.limit` **8**, photographer link **17**, each with a sold-out `inactive_message`.
+  The limit counts *checkouts*, not tickets: quantity is still adjustable 1–10, so a multi-ticket
+  checkout can overshoot the cap — watch for it.
+- **Make** scenario `5540298` renamed "Creative Day — payment confirmation email"; filter keys on
+  the two Creative Day plinks, Beehiiv `event` = `creative-day`, tag `creative-day-rsvp`. Active.
+- **The Statement retired** per the recipe: SoldOut, Past Event eyebrow, Status cell, checkout →
+  "event has passed" panel (refund "Before you pay" block dropped there), archive row **11**,
+  `gallery/#statement` placeholder, email-capture eyebrow → "Missed this one?". Final Stripe count
+  **6 sales (5 photographer, 1 model)**; both links **deactivated**. `confirmed/` untouched. Every
+  site-wide next-event link (nav, footers, homepage hero card + "Who it's for" links, gallery,
+  testimonials CTA, and the retired/cancelled TCC, SSS, Poolside, Pink Issue, ModiNochi trees)
+  repointed to Creative Day.
 ### 2026-11-03 — Pink Issue gallery live; "Tulum" was Casa Attar
 - **Nat names IG highlights after the studio, not the event** ("Pink issue is the boxie studio";
   "Tulum – was Casa Attar"). The "Tulum" section was Casa Attar's photos: merged into

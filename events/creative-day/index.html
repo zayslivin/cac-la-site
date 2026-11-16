@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Creative Day — Create &amp; Connect LA · December 19</title>
+<meta name="description" content="A creative day for 25 models, photographers and videographers in a multi-set Los Angeles studio with a rain room. Saturday December 19, 12–3 PM." />
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<meta property="og:title" content="Creative Day — Create & Connect LA" />
+<meta property="og:description" content="Limited to 25 creatives. Models, photographers and videographers. Saturday December 19, 12–3 PM, Los Angeles. $95 · Models $55." />
+<meta property="og:image" content="https://createconnectla.com/images/events/creative-day/flyer.jpg" />
+<meta property="og:url" content="https://createconnectla.com/events/creative-day/" />
+<meta property="og:type" content="event" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="theme-color" content="#0a0a0a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css">
+<noscript><style>.fade-in,.what-to-expect.fade-in>*,.stats.fade-in>*{opacity:1!important;transform:none!important}</style></noscript>
+<style>
+  /* ---- Creative Day: accent override, scoped to this event only ----
+     Rain-room blue, leaning violet, taken from the flyer. styles.css routes
+     every accent through --gold, so redefining the three tokens re-skins
+     eyebrows, buttons, hovers and capacity text in one place.
+     Contrast checked: #5c7cfa on ink = 5.4:1 (also ink text on a blue
+     button), #3a3fbf on cream = 6.9:1 — both pass WCAG AA. */
+  :root {
+    --gold: #5c7cfa;
+    --gold-bright: #86a0ff;
+    --gold-deep: #3a3fbf;
+  }
+  /* The flyer card sits on a cream section, so the ghost button's cream
+     border would vanish. Re-tone it to ink for this one placement. */
+  .flyer-flip.btn-pill.ghost {
+    color: var(--ink); border-color: rgba(10,10,10,0.35);
+  }
+  .flyer-flip.btn-pill.ghost:hover {
+    background: var(--ink); border-color: var(--ink); color: var(--cream);
+  }
+  /* The Room: four real photos of the studio's sets */
+  .cd-room { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
+  .cd-room figure { margin:0; position:relative; border-radius:14px; overflow:hidden; background:var(--ink); aspect-ratio:3/2; }
+  .cd-room img { display:block; width:100%; height:100%; object-fit:cover; }
+  @media (max-width:700px) { .cd-room { grid-template-columns:1fr; } }
+  .cd-room figure::after { content:''; position:absolute; inset:auto 0 0 0; height:38%; background:linear-gradient(0deg,rgba(10,10,10,0.75),rgba(10,10,10,0)); pointer-events:none; }
+  .cd-room figcaption {
+    position:absolute; left:18px; bottom:14px; z-index:1;
+    font-family:'Inter',sans-serif; font-size:11px; font-weight:600;
+    letter-spacing:0.22em; text-transform:uppercase; color:var(--cream);
+    text-shadow:0 1px 8px rgba(0,0,0,0.7);
+  }
+  /* Past-rooms photo strip (From Past Rooms) */
+  .past-rooms-strip { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; }
+  .past-rooms-strip .gallery-cell { aspect-ratio:3/4; height:auto; grid-row:auto; }
+  @media (max-width:700px) { .past-rooms-strip { grid-template-columns:repeat(2,1fr); } }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "name": "Create & Connect — Creative Day",
+  "startDate": "2026-12-19T12:00-08:00",
+  "endDate": "2026-12-19T15:00-08:00",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+  "location": {
+    "@type": "Place",
+    "name": "Multi-Set Studio",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Los Angeles",
+      "addressRegion": "CA",
+      "addressCountry": "US"
+    }
+  },
+  "image": ["https://createconnectla.com/images/events/creative-day/flyer.jpg"],
+  "description": "A creative day for 25 models, photographers and videographers in a multi-set Los Angeles studio with a rain room.",
+  "offers": {
+    "@type": "AggregateOffer",
+    "url": "https://createconnectla.com/events/creative-day/checkout/",
+    "lowPrice": "55.00",
+    "highPrice": "95.00",
+    "priceCurrency": "USD",
+    "offerCount": "2",
+    "availability": "https://schema.org/InStock",
+    "validFrom": "2026-11-16T00:00-08:00"
+  },
+  "organizer": {
+    "@type": "Organization",
+    "name": "Create & Connect LA",
+    "url": "https://createconnectla.com/"
+  }
+}
+</script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d6cb5e51b2c440719c55f7ca0f3ac260"}'></script><!-- End Cloudflare Web Analytics -->
+</head>
+<body>
+
+<nav class="top">
+  <div class="row">
+    <a href="../../" class="brand">
+      <span class="brand-mark">Create <span class="amp">&amp;</span> Connect</span>
+      <span class="brand-script">los angeles</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../" class="active">Events</a></li>
+      <li><a href="../../gallery/">Gallery</a></li>
+      <li><a href="../../testimonials/">Testimonials</a></li>
+      <li><a href="../../brands/">Brands</a></li>
+      <li><a href="../../book-a-shoot/">Book a Shoot</a></li>
+      <li><a href="../../about/">About</a></li>
+      <li><a href="../../contact/">Contact</a></li>
+      <li><a href="https://createconnectla.com/events/creative-day/checkout/" target="_blank" rel="noopener" class="btn-pill">RSVP <span class="arrow">→</span></a></li>
+    </ul>
+    <button class="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="../">Events</a></li>
+    <li><a href="../../gallery/">Gallery</a></li>
+    <li><a href="../../testimonials/">Testimonials</a></li>
+    <li><a href="../../brands/">Brands</a></li>
+    <li><a href="../../book-a-shoot/">Book a Shoot</a></li>
+    <li><a href="../../about/">About</a></li>
+    <li><a href="../../contact/">Contact</a></li>
+  </ul>
+  <div class="secondary">
+    <a href="https://createconnectla.com/events/creative-day/checkout/" target="_blank" rel="noopener">RSVP →</a>
+    <a href="#subscribe">Get the free guide →</a>
+    <a href="https://instagram.com/createconnect.la" target="_blank" rel="noopener">@createconnect.la →</a>
+  </div>
+</div>
+
+<!-- =========== EVENT HERO =========== -->
+<header class="event-detail-hero" style="background-image:url('../../images/events/creative-day/rain-room.jpg');">
+  <div class="container">
+    <div class="eyebrow" style="color:var(--cream);">Saturday · December 19 · Los Angeles</div>
+    <h1>Creative <em style="font-style:italic;color:var(--gold);">Day</em></h1>
+    <a href="https://createconnectla.com/events/creative-day/checkout/" target="_blank" rel="noopener" class="btn-pill lg">RSVP <span class="arrow">→</span></a>
+  </div>
+</header>
+
+<div class="event-detail-strip">
+  <div class="meta-group">
+    <div class="meta">When<strong>Saturday, December 19 · 12 PM–3 PM</strong></div>
+    <div class="meta">Where<strong>Multi-set studio, LA (address after RSVP)</strong></div>
+    <div class="meta">Price<strong>$95 · Models $55</strong></div>
+    <div class="meta">Spots<strong class="capacity">25 creatives max</strong></div>
+  </div>
+  <a href="https://createconnectla.com/events/creative-day/checkout/" target="_blank" rel="noopener" class="btn-pill ink">RSVP <span class="arrow">→</span></a>
+</div>
+
+<!-- =========== THE CONCEPT =========== -->
+<section class="event-section">
+  <div class="container-narrow">
+    <div class="eyebrow">The Concept</div>
+    <h2 class="section-title fade-in" style="margin:18px 0 32px;">25 creatives.<br>One rain room.</h2>
+    <p class="lede fade-in" style="margin-bottom:32px;">
+      Creative Day is an afternoon in a multi-set Los Angeles studio for models,
+      photographers and videographers. A rain set lit in blue and magenta, a laser wall,
+      strip-light walls and a bulb wall — every corner built to be shot.
+    </p>
+    <p class="body-serif fade-in" style="margin-bottom:24px;">
+      The room is capped at twenty-five, so you get real time on every set and with
+      every person in it, instead of waiting your turn.
+    </p>
+    <p class="body-serif fade-in">
+      Three hours and a room of people who take the work seriously. Come with a
+      concept, or build one with whoever you meet on set.
+    </p>
+    <div class="fade-in" style="text-align:center;margin-top:44px;">
+      <a href="https://createconnectla.com/events/creative-day/checkout/" target="_blank" rel="noopener" class="btn-pill lg">Start Creating <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- =========== THE ROOM =========== -->
+<section class="event-section cream">
+  <div class="container-narrow">
+    <div class="eyebrow">The Room</div>
+    <h2 class="section-title fade-in" style="margin:18px 0 20px;">Rain, light<br>&amp; reflection.</h2>
+    <p class="body-serif fade-in" style="margin-bottom:44px;opacity:0.8;">
+      Four sets in one studio. A rain set for motion, mood and wet-floor reflections, a
+      laser wall in pink and violet, a bulb wall, and a main floor with strip-light walls,
+      a parabolic umbrella and a lit vanity. The exact studio and address go to confirmed
+      attendees after RSVP.
+    </p>
+    <div class="cd-room fade-in">
+      <figure>
+        <img src="../../images/events/creative-day/rain-room.jpg" width="1058" height="757" loading="lazy"
+             alt="The rain set: a curtain of falling water lit blue and red over a wet stage floor" />
+        <figcaption>The Rain Room</figcaption>
+      </figure>
+      <figure>
+        <img src="../../images/events/creative-day/laser-wall.jpg" width="1199" height="817" loading="lazy"
+             alt="Pink and violet laser beams fanning out from a dark wall in haze" />
+        <figcaption>The Laser Wall</figcaption>
+      </figure>
+      <figure>
+        <img src="../../images/events/creative-day/bulb-wall.jpg" width="1199" height="799" loading="lazy"
+             alt="A grid of warm round bulbs on a black wall between two walls of white strip lights, reflected in a glossy floor" />
+        <figcaption>The Bulb Wall</figcaption>
+      </figure>
+      <figure>
+        <img src="../../images/events/creative-day/studio-floor.jpg" width="1199" height="743" loading="lazy"
+             alt="Main studio floor with strip-light walls, a silver parabolic umbrella and a lit vanity mirror, on a glossy black floor" />
+        <figcaption>The Main Floor</figcaption>
+      </figure>
+    </div>
+    <div class="fade-in" style="text-align:center;margin-top:48px;">
+      <a href="https://createconnectla.com/events/creative-day/checkout/" target="_blank" rel="noopener" class="btn-pill ink lg">Secure a Spot <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- =========== WHAT TO EXPECT =========== -->
+<section class="event-section">
+  <div class="container-narrow">
+    <div class="eyebrow">What to Expect</div>
+    <h2 class="section-title fade-in" style="margin:18px 0 32px;">Three hours.<br>Every set open.</h2>
+    <div class="what-to-expect fade-in">
+      <div class="expect-item">
+        <div class="num">01</div>
+        <h4>Four sets, one studio</h4>
+        <p>Move between the rain room, the laser wall, the bulb wall and the main floor. Change looks, change light, and leave with a set of images that don't look like they came from one place.</p>
+      </div>
+      <div class="expect-item">
+        <div class="num">02</div>
+        <h4>Twenty-five creatives, max</h4>
+        <p>A small room on purpose. Fewer people means more time per look and more time to actually work with each photographer, model and videographer.</p>
+      </div>
+      <div class="expect-item">
+        <div class="num">03</div>
+        <h4>Built for video too</h4>
+        <p>Falling water, lasers, light strips and reflective floors move on camera. Videographers are part of the room, not an afterthought.</p>
+      </div>
+      <div class="expect-item">
+        <div class="num">04</div>
+        <h4>Leave with work and people</h4>
+        <p>Portfolio images and footage you'll actually post, plus collaborators you'll book again.</p>
+      </div>
+    </div>
+    <div class="fade-in" style="text-align:center;margin-top:52px;">
+      <a href="https://createconnectla.com/events/creative-day/checkout/" target="_blank" rel="noopener" class="btn-pill lg">Start Connecting <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- =========== THE COVER =========== -->
+<section class="event-section cream">
+  <div class="container-narrow" style="text-align:center;">
+    <div class="eyebrow">The Cover</div>
+    <h2 class="section-title fade-in" style="margin:18px 0 24px;">December's room.</h2>
+    <p class="body-serif fade-in" style="margin-bottom:40px;max-width:620px;margin-left:auto;margin-right:auto;opacity:0.85;">
+      Flip the cover for the details. The exact studio, address and parking
+      instructions go to confirmed attendees by email before event day.
+    </p>
+    <div class="flyer-stage fade-in">
+      <div class="flyer-card" id="flyerCard">
+        <div class="flyer-face front">
+          <img src="../../images/events/creative-day/flyer.jpg"
+               alt="Create &amp; Connect Creative Day flyer — Saturday, December 19, 12 PM–3 PM, limited to 25 creatives: models, photographers, videographers"
+               width="1320" height="1618" loading="lazy" />
+        </div>
+        <div class="flyer-face back" aria-hidden="true">
+          <div class="flyer-row"><span>When</span><strong>Saturday, December 19<br>12 PM–3 PM</strong></div>
+          <div class="flyer-row"><span>Where</span><strong>Multi-set studio<br>Los Angeles</strong></div>
+          <div class="flyer-row"><span>Price</span><strong>Photographers &amp; videographers $95<br>Models $55</strong></div>
+          <div class="flyer-row"><span>Spots</span><strong>25 creatives max</strong></div>
+        </div>
+      </div>
+      <button type="button" class="flyer-flip btn-pill ghost" aria-pressed="false"
+              aria-label="Flip the flyer to see the event details">
+        Flip the cover <span class="arrow">→</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- =========== MODEL CALLOUT =========== -->
+<section class="event-section tight">
+  <div class="container-narrow" style="text-align:center;">
+    <div class="eyebrow">For Models</div>
+    <h3 class="sub fade-in" style="margin:14px 0 20px;">Model spots are $55.</h3>
+    <p class="body-serif fade-in" style="margin-bottom:32px;max-width:560px;margin-left:auto;margin-right:auto;">
+      With twenty-five spots in total, model places are kept balanced with photographers
+      and videographers and priced at $55 to keep the talent strong. Bring two to four
+      looks, one that holds up in the rain, and you'll be in front of every lens in the room.
+    </p>
+    <a href="https://createconnectla.com/events/creative-day/checkout/" target="_blank" rel="noopener" class="btn-pill">RSVP for Models <span class="arrow">→</span></a>
+  </div>
+</section>
+
+<!-- =========== BRANDS / SPONSORS / VENDORS =========== -->
+<section class="event-section cream">
+  <div class="container-narrow" style="text-align:center;">
+    <div class="eyebrow">Partner With Us</div>
+    <h2 class="section-title fade-in" style="margin:18px 0 24px;">Brands, sponsors<br>&amp; vendors.</h2>
+    <p class="body-serif fade-in" style="margin-bottom:32px;max-width:620px;margin-left:auto;margin-right:auto;">
+      Creative Day is built to be sponsored, activated, and seen. If you're a brand,
+      sponsor, or vendor who wants a presence at the event — a booth, an activation, product
+      placement, or content — let's build it together.
+    </p>
+    <a href="../../brands/inquire/" class="btn-pill ink">Inquire to partner <span class="arrow">→</span></a>
+  </div>
+</section>
+
+<!-- =========== FROM PAST ROOMS (real quotes, copied verbatim from testimonials/) =========== -->
+<section class="event-section">
+  <div class="container-narrow">
+    <div class="eyebrow">From Past Rooms</div>
+    <h2 class="section-title fade-in" style="margin:18px 0 32px;">What the room<br>says after.</h2>
+    <!-- Real images made in past rooms (visual social proof, Baymard). Links go to each room's gallery. -->
+    <div class="past-rooms-strip fade-in">
+      <a class="gallery-cell" href="../../gallery/#poolside" data-label="Poolside" aria-label="Model posing on the rock waterfall at the Poolside Summer Social" style="background-image:url('../../images/gallery/poolside/06.jpg');"></a>
+      <a class="gallery-cell" href="../../gallery/#studiosets" data-label="Studio Sets" aria-label="Model in the orange bubble room at Studio Sets Social" style="background-image:url('../../images/gallery/studiosets/02.jpg');"></a>
+      <a class="gallery-cell" href="../../gallery/#pinkissue" data-label="Pink Issue" aria-label="Model in a pink floral dress on a retro phone, kneeling by an old TV" style="background-image:url('../../images/gallery/pinkissue/02.jpg');"></a>
+      <a class="gallery-cell" href="../../gallery/#beverlyhills" data-label="Beverly Hills" aria-label="Model in a gold gown against carved wood at the Beverly Hills Mansion" style="background-image:url('../../images/gallery/beverlyhills/04.jpg');"></a>
+    </div>
+    <p class="body-serif fade-in" style="text-align:center;opacity:0.75;margin:14px 0 48px;font-size:15px;">Shot in our rooms. <a href="../../gallery/" style="color:var(--gold);">See every gallery →</a></p>
+    <div class="testimonial-grid">
+      <article class="testimonial-card fade-in">
+        <div class="quote-mark">"</div>
+        <blockquote>Thank you for the awesome event! It was incredible and everything was professionally organized — and we got awesome pictures!</blockquote>
+        <div class="attribution">
+          <div class="avatar">V</div>
+          <div>
+            <div class="who">@vita_passion</div>
+            <div class="role">Model · Blue Room</div>
+          </div>
+        </div>
+      </article>
+      <article class="testimonial-card fade-in">
+        <div class="quote-mark">"</div>
+        <blockquote>This was such a great experience! Great group, so courteous, and I learnt new tips from other great photographers. The organizer is amazing!</blockquote>
+        <div class="attribution">
+          <div class="avatar">Y</div>
+          <div>
+            <div class="who">@yojalmaphotography</div>
+            <div class="role">Photographer</div>
+          </div>
+        </div>
+      </article>
+      <article class="testimonial-card fade-in">
+        <div class="quote-mark">"</div>
+        <blockquote>Was an amazing experience as always! Looking forward to the next one.</blockquote>
+        <div class="attribution">
+          <div class="avatar">D</div>
+          <div>
+            <div class="who">@dr.aniqajahaan</div>
+            <div class="role">Returning Model</div>
+          </div>
+        </div>
+      </article>
+      <article class="testimonial-card fade-in">
+        <div class="quote-mark">"</div>
+        <blockquote>Wow — what an amazing experience! … Shoutout to @createconnect.la, this just elevated our work to a whole other level.</blockquote>
+        <div class="attribution">
+          <div class="avatar">S</div>
+          <div>
+            <div class="who">@stephan_24.inc</div>
+            <div class="role">Photographer</div>
+          </div>
+        </div>
+      </article>
+    </div>
+    <div style="text-align:center;margin-top:40px;">
+      <a href="https://createconnectla.com/events/creative-day/checkout/" target="_blank" rel="noopener" class="btn-pill">Reserve your spot <span class="arrow">→</span></a>
+      <p style="margin-top:18px;font-size:13px;"><a href="../../testimonials/" style="color:var(--gold);">More from past attendees →</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- =========== FAQ =========== -->
+<section class="event-section cream">
+  <div class="container-narrow">
+    <div class="eyebrow">Before You RSVP</div>
+    <h2 class="section-title fade-in" style="margin:18px 0 32px;">Questions, answered.</h2>
+    <div class="faq fade-in">
+      <details class="faq-item">
+        <summary>What's included?</summary>
+        <p>Three hours in a private multi-set Los Angeles studio, including the rain set, with every set open to you and every model, photographer and videographer in the room. Confirmed attendees get event details by email before the day. Photographers and videographers $95, models $55.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What should I bring?</summary>
+        <p>Photographers: your camera and a fast lens or two, plus a rain cover if you plan to shoot close to the rain set. Videographers: your rig — the rain and light walls are made for motion. Models: 2–4 looks, and a towel and a look you don't mind getting wet if you want to step into the rain.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Is there a theme or dress code?</summary>
+        <p>No strict theme. The sets are lit in blue, magenta, laser pink and warm bulb light, so looks with strong color, shine or texture read well on camera. Come styled to be shot.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Where's the exact location?</summary>
+        <p>It's a private multi-set studio in Los Angeles. The exact studio, address and parking instructions go to confirmed attendees by email before event day.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How do I RSVP and pay?</summary>
+        <p>RSVP through our secure checkout, which reserves your spot and takes payment in one step. Photographers and videographers $95, models $55. Spots are first come, first served, and the room is capped at 25.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How do I get final images?</summary>
+        <p>Photographers and videographers keep their files. Most share previews within 48 hours and edited galleries within 2 weeks. Models can DM photographers directly to license or use specific frames.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- =========== FINAL CTA =========== -->
+<section class="cta-band">
+  <div class="container-narrow">
+    <h2>25 spots.<br>One creative day.</h2>
+    <a href="https://createconnectla.com/events/creative-day/checkout/" target="_blank" rel="noopener" class="btn-pill ink lg">Creative Day <span class="arrow">→</span></a>
+  </div>
+</section>
+
+<!-- =========== EMAIL CAPTURE =========== -->
+<section class="email-capture" id="subscribe">
+  <div class="container-narrow">
+    <div class="eyebrow">Can’t make Dec 19?</div>
+    <h2 class="section-title">Hear about the<br><em style="font-family:'Cormorant Garamond';color:var(--gold);">next room</em> first.</h2>
+    <p class="body-serif">
+      Rooms are 20 to 35 spots. Join the list for early word on new dates, plus our free guide on how to prepare for a Create &amp; Connect editorial event.
+    </p>
+    <div class="email-embed">
+      <script async src="https://subscribe-forms.beehiiv.com/v3/loader.js" data-beehiiv-form="e0353720-9779-4e4e-95bb-e47ae062e4ae"></script>
+    </div>
+    <div class="email-meta">600+ creatives have been in our rooms · No spam · Unsubscribe anytime</div>
+  </div>
+</section>
+
+<!-- =========== FOOTER =========== -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="brand-mark">Create <span class="amp">&amp;</span> Connect</span>
+        <span class="brand-script">los angeles</span>
+        <p>Where creatives turn portfolios into art.</p>
+      </div>
+      <div class="footer-col">
+        <h4>The Community</h4>
+        <ul>
+          <li><a href="../">Events</a></li>
+          <li><a href="../../gallery/">Gallery</a></li>
+          <li><a href="../../testimonials/">Testimonials</a></li>
+          <li><a href="../../about/">About</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Partner</h4>
+        <ul>
+          <li><a href="../../brands/">Brands</a></li>
+          <li><a href="https://createconnectla.com/events/creative-day/checkout/" target="_blank" rel="noopener">RSVP</a></li>
+          <li><a href="../../contact/">Contact</a></li>
+          <li><a href="../../venues/">Venues</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="https://instagram.com/createconnect.la" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="mailto:hello@createconnectla.com">hello@createconnectla.com</a></li>
+          <li><a href="#subscribe">Newsletter</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>© 2026 Create &amp; Connect LA · Los Angeles</span>
+      <span><a href="https://createconnectla.com/privacy/">Privacy</a> · <a href="https://createconnectla.com/terms/">Terms</a></span>
+      <span>Curated by <a href="https://instagram.com/natguerrero__" target="_blank" rel="noopener">@natguerrero__</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+  const hamburger = document.querySelector('.hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger?.addEventListener('click', () => {
+    const open = hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+    hamburger.setAttribute('aria-expanded', open);
+  });
+  mobileMenu?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    document.body.style.overflow = '';
+  }));
+</script>
+
+<script defer src="../../motion.js"></script>
+
+</body>
+</html>
