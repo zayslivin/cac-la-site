@@ -38,12 +38,14 @@
   .flyer-flip.btn-pill.ghost:hover {
     background: var(--ink); border-color: var(--ink); color: var(--cream);
   }
-  /* The Room: two cinematic panels cropped from the flyer */
-  .cd-room { display:grid; gap:14px; }
-  .cd-room figure { margin:0; position:relative; border-radius:14px; overflow:hidden; background:var(--ink); }
-  .cd-room img { display:block; width:100%; height:auto; }
+  /* The Room: four real photos of the studio's sets */
+  .cd-room { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
+  .cd-room figure { margin:0; position:relative; border-radius:14px; overflow:hidden; background:var(--ink); aspect-ratio:3/2; }
+  .cd-room img { display:block; width:100%; height:100%; object-fit:cover; }
+  @media (max-width:700px) { .cd-room { grid-template-columns:1fr; } }
+  .cd-room figure::after { content:''; position:absolute; inset:auto 0 0 0; height:38%; background:linear-gradient(0deg,rgba(10,10,10,0.75),rgba(10,10,10,0)); pointer-events:none; }
   .cd-room figcaption {
-    position:absolute; left:18px; bottom:14px;
+    position:absolute; left:18px; bottom:14px; z-index:1;
     font-family:'Inter',sans-serif; font-size:11px; font-weight:600;
     letter-spacing:0.22em; text-transform:uppercase; color:var(--cream);
     text-shadow:0 1px 8px rgba(0,0,0,0.7);
@@ -134,8 +136,7 @@
 </div>
 
 <!-- =========== EVENT HERO =========== -->
-<!-- hero.jpg = the flyer's rain room with the title text inpainted out (OpenCV). Replace with a real studio photo when Nat has one. -->
-<header class="event-detail-hero" style="background-image:url('../../images/events/creative-day/hero.jpg');">
+<header class="event-detail-hero" style="background-image:url('../../images/events/creative-day/rain-room.jpg');">
   <div class="container">
     <div class="eyebrow" style="color:var(--cream);">Saturday · December 19 · Los Angeles</div>
     <h1>Creative <em style="font-style:italic;color:var(--gold);">Day</em></h1>
@@ -160,8 +161,8 @@
     <h2 class="section-title fade-in" style="margin:18px 0 32px;">25 creatives.<br>One rain room.</h2>
     <p class="lede fade-in" style="margin-bottom:32px;">
       Creative Day is an afternoon in a multi-set Los Angeles studio for models,
-      photographers and videographers. A rain set lit in blue and magenta, walls of
-      light, a bulb wall and a vanity mirror — every corner built to be shot.
+      photographers and videographers. A rain set lit in blue and magenta, a laser wall,
+      strip-light walls and a bulb wall — every corner built to be shot.
     </p>
     <p class="body-serif fade-in" style="margin-bottom:24px;">
       The room is capped at twenty-five, so you get real time on every set and with
@@ -183,20 +184,31 @@
     <div class="eyebrow">The Room</div>
     <h2 class="section-title fade-in" style="margin:18px 0 20px;">Rain, light<br>&amp; reflection.</h2>
     <p class="body-serif fade-in" style="margin-bottom:44px;opacity:0.8;">
-      Two looks at the space. A rain set for motion, mood and wet-floor reflections,
-      and a studio floor with strip-light walls, a bulb wall, a parabolic umbrella and a
-      lit vanity. The exact studio and address go to confirmed attendees after RSVP.
+      Four sets in one studio. A rain set for motion, mood and wet-floor reflections, a
+      laser wall in pink and violet, a bulb wall, and a main floor with strip-light walls,
+      a parabolic umbrella and a lit vanity. The exact studio and address go to confirmed
+      attendees after RSVP.
     </p>
     <div class="cd-room fade-in">
       <figure>
-        <img src="../../images/events/creative-day/hero.jpg" width="1320" height="845" loading="lazy"
-             alt="An empty rain set: a curtain of falling water lit blue and magenta over a reflective black floor" />
+        <img src="../../images/events/creative-day/rain-room.jpg" width="1058" height="757" loading="lazy"
+             alt="The rain set: a curtain of falling water lit blue and red over a wet stage floor" />
         <figcaption>The Rain Room</figcaption>
       </figure>
       <figure>
-        <img src="../../images/events/creative-day/studio.jpg" width="1320" height="290" loading="lazy"
-             alt="Dark studio floor with a wall of vertical light strips, a silver parabolic umbrella, a lit vanity mirror and a wall of warm bulbs" />
-        <figcaption>The Studio</figcaption>
+        <img src="../../images/events/creative-day/laser-wall.jpg" width="1199" height="817" loading="lazy"
+             alt="Pink and violet laser beams fanning out from a dark wall in haze" />
+        <figcaption>The Laser Wall</figcaption>
+      </figure>
+      <figure>
+        <img src="../../images/events/creative-day/bulb-wall.jpg" width="1199" height="799" loading="lazy"
+             alt="A grid of warm round bulbs on a black wall between two walls of white strip lights, reflected in a glossy floor" />
+        <figcaption>The Bulb Wall</figcaption>
+      </figure>
+      <figure>
+        <img src="../../images/events/creative-day/studio-floor.jpg" width="1199" height="743" loading="lazy"
+             alt="Main studio floor with strip-light walls, a silver parabolic umbrella and a lit vanity mirror, on a glossy black floor" />
+        <figcaption>The Main Floor</figcaption>
       </figure>
     </div>
     <div class="fade-in" style="text-align:center;margin-top:48px;">
@@ -213,8 +225,8 @@
     <div class="what-to-expect fade-in">
       <div class="expect-item">
         <div class="num">01</div>
-        <h4>A rain set + a lit studio</h4>
-        <p>Move between the rain room and the studio floor. Change looks, change light, and leave with a set of images that don't look like they came from one place.</p>
+        <h4>Four sets, one studio</h4>
+        <p>Move between the rain room, the laser wall, the bulb wall and the main floor. Change looks, change light, and leave with a set of images that don't look like they came from one place.</p>
       </div>
       <div class="expect-item">
         <div class="num">02</div>
@@ -224,7 +236,7 @@
       <div class="expect-item">
         <div class="num">03</div>
         <h4>Built for video too</h4>
-        <p>Falling water, light strips and reflective floors move on camera. Videographers are part of the room, not an afterthought.</p>
+        <p>Falling water, lasers, light strips and reflective floors move on camera. Videographers are part of the room, not an afterthought.</p>
       </div>
       <div class="expect-item">
         <div class="num">04</div>
@@ -379,7 +391,7 @@
       </details>
       <details class="faq-item">
         <summary>Is there a theme or dress code?</summary>
-        <p>No strict theme. The room is lit in blue, magenta and warm bulb light, so looks with strong color, shine or texture read well on camera. Come styled to be shot.</p>
+        <p>No strict theme. The sets are lit in blue, magenta, laser pink and warm bulb light, so looks with strong color, shine or texture read well on camera. Come styled to be shot.</p>
       </details>
       <details class="faq-item">
         <summary>Where's the exact location?</summary>

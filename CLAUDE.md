@@ -208,10 +208,12 @@ Zay earns a share of ticket revenue, so **paid RSVPs are the north-star metric**
   (Zay: same two tiers as The Statement; videographers buy the $95 tier). No theme/brief on the
   flyer, so the FAQ says "no strict theme". Address goes out **by email** (no group chat).
   Blue/violet accent via the 3-token override (contrast 5.4:1 on ink, deep 6.9:1 on cream).
-- Images (`images/events/creative-day/`), all from the flyer only (`IMG_1026.jpeg`): `flyer.jpg`
-  (og:image + spinnable "The Cover"), `hero.jpg` = the rain-room top half with the flyer title
-  **inpainted out with OpenCV** (Gemini image models have 0 free-tier quota on this key), `studio.jpg`
-  = the bottom studio band. **Replace with real studio photos when Nat has them.**
+- Images (`images/events/creative-day/`): `flyer.jpg` (og:image + spinnable "The Cover", from
+  `IMG_1026.jpeg`); real studio photos from Zay: `rain-room.jpg` (also the hero, 1058px — the
+  largest he sent), and `studio-floor` / `laser-wall` / `bulb-wall` split from a 3-panel collage at
+  its white seams (rows 747–770, 1593–1616). "The Room" is a 2×2 `.cd-room` grid (page-local CSS,
+  3:2 `object-fit: cover` — no people in these, so cropping is safe). An earlier flyer-crop hero
+  with the title inpainted out was replaced before merge.
 - **Stripe (live)**: photographer $95 `plink_1UcTR3FqKR455jnLzoKRRidG`
   (`buy.stripe.com/5kQdR93EFaDrbN258DgjC0g`, `prod_Vdkw6nX0cGL8zH`), model $55
   `plink_1UcTR7FqKR455jnLZt5O5ULd` (`buy.stripe.com/aFa5kD8YZdPDcR644zgjC0h`,

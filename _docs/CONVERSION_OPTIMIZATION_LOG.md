@@ -171,7 +171,8 @@ data per event plus qualitative feedback.
 - **Changes vs. The Statement's page:** videographers named in the $95 tier (flyer lists them;
   the tier was "Photographer / Creator" before) — reduces "is this for me?" doubt for a role the
   flyer actively recruits. FAQ answers rain-room logistics (rain cover, towel) up front.
-  Past-rooms strip now includes the Pink Issue gallery.
+  Past-rooms strip now includes the Pink Issue gallery. Real photos of the 4 sets (rain room,
+  laser wall, bulb wall, main floor) instead of flyer crops — the buyer sees the actual room.
 - **Baseline to beat:** The Statement closed at **6 of 20 sold (5 photographers, 1 model)**
   per Stripe. Model sales remain the weak side.
 - **Tested:** headless Chromium at 1440 + 390px on the new page, checkout, confirmed, retired
