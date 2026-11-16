@@ -218,7 +218,10 @@ Zay earns a share of ticket revenue, so **paid RSVPs are the north-star metric**
   (`buy.stripe.com/5kQdR93EFaDrbN258DgjC0g`, `prod_Vdkw6nX0cGL8zH`), model $55
   `plink_1UcTR7FqKR455jnLZt5O5ULd` (`buy.stripe.com/aFa5kD8YZdPDcR644zgjC0h`,
   `prod_VdkwSOqYo99q96`). Cloned from The Statement's config; redirect to this event's
-  `confirmed/`; metadata `event: creative-day`. Limit 999 — the 25 cap is enforced by hand.
+  `confirmed/`; metadata `event: creative-day`. **Capped in Stripe** (Zay, 2026-11-16): model link
+  `completed_sessions.limit` **8**, photographer link **17**, each with a sold-out `inactive_message`.
+  The limit counts *checkouts*, not tickets: quantity is still adjustable 1–10, so a multi-ticket
+  checkout can overshoot the cap — watch for it.
 - **Make** scenario `5540298` renamed "Creative Day — payment confirmation email"; filter keys on
   the two Creative Day plinks, Beehiiv `event` = `creative-day`, tag `creative-day-rsvp`. Active.
 - **The Statement retired** per the recipe: SoldOut, Past Event eyebrow, Status cell, checkout →
