@@ -232,23 +232,6 @@
     document.body.style.overflow = open ? 'hidden' : '';
   });
 
-  function handleInquiry(form) {
-    /* TODO: Wire to Tally or Airtable via fetch. */
-    const btn = form.querySelector('button[type="submit"]');
-    btn.textContent = 'Sent ✓';
-    btn.disabled = true;
-    setTimeout(() => {
-      form.innerHTML = `
-        <div style="text-align:center;padding:40px 20px;">
-          <div style="font-family:'Cormorant Garamond',serif;font-size:48px;color:var(--gold);margin-bottom:20px;">✓</div>
-          <h3 style="font-family:'Cormorant Garamond',serif;font-size:32px;color:var(--cream);margin-bottom:16px;font-weight:400;">Got it.</h3>
-          <p style="font-family:'Cormorant Garamond',serif;font-size:18px;color:rgba(245,239,228,0.78);max-width:420px;margin:0 auto;">
-            We'll review and respond within 3 business days. Excited to read about you.
-          </p>
-        </div>
-      `;
-    }, 800);
-  }
 </script>
 
 <script defer src="../motion.js"></script>
