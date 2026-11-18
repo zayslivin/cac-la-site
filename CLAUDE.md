@@ -202,6 +202,11 @@ Zay earns a share of ticket revenue, so **paid RSVPs are the north-star metric**
   site (it was publicly served until 2026-10-29). The GitHub repo itself is still public.
 
 ## Change log
+### 2026-11-18 — Contact + Venues forms fixed (were fake)
+- Both forms used to show "Sent" and send nothing. Now submit opens a pre-filled email to
+  **hello@createconnectla.com** (mailto; subject + labelled fields) with an "Open email" button
+  fallback. No backend exists — if a real form service is added later, replace `handleContact` /
+  `handleVenue`. hello@ is on Zoho MX and reaches Zay's Gmail. Dead `handleInquiry` removed from `brands/`.
 ### 2026-11-16 — Creative Day (Dec 19) added; The Statement retired
 - New `events/creative-day/` + `checkout/` + `confirmed/`. Sat **Dec 19, 12–3 PM**, LA multi-set
   studio with a **rain room**, **25 spots**, photographers & videographers **$95** / models **$55**

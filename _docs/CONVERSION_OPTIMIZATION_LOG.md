@@ -180,3 +180,10 @@ data per event plus qualitative feedback.
   accent cascades blue on all three funnel pages.
 - **Measure:** Stripe sales on the two Creative Day links by Dec 19 vs. The Statement's 6/20;
   model share of sales.
+
+## 2026-11-18 — Contact + Venues forms were silently dropping messages
+- **Problem:** `contact/` and `venues/` forms showed "Sent ✓" but had no backend (`TODO: Wire to Tally`). Every submission was lost while the visitor was told it went through. Found after Nat heard someone's email "didn't arrive".
+- **Evidence:** code inspection; no live research done (this is a bug fix, not an optimization).
+- **Change:** submit now builds a pre-filled `mailto:hello@createconnectla.com` (subject + every field with its label) and opens the visitor's mail app; the card says "One more step — hit send" with an Open email button and the plain address as fallback. Removed dead `handleInquiry` from `brands/` (no form used it).
+- **Tests:** headless Chromium, both forms: correct subject/body, 0 JS errors.
+- **Expected impact / measure:** messages now actually reach hello@ (Gmail). Some visitors won't press send in their mail app — mailto adds a step. Watch hello@ volume; if it stays low, move to a real form backend (Web3Forms/Formspree) that sends without leaving the page.
